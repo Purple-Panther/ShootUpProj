@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab; // Prefab do inimigo
+    public GameObject[] enemyPrefabs; // Array de prefabs de inimigos
     public List<Transform> spawnPoints; // Pontos de spawn
     public float spawnInterval = 3f; // Intervalo inicial para spawn
     public float minSpawnInterval = 0.3f; // Intervalo mínimo para spawn
@@ -30,7 +30,21 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemies()
     {
-        int spawnIndex = Random.Range(0, spawnPoints.Count); // Escolhe um ponto de spawn aleatório
+        // Embaralha a lista de pontos de spawn
+        for (int i = 0; i < spawnPoints.Count; i++)
+        {
+            Transform temp = spawnPoints[i];
+            int randomIndex = Random.Range(i, spawnPoints.Count);
+            spawnPoints[i] = spawnPoints[randomIndex];
+            spawnPoints[randomIndex] = temp;
+        }
+
+        // Escolhe um ponto de spawn aleatório
+        int spawnIndex = 0; // Agora o primeiro ponto de spawn é aleatório
+
+        // Escolhe um prefab de inimigo aleatório
+        GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+
         Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
 
         // Chance de spawnar inimigos adicionais em pontos de spawn adjacentes
@@ -41,6 +55,8 @@ public class EnemySpawner : MonoBehaviour
                 int nextIndex = spawnIndex + i;
                 if (nextIndex < spawnPoints.Count) // Verifica se o próximo ponto de spawn existe
                 {
+                    // Escolhe um prefab de inimigo aleatório para cada inimigo adicional
+                    enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
                     Instantiate(enemyPrefab, spawnPoints[nextIndex].position, Quaternion.identity);
                 }
             }
