@@ -108,7 +108,7 @@ MonoBehaviour:
   attackLife: 5
   score: 500
   powerUpPrefab: {fileID: 5301296805910147056, guid: c74dac4a321708441923f3e4f5255ce1, type: 3}
-  powerUpDropChance: 0.3
+  powerUpDropChance: 0.2
 --- !u!114 &5121188793480499536
 MonoBehaviour:
   m_ObjectHideFlags: 0
