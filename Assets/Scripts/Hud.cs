@@ -8,6 +8,8 @@ public class Hud : MonoBehaviour
 {
      public static Hud Instance { get; private set; }
     public TMP_Text scoreText;
+
+    public Slider lifeBar;
     EntityStats playerStats;
 
 
@@ -29,6 +31,8 @@ public class Hud : MonoBehaviour
     void Start()
     {
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<EntityStats>();
+        lifeBar.maxValue = playerStats.maxHealth;
+        lifeBar.value = playerStats.maxHealth;
         PlayerHUD();
     }
 
