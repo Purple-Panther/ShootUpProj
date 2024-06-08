@@ -13,6 +13,8 @@ public class EntityStats : MonoBehaviour
     public float attackSpeed;
     public float attackLife;
     public int score;
+    public float deltaTime = 0.0f;
+    public string fps;
 
     public GameObject powerUpPrefab; // The power-up prefab to drop
     public float powerUpDropChance; // The chance to drop a power-up (0 to 1)
@@ -44,7 +46,9 @@ void Death()
 
     private void Update()
     {
-       
+        deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+        var fpss = 1.0f / deltaTime;
+        fps = string.Format("{0:0.} FPS", fpss);
     }
      
     public void TakeDamage(float hp_to_remove)
