@@ -14,11 +14,15 @@ public class EntityStats : MonoBehaviour
     public float attackLife;
     public int score;
     public float deltaTime;
+    
     public string fps;
+    public int level = 1;
+    public int xp = 0;
+    int xpToLevelUp = 100;
 
-    public GameObject powerUpPrefab; // The power-up prefab to drop
-    public float powerUpDropChance; // The chance to drop a power-up (0 to 1)
 
+    public GameObject powerUpPrefab; 
+    public float powerUpDropChance; 
 
     public void Start()
     {
@@ -32,6 +36,7 @@ public class EntityStats : MonoBehaviour
             if (gameObject.tag != "Player")
             {
                 GameObject.FindGameObjectWithTag("Player").GetComponent<EntityStats>().AddScore(score);
+                  GameObject.FindGameObjectWithTag("Player").GetComponent<EntityStats>().AddExp(xp);
             }
 
 
@@ -61,4 +66,15 @@ public class EntityStats : MonoBehaviour
     {
         score += score_to_add;
     }
+
+  void AddExp(int xp_)
+{
+    xp += xp_;
+    if (xp >= xpToLevelUp)
+    {
+        xp = 0;
+        level++;
+        
+    }
+}
 }

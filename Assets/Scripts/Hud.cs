@@ -12,6 +12,7 @@ public class Hud : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text fps;
     public Slider lifeBar;
+    public Slider expBar;
 
     [SerializeField]
     private EntityBase playerStats;
@@ -19,6 +20,8 @@ public class Hud : MonoBehaviour
     private ScoreStats scoreStats;
     [SerializeField]
     private FpsStats fpsStats;
+
+    public Text levelText;
 
 
     private void Awake()
@@ -40,8 +43,10 @@ public class Hud : MonoBehaviour
     {
         //TODO: Continuar a abstração, preciso dscobrir como reoslver esse problema comentado
         // playerStats = GameObject.FindGameObjectWithTag("Player")
-        lifeBar.maxValue = playerStats.Data.MaxHealth;
-        lifeBar.value = playerStats.Data.MaxHealth;
+        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<EntityStats>();
+        lifeBar.maxValue = playerStats.maxHealth;
+        lifeBar.value = playerStats.maxHealth;
+        levelText.text = playerStats.level.ToString();
         PlayerHUD();
     }
 
@@ -53,11 +58,18 @@ public class Hud : MonoBehaviour
 
 
     void PlayerHUD()
-    {
-        //Score
-        scoreText.text = scoreStats.Score.ToString();
-        fps.text = fpsStats.FpsText();
-        //Life
-        lifeBar.value = playerStats.Data.Health;
-    }
+{
+    //Score
+    scoreText.text =scoreStats.Score.ToString();;
+    fps.text = fpsStats.FpsText();
+    //Life
+    lifeBar.value = playerStats.health;
+
+    //Xp
+    expBar.maxValue = playerStats.level * 100;
+    expBar.value = playerStats.xp;
+
+    //Level
+    levelText.text = playerStats.level.ToString();
+}
 }
