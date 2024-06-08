@@ -1159,8 +1159,6 @@ MonoBehaviour:
   score: 0
   deltaTime: 0
   fps: 
-  deltaTime: 0
-  fps: 
   powerUpPrefab: {fileID: 0}
   powerUpDropChance: 0
 --- !u!1 &606076357
@@ -2560,7 +2558,7 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 129160792}
   - {fileID: 2114488768}
-  - {fileID: 0}
+  - {fileID: 103573582}
   - {fileID: 611791781}
   - {fileID: 735728427}
   - {fileID: 1537081458}

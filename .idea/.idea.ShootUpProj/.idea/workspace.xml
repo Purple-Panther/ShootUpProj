@@ -28,6 +28,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Prefabs/Enemies/MeleeEnemy.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Enemies/EliteRangedEnemy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Hud.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Hud.cs" root0="SKIP_HIGHLIGHTING" />
@@ -121,7 +122,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1717814814247</updated>
-      <workItem from="1717814816581" duration="1619000" />
+      <workItem from="1717814816581" duration="2095000" />
     </task>
     <task id="LOCAL-00001" summary="Fix | Corrigindo Conflitos">
       <option name="closed" value="true" />
