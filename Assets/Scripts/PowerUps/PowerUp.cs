@@ -28,6 +28,7 @@ public class PowerUp : MonoBehaviour
     void Update()
     {
         // Move o power-up em direção ao jogador
+        if(player is null) return;
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         
         // Verifica se o power-up está ativo e se o tempo atual é maior que o tempo de término do power-up
