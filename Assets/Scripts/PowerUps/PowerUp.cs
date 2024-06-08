@@ -43,8 +43,7 @@ public class PowerUp : MonoBehaviour
         {
             isPowerUpActive[powerUpType] = true;
             powerUpEndTimes[powerUpType] = Time.time + powerUpDuration;
-            Debug.Log("PowerUp activated!");
-    
+       
             switch (powerUpType)
             {
                 case PowerUpType.MultiShot:
@@ -60,7 +59,7 @@ public class PowerUp : MonoBehaviour
     public void DeactivatePowerUp(PowerUpType type)
     {
         isPowerUpActive[type] = false;
-        Debug.Log("PowerUp deactivated!");
+        
 
         switch (type)
         {

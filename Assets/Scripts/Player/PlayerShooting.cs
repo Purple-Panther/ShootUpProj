@@ -21,7 +21,7 @@ public class PlayerShooting : MonoBehaviour
     {
         entityStats = GetComponent<EntityStats>();
         attackSpeed_ = entityStats.attackSpeed;
-        Debug.Log("PlayerShooting started. Initial attack speed: " + attackSpeed_);
+      
     }
 
     void Update()
@@ -30,16 +30,16 @@ public class PlayerShooting : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && Time.time > nextFireTime)
         {
-            Debug.Log("Space key pressed. Firing projectile.");
+        
             Shoot();
             nextFireTime = Time.time + attackSpeed_;
-            Debug.Log("Next fire time: " + nextFireTime);
+            
         }
     }
 
     void Shoot()
     {
-        Debug.Log("Shoot method: " + shootMethod);
+      
         switch (shootMethod)
         {
             case ShootMethod.SingleShot:
@@ -68,6 +68,6 @@ public class PlayerShooting : MonoBehaviour
         }
 
         Destroy(projectile, 2f); 
-        Debug.Log("Projectile fired. Position: " + position + ", Velocity: " + velocity);
+    
     }
 }

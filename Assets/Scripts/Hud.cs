@@ -51,5 +51,7 @@ public class Hud : MonoBehaviour
         //Score
         scoreText.text = playerStats.score.ToString();
         fps.text = playerStats.fps;
+        //Life
+        lifeBar.value = playerStats.health;
     }
 }

@@ -38,7 +38,7 @@ void Update()
 
 void Shoot()
 {  
-    Debug.Log("Shoot called"); 
+
     float[] angles = new float[] { 0, 60, 120, 180, 240, 300 }; // Define os ângulos para cada projétil
 
     for (int i = 0; i < 6; i++) // Altere o valor para o número de projéteis que você quer disparar
