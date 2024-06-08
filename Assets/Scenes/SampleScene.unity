@@ -2813,7 +2813,7 @@ GameObject:
   - component: {fileID: 1540109135}
   m_Layer: 0
   m_Name: SpawnPoints
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2834,7 +2834,7 @@ MonoBehaviour:
   - {fileID: 6745072399473900397, guid: 7ccec13456ea3904fa5f8634ac2c971c, type: 3}
   - {fileID: 3654602329506743974, guid: 43685e0b26114b64e87a91a02f8d7c49, type: 3}
   eliteEnemyPrefabs:
-  - {fileID: 819112163790400011, guid: 8ba0c4a06cccc2b498fcead5a8a0fede, type: 3}
+  - {fileID: 8335999442525658310, guid: 168d82d55fa62ad4da0ef6af39fe3026, type: 3}
   eliteSpawnChance: 0.1
   spawnPoints:
   - {fileID: 129160792}
