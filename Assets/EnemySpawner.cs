@@ -4,61 +4,66 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject[] enemyPrefabs; // Array de prefabs de inimigos
-    public List<Transform> spawnPoints; // Pontos de spawn
-    public float spawnInterval = 3f; // Intervalo inicial para spawn
-    public float minSpawnInterval = 0.3f; // Intervalo mínimo para spawn
-    public float difficultyIncreaseRate = 0.95f; // Taxa de diminuição do intervalo de spawn
+    public GameObject[] enemyPrefabs;
+    public GameObject[] eliteEnemyPrefabs; // array de inimigos de elite
+    public float eliteSpawnChance = 0.1f; // chance de spawnar um inimigo de elite
+    public List<Transform> spawnPoints;
+    public float spawnInterval = 3f;
+    public float minSpawnInterval = 0.3f;
+    public float difficultyIncreaseRate = 0.95f;
 
     private float nextSpawnTime;
 
     void Start()
     {
-        nextSpawnTime = Time.time + spawnInterval;
+        nextSpawnTime = Time.timeSinceLevelLoad + spawnInterval;
     }
 
     void Update()
     {
-        if (Time.time >= nextSpawnTime)
+        if (Time.timeSinceLevelLoad >= nextSpawnTime)
         {
             SpawnEnemies();
-            nextSpawnTime = Time.time + spawnInterval;
-            // Aumenta a dificuldade diminuindo o intervalo de spawn, mas não abaixo do mínimo
+            nextSpawnTime = Time.timeSinceLevelLoad + spawnInterval;
             spawnInterval = Mathf.Max(spawnInterval * difficultyIncreaseRate, minSpawnInterval);
         }
     }
 
     void SpawnEnemies()
     {
-        // Embaralha a lista de pontos de spawn
-        for (int i = 0; i < spawnPoints.Count; i++)
+        int spawnIndex = Random.Range(0, spawnPoints.Count);
+        SpawnEnemyAtPoint(spawnIndex);
+
+        if (Random.value < eliteSpawnChance) // se a chance aleatória for menor que a chance de spawn do inimigo de elite
         {
-            Transform temp = spawnPoints[i];
-            int randomIndex = Random.Range(i, spawnPoints.Count);
-            spawnPoints[i] = spawnPoints[randomIndex];
-            spawnPoints[randomIndex] = temp;
+            SpawnEliteEnemyAtPoint(spawnIndex); // spawnar o inimigo de elite
         }
-
-        // Escolhe um ponto de spawn aleatório
-        int spawnIndex = 0; // Agora o primeiro ponto de spawn é aleatório
-
-        // Escolhe um prefab de inimigo aleatório
-        GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-
-        Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
-
-        // Chance de spawnar inimigos adicionais em pontos de spawn adjacentes
-        if (Random.value > 0.5f) // 50% de chance para exemplo
+        else if (Random.value > 0.5f)
         {
-            for (int i = 1; i <= 2; i++) // Tenta spawnar até 2 inimigos adicionais
+            SpawnAdditionalEnemies(spawnIndex);
+        }
+    }
+
+    void SpawnEnemyAtPoint(int spawnIndex)
+    {
+        GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+        Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
+    }
+
+    void SpawnEliteEnemyAtPoint(int spawnIndex)
+    {
+        GameObject eliteEnemyPrefab = eliteEnemyPrefabs[Random.Range(0, eliteEnemyPrefabs.Length)]; // selecionar um inimigo de elite aleatório
+        Instantiate(eliteEnemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity); // spawnar o inimigo de elite
+    }
+
+    void SpawnAdditionalEnemies(int initialSpawnIndex)
+    {
+        for (int i = 1; i <= 2; i++)
+        {
+            int nextIndex = initialSpawnIndex + i;
+            if (nextIndex < spawnPoints.Count)
             {
-                int nextIndex = spawnIndex + i;
-                if (nextIndex < spawnPoints.Count) // Verifica se o próximo ponto de spawn existe
-                {
-                    // Escolhe um prefab de inimigo aleatório para cada inimigo adicional
-                    enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-                    Instantiate(enemyPrefab, spawnPoints[nextIndex].position, Quaternion.identity);
-                }
+                SpawnEnemyAtPoint(nextIndex);
             }
         }
     }
