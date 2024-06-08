@@ -1,21 +1,21 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : EntityBase
 {
     private Rigidbody2D rb;
     private EntityStats playerStats;
-    private bool canMove = true;
 
-    void Start()
+    protected override void Awake()
     {
+        base.Awake();
         rb = GetComponent<Rigidbody2D>();
         playerStats = GetComponent<EntityStats>(); // Obtendo a referência para PlayerStats
     }
 
     void Update()
     {
-        if (canMove)
+        if (CanMove)
         {
             float moveSpeed = playerStats.baseSpeed; // Ajuste da velocidade de movimento do jogador
 

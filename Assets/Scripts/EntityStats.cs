@@ -33,7 +33,7 @@ public class EntityStats : MonoBehaviour
     {
         if (health <= 0)
         {
-            if (this.gameObject.tag != "Player")
+            if (gameObject.tag != "Player")
             {
                 GameObject.FindGameObjectWithTag("Player").GetComponent<EntityStats>().AddScore(score);
                   GameObject.FindGameObjectWithTag("Player").GetComponent<EntityStats>().AddExp(xp);
