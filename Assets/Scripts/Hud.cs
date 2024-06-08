@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; 
+using TMPro;
 
 public class Hud : MonoBehaviour
 {
-     public static Hud Instance { get; private set; }
+    public static Hud Instance { get; private set; }
     public TMP_Text scoreText;
+    [SerializeField]
+    public Text fps;
 
     public Slider lifeBar;
     EntityStats playerStats;
@@ -37,7 +40,7 @@ public class Hud : MonoBehaviour
     }
 
     // Update is called once per frame
-      void Update()
+    void Update()
     {
         PlayerHUD();
     }
@@ -45,11 +48,10 @@ public class Hud : MonoBehaviour
 
     void PlayerHUD()
     {
-         //Score
-    scoreText.text = playerStats.score.ToString();
-
-    //Life
-    lifeBar.value = playerStats.health;
-      
+        //Score
+        scoreText.text = playerStats.score.ToString();
+        fps.text = playerStats.fps;
+        //Life
+        lifeBar.value = playerStats.health;
     }
 }
