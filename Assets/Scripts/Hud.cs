@@ -40,13 +40,20 @@ public class Hud : MonoBehaviour
         lifeBar.maxValue = playerStats.maxHealth;
         lifeBar.value = playerStats.maxHealth;
         levelText.text = playerStats.level.ToString();
-        PlayerHUD();
+         if (playerStats == null)
+        {
+            Debug.LogError("PlayerStats component not found on player object.");
+        }
+           PlayerHUD();
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerHUD();
+         if (playerStats != null)
+        {
+            PlayerHUD();
+        }
     }
 
 
