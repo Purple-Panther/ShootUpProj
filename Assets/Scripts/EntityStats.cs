@@ -7,34 +7,34 @@ using UnityEngine.UI;
 public class EntityStats : MonoBehaviour
 {
     public int maxHealth;
-    public float health;  
+    public float health;
     public float baseSpeed;
     public float attackDamage;
     public float attackSpeed;
     public float attackLife;
     public int score;
-    public float deltaTime = 0.0f;
+    public float deltaTime;
     public string fps;
 
     public GameObject powerUpPrefab; // The power-up prefab to drop
     public float powerUpDropChance; // The chance to drop a power-up (0 to 1)
 
 
-    public void Start() 
+    public void Start()
     {
         health = maxHealth;
     }
 
-void Death()
+    void Death()
     {
         if (health <= 0)
         {
-            if(this.gameObject.tag != "Player")
+            if (this.gameObject.tag != "Player")
             {
                 GameObject.FindGameObjectWithTag("Player").GetComponent<EntityStats>().AddScore(score);
             }
 
-          
+
             if (powerUpPrefab != null && Random.value < powerUpDropChance)
             {
                 Instantiate(powerUpPrefab, transform.position, Quaternion.identity);
@@ -48,13 +48,11 @@ void Death()
     {
         deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
         var fpss = 1.0f / deltaTime;
-        fps = string.Format("{0:0.} FPS", fpss);
+        fps = $"{fpss:0.} FPS";
     }
-     
-    public void TakeDamage(float hp_to_remove)
-    
-    {
 
+    public void TakeDamage(float hp_to_remove)
+    {
         health -= hp_to_remove;
         Death();
     }

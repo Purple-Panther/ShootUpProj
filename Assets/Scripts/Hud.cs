@@ -8,11 +8,11 @@ using TMPro;
 public class Hud : MonoBehaviour
 {
     public static Hud Instance { get; private set; }
-    public TMP_Text scoreText;
-    [SerializeField]
-    public Text fps;
 
+    public TMP_Text scoreText;
+    public TMP_Text fps;
     public Slider lifeBar;
+
     EntityStats playerStats;
 
 
