@@ -45,8 +45,11 @@ public class Hud : MonoBehaviour
 
     void PlayerHUD()
     {
-        //Score
-        scoreText.text = playerStats.score.ToString();
+         //Score
+    scoreText.text = playerStats.score.ToString();
+
+    //Life
+    lifeBar.value = playerStats.health;
       
     }
 }
