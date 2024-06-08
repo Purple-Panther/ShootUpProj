@@ -107,6 +107,10 @@ MonoBehaviour:
   attackSpeed: 2
   attackLife: 5
   score: 500
+  deltaTime: 0
+  fps: 
+  level: 0
+  xp: 50
   powerUpPrefab: {fileID: 5301296805910147056, guid: c74dac4a321708441923f3e4f5255ce1, type: 3}
   powerUpDropChance: 0.2
 --- !u!114 &5121188793480499536
@@ -123,6 +127,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 538717932606853446, guid: d2f363551a11e8145a45ff3ba8667078, type: 3}
   projectileSpeed: 5
+  moveSpeed: 2
+  stopYPositionLowerBound: 0
+  stopYPositionUpperBound: 5
 --- !u!60 &6831809178281172128
 PolygonCollider2D:
   m_ObjectHideFlags: 0

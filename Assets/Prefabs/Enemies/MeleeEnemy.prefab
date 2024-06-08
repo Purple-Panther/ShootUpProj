@@ -122,6 +122,8 @@ MonoBehaviour:
   score: 100
   deltaTime: 0
   fps: 
+  level: 0
+  xp: 20
   powerUpPrefab: {fileID: 5301296805910147056, guid: c74dac4a321708441923f3e4f5255ce1, type: 3}
   powerUpDropChance: 0.1
 --- !u!61 &8200784260842360785

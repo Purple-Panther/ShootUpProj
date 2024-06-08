@@ -12,8 +12,11 @@ public class Hud : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text fps;
     public Slider lifeBar;
+    public Slider expBar;
 
     EntityStats playerStats;
+
+    public Text levelText;
 
 
     private void Awake()
@@ -36,6 +39,7 @@ public class Hud : MonoBehaviour
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<EntityStats>();
         lifeBar.maxValue = playerStats.maxHealth;
         lifeBar.value = playerStats.maxHealth;
+        levelText.text = playerStats.level.ToString();
         PlayerHUD();
     }
 
@@ -47,11 +51,18 @@ public class Hud : MonoBehaviour
 
 
     void PlayerHUD()
-    {
-        //Score
-        scoreText.text = playerStats.score.ToString();
-        fps.text = playerStats.fps;
-        //Life
-        lifeBar.value = playerStats.health;
-    }
+{
+    //Score
+    scoreText.text = playerStats.score.ToString();
+    fps.text = playerStats.fps;
+    //Life
+    lifeBar.value = playerStats.health;
+
+    //Xp
+    expBar.maxValue = playerStats.level * 100;
+    expBar.value = playerStats.xp;
+
+    //Level
+    levelText.text = playerStats.level.ToString();
+}
 }
