@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using UnityEngine;
-using UnityEngine.UI;
+using Misc;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class Hud : MonoBehaviour
 {
@@ -13,7 +13,12 @@ public class Hud : MonoBehaviour
     public TMP_Text fps;
     public Slider lifeBar;
 
-    EntityStats playerStats;
+    [SerializeField]
+    private EntityBase playerStats;
+    [SerializeField]
+    private ScoreStats scoreStats;
+    [SerializeField]
+    private FpsStats fpsStats;
 
 
     private void Awake()
@@ -33,9 +38,10 @@ public class Hud : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<EntityStats>();
-        lifeBar.maxValue = playerStats.maxHealth;
-        lifeBar.value = playerStats.maxHealth;
+        //TODO: Continuar a abstração, preciso dscobrir como reoslver esse problema comentado
+        // playerStats = GameObject.FindGameObjectWithTag("Player")
+        lifeBar.maxValue = playerStats.Data.MaxHealth;
+        lifeBar.value = playerStats.Data.MaxHealth;
         PlayerHUD();
     }
 
@@ -49,9 +55,9 @@ public class Hud : MonoBehaviour
     void PlayerHUD()
     {
         //Score
-        scoreText.text = playerStats.score.ToString();
-        fps.text = playerStats.fps;
+        scoreText.text = scoreStats.Score.ToString();
+        fps.text = fpsStats.FpsText();
         //Life
-        lifeBar.value = playerStats.health;
+        lifeBar.value = playerStats.Data.Health;
     }
 }
