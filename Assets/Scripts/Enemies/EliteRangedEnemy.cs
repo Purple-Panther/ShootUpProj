@@ -7,22 +7,18 @@ public class EliteRangedEnemy : MonoBehaviour
     public GameObject projectilePrefab;
     public float projectileSpeed = 5.0f;
     public float moveSpeed = 2.0f;
+    public float stopYPositionLowerBound = 0f; // Limite inferior da posição Y onde o inimigo deve parar
+    public float stopYPositionUpperBound = 5f; // Limite superior da posição Y onde o inimigo deve parar
     private EntityStats enemyStats;
     private float shootInterval;
     private Rigidbody2D rb;
     private bool isMoving = true;
-    private float stopPosition;
 
     void Start()
     {
         enemyStats = GetComponent<EntityStats>();
         shootInterval = enemyStats.attackSpeed;
         rb = GetComponent<Rigidbody2D>();
-
-        float screenHeightInWorldUnits = Camera.main.orthographicSize * 2;
-        float[] possibleStopPositions = new float[] { screenHeightInWorldUnits / 3, screenHeightInWorldUnits / 4 };
-        stopPosition = possibleStopPositions[Random.Range(0, possibleStopPositions.Length)];
-        stopPosition = Camera.main.transform.position.y + stopPosition;
     }
 
     void FixedUpdate()
@@ -30,7 +26,7 @@ public class EliteRangedEnemy : MonoBehaviour
         if (isMoving)
         {
             rb.velocity = new Vector2(0, -moveSpeed);
-            if (transform.position.y <= stopPosition)
+            if (transform.position.y <= stopYPositionUpperBound && transform.position.y >= stopYPositionLowerBound)
             {
                 rb.velocity = Vector2.zero;
                 isMoving = false;
