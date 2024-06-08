@@ -11,6 +11,8 @@ public class Hud : MonoBehaviour
     public TMP_Text scoreText;
     [SerializeField]
     public Text fps;
+
+    public Slider lifeBar;
     EntityStats playerStats;
 
 
@@ -32,6 +34,8 @@ public class Hud : MonoBehaviour
     void Start()
     {
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<EntityStats>();
+        lifeBar.maxValue = playerStats.maxHealth;
+        lifeBar.value = playerStats.maxHealth;
         PlayerHUD();
     }
 
