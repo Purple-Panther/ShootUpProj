@@ -3057,7 +3057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 486335854}
-  fps: {fileID: 0}
+  fps: {fileID: 1611541441}
   lifeBar: {fileID: 1066699797}
 --- !u!4 &1771311456
 Transform:
