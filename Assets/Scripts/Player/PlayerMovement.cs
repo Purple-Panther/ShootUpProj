@@ -1,9 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     private EntityStats playerStats;
+    private bool canMove = true;
 
     void Start()
     {
@@ -13,13 +15,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        float moveSpeed = playerStats.baseSpeed; // Ajuste da velocidade de movimento do jogador
+        if (canMove)
+        {
+            float moveSpeed = playerStats.baseSpeed; // Ajuste da velocidade de movimento do jogador
 
-        float moveInputHorizontal = Input.GetAxis("Horizontal");
-        float moveInputVertical = Input.GetAxis("Vertical");
+            float moveInputHorizontal = Input.GetAxisRaw("Horizontal");
+            float moveInputVertical = Input.GetAxisRaw("Vertical");
 
-        Vector2 moveVelocity = new Vector2(moveInputHorizontal * moveSpeed, moveInputVertical * moveSpeed); 
+            Vector2 moveVelocity = new Vector2(moveInputHorizontal * moveSpeed, moveInputVertical * moveSpeed); 
 
-        rb.velocity = moveVelocity; // Aplicar a velocidade ao Rigidbody
+            rb.velocity = moveVelocity; // Aplicar a velocidade ao Rigidbody
+        }
     }
+  
 }
