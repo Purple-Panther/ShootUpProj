@@ -15,11 +15,11 @@ public class PlayerMovement : MonoBehaviour
     {
         float moveSpeed = playerStats.baseSpeed; // Ajuste da velocidade de movimento do jogador
 
-        float moveInput = Input.GetAxis("Horizontal"); 
+        float moveInputHorizontal = Input.GetAxis("Horizontal");
+        float moveInputVertical = Input.GetAxis("Vertical");
 
-        Vector2 moveVelocity = new Vector2(moveInput * moveSpeed, rb.velocity.y); 
+        Vector2 moveVelocity = new Vector2(moveInputHorizontal * moveSpeed, moveInputVertical * moveSpeed); 
 
         rb.velocity = moveVelocity; // Aplicar a velocidade ao Rigidbody
     }
-
 }
