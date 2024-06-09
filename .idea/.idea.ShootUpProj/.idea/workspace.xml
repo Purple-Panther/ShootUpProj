@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd215a71-e4cd-41ca-a4d5-29d5f6d36dfc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Manager.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ShootUpProj/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ShootUpProj/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EliteRangedEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EliteRangedEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMelee.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyRanged.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyRanged.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/TankEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/TankEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/ScoreStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/ScoreStats.cs" afterDir="false" />
-    </list>
+    <list default="true" id="dd215a71-e4cd-41ca-a4d5-29d5f6d36dfc" name="Changes" comment="Fix | Consertando contador de score" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +32,8 @@
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Enemies/TankEnemy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/PowerUpS/PowerUpScr.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.13/Tests/Editor/LongTextAreaTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0652bf0e14024522b5c92574ad0ef550175c00/74/7892e7e5/Component.cs" root0="SKIP_HIGHLIGHTING" />
@@ -130,7 +122,7 @@
       <updated>1717814814247</updated>
       <workItem from="1717814816581" duration="11991000" />
       <workItem from="1717868059657" duration="9603000" />
-      <workItem from="1717960942408" duration="9745000" />
+      <workItem from="1717960942408" duration="10046000" />
     </task>
     <task id="LOCAL-00001" summary="Fix | Corrigindo Conflitos">
       <option name="closed" value="true" />
@@ -148,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717815099447</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fix | Consertando contador de score">
+      <option name="closed" value="true" />
+      <created>1717975654486</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717975654486</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,7 +167,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Fix | Corrigindo Conflitos" />
     <MESSAGE value="Fix: Corrigindo conflitos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix: Corrigindo conflitos" />
+    <MESSAGE value="Fix | Consertando contador de score" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix | Consertando contador de score" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
