@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd215a71-e4cd-41ca-a4d5-29d5f6d36dfc" name="Changes" comment="Fix | Consertando contador de score" />
+    <list default="true" id="dd215a71-e4cd-41ca-a4d5-29d5f6d36dfc" name="Changes" comment="FIX | Consertando gitignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,10 +101,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="10832">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="10832" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -148,7 +148,31 @@
       <option name="project" value="LOCAL" />
       <updated>1717975654486</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="FIX | Consertando score">
+      <option name="closed" value="true" />
+      <created>1717976203683</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1717976203683</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fix | Consertando gitignore">
+      <option name="closed" value="true" />
+      <created>1717976381195</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1717976381195</updated>
+    </task>
+    <task id="LOCAL-00006" summary="FIX | Consertando gitignore">
+      <option name="closed" value="true" />
+      <created>1717976502348</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1717976502348</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,7 +192,10 @@
     <MESSAGE value="Fix | Corrigindo Conflitos" />
     <MESSAGE value="Fix: Corrigindo conflitos" />
     <MESSAGE value="Fix | Consertando contador de score" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix | Consertando contador de score" />
+    <MESSAGE value="FIX | Consertando score" />
+    <MESSAGE value="Fix | Consertando gitignore" />
+    <MESSAGE value="FIX | Consertando gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="FIX | Consertando gitignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
