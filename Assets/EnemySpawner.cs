@@ -12,59 +12,55 @@ public class EnemySpawner : MonoBehaviour
     public float minSpawnInterval = 0.3f;
     public float difficultyIncreaseRate = 0.95f;
 
-    private float nextSpawnTime;
+    private float _nextSpawnTime;
 
-    void Start()
+    private void Start()
     {
-        nextSpawnTime = Time.timeSinceLevelLoad + spawnInterval;
+        _nextSpawnTime = Time.timeSinceLevelLoad + spawnInterval;
     }
 
-    void Update()
+    private void Update()
     {
-        if (Time.timeSinceLevelLoad >= nextSpawnTime)
-        {
-            SpawnEnemies();
-            nextSpawnTime = Time.timeSinceLevelLoad + spawnInterval;
-            spawnInterval = Mathf.Max(spawnInterval * difficultyIncreaseRate, minSpawnInterval);
-        }
+        if (Time.timeSinceLevelLoad < _nextSpawnTime) return;
+
+        SpawnEnemies();
+        _nextSpawnTime = Time.timeSinceLevelLoad + spawnInterval;
+        spawnInterval = Mathf.Max(spawnInterval * difficultyIncreaseRate, minSpawnInterval);
     }
 
-    void SpawnEnemies()
+    private void SpawnEnemies()
     {
         int spawnIndex = Random.Range(0, spawnPoints.Count);
         SpawnEnemyAtPoint(spawnIndex);
 
         if (Random.value < eliteSpawnChance) // se a chance aleatória for menor que a chance de spawn do inimigo de elite
-        {
             SpawnEliteEnemyAtPoint(spawnIndex); // spawnar o inimigo de elite
-        }
+
         else if (Random.value > 0.5f)
-        {
             SpawnAdditionalEnemies(spawnIndex);
-        }
     }
 
-    void SpawnEnemyAtPoint(int spawnIndex)
+    private void SpawnEnemyAtPoint(int spawnIndex)
     {
         GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
         Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
     }
 
-    void SpawnEliteEnemyAtPoint(int spawnIndex)
+    private void SpawnEliteEnemyAtPoint(int spawnIndex)
     {
-        GameObject eliteEnemyPrefab = eliteEnemyPrefabs[Random.Range(0, eliteEnemyPrefabs.Length)]; // selecionar um inimigo de elite aleatório
-        Instantiate(eliteEnemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity); // spawnar o inimigo de elite
+        GameObject eliteEnemyPrefab =
+            eliteEnemyPrefabs[Random.Range(0, eliteEnemyPrefabs.Length)]; // selecionar um inimigo de elite aleatório
+        Instantiate(eliteEnemyPrefab, spawnPoints[spawnIndex].position,
+            Quaternion.identity); // spawnar o inimigo de elite
     }
 
-    void SpawnAdditionalEnemies(int initialSpawnIndex)
+    private void SpawnAdditionalEnemies(int initialSpawnIndex)
     {
         for (int i = 1; i <= 2; i++)
         {
             int nextIndex = initialSpawnIndex + i;
             if (nextIndex < spawnPoints.Count)
-            {
                 SpawnEnemyAtPoint(nextIndex);
-            }
         }
     }
 }

@@ -4,29 +4,64 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd215a71-e4cd-41ca-a4d5-29d5f6d36dfc" name="Changes" comment="Fix: Corrigindo conflitos">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/EntityBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/EntityBase.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/EntityDataInstance.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/EntityDataInstance.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Misc/FpsStats.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Misc/FpsStats.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Misc/ScoreStats.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Misc/ScoreStats.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/EntityData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/EntityData.cs.meta" afterDir="false" />
+    <list default="true" id="dd215a71-e4cd-41ca-a4d5-29d5f6d36dfc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Elite.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Elite/RangedData.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Elite/RangedData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Elite/TankData.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Elite/TankData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Melee.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Melee/MeleeData.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Melee/MeleeData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Ranged.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Ranged/RangedData.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Ranged/RangedData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Hud.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Hud/FpsStatus.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Hud/FpsStatus.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Hud/ScoreStatus.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Hud/ScoreStatus.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Player.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Player/PlayerData.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Player/PlayerData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Entity.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interfaces.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interfaces/IEntity.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interfaces/IEntity.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/FpsStats.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Util.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Util/Constraints.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Util/Constraints.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ShootUpProj/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ShootUpProj/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/EnemySpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/EliteRangedEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/EliteRangedEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/MeleeEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/MeleeEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/RangedEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/RangedEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/TankEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/TankEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/EntityBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/EntityBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Entity.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/EntityDataInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/EntityDataInstance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DeadLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DeadLine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EliteRangedEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EliteRangedEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMelee.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyRanged.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyRanged.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityStats.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityStats.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hud.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Misc/FpsStats.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Misc/FpsStats.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/FpsStats.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Misc/Projectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Misc/Projectile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Misc/ScoreStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/ScoreStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Misc/ScoreStats.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/ScoreStats.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerShooting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerShooting.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/EntityData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/EntityData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TankEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/TankEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TankEnemy.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/TankEnemy.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,27 +84,11 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Prefabs/Enemies/MeleeEnemy.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Enemies/EliteRangedEnemy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Enemies/EnemyRanged.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Hud.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Hud.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Hud.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Hud.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Hud.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Hud.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Hud.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Hud.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Hud.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Hud.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Hud.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Misc/Projectile.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Misc/Projectile.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/ProjectSettings/TagManager.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.13/Tests/Editor/LongTextAreaTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0652bf0e14024522b5c92574ad0ef550175c00/74/7892e7e5/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0652bf0e14024522b5c92574ad0ef550175c00/97/d7310140/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0652bf0e14024522b5c92574ad0ef550175c00/a8/0589cce5/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0652bf0e14024522b5c92574ad0ef550175c00/f4/51643cbf/Object.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="ProjectColorInfo">{
@@ -130,10 +149,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="33020">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="33020" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -149,7 +168,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1717814814247</updated>
-      <workItem from="1717814816581" duration="11782000" />
+      <workItem from="1717814816581" duration="11991000" />
+      <workItem from="1717868059657" duration="9603000" />
     </task>
     <task id="LOCAL-00001" summary="Fix | Corrigindo Conflitos">
       <option name="closed" value="true" />

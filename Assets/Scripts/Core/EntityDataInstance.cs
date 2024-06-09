@@ -8,7 +8,11 @@ public class EntityDataInstance
     public float AttackDamage { get; set; }
     public float AttackSpeed { get; set; }
     public float AttackLife { get; set; }
-    public int PointsToDeath { get; set; }
+    public int PointsWhenDying { get; set; }
+    public int Level { get; set; }
+    public float Xp { get; set; }
+
+    public bool CanLevelUp { get; set; } = true;
     public bool CanEntityAttack => Time.time > AttackSpeed;
 
     public EntityDataInstance(EntityData entityData)
@@ -20,6 +24,6 @@ public class EntityDataInstance
         BaseSpeed = entityData.baseSpeed;
         AttackDamage = entityData.attackDamage;
         AttackLife = entityData.attackLife;
-        PointsToDeath = entityData.pointsToDeath;
+        PointsWhenDying = entityData.pointsToDeath;
     }
 }

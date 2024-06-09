@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4056512014094398960}
   - component: {fileID: 4649913600264538145}
-  - component: {fileID: 1849032582089764710}
   - component: {fileID: 5121188793480499536}
   - component: {fileID: 6831809178281172128}
   - component: {fileID: 1983468001603642578}
@@ -88,31 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1849032582089764710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 819112163790400011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edbf0ab6534d1c044b0cfa7be03ed879, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 60
-  health: 0
-  baseSpeed: 1
-  attackDamage: 10
-  attackSpeed: 2
-  attackLife: 5
-  score: 500
-  deltaTime: 0
-  fps: 
-  level: 0
-  xp: 50
-  powerUpPrefab: {fileID: 5301296805910147056, guid: c74dac4a321708441923f3e4f5255ce1, type: 3}
-  powerUpDropChance: 0.2
 --- !u!114 &5121188793480499536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,9 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 228b74d9016d7094d8fbc866e5346e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soData: {fileID: 11400000, guid: 95eafaece1573f74a8c64cac5adafe96, type: 2}
   projectilePrefab: {fileID: 538717932606853446, guid: d2f363551a11e8145a45ff3ba8667078, type: 3}
   projectileSpeed: 5
-  moveSpeed: 2
   stopYPositionLowerBound: 0
   stopYPositionUpperBound: 5
 --- !u!60 &6831809178281172128

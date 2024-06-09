@@ -1,6 +1,4 @@
-using Misc;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -14,50 +12,39 @@ public class Hud : MonoBehaviour
     public Slider lifeBar;
     public Slider expBar;
 
-    [SerializeField]
-    private EntityBase playerStats;
-    [SerializeField]
-    private ScoreStats scoreStats;
-    [SerializeField]
-    private FpsStats fpsStats;
+    [FormerlySerializedAs("playerStats")] [SerializeField] private Entity player;
+    [SerializeField] public ScoreStats scoreStats;
+    [SerializeField] private FpsStats fpsStats;
 
     public Text levelText;
-
-
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
-
         if (Instance != null && Instance != this)
-        {
             Destroy(this);
-        }
         else
-        {
             Instance = this;
-        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        //TODO: Continuar a abstração, preciso dscobrir como reoslver esse problema comentado
-        // playerStats = GameObject.FindGameObjectWithTag("Player")
-        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<EntityStats>();
-        lifeBar.maxValue = playerStats.maxHealth;
-        lifeBar.value = playerStats.maxHealth;
-        levelText.text = playerStats.level.ToString();
-         if (playerStats == null)
-        {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>();
+
+        lifeBar.maxValue = player.Data.MaxHealth;
+        lifeBar.value = player.Data.MaxHealth;
+        levelText.text = player.Data.Level.ToString();
+
+        if (player is null)
             Debug.LogError("PlayerStats component not found on player object.");
-        }
-           PlayerHUD();
+
+        PlayerHUD();
     }
 
     // Update is called once per frame
     void Update()
     {
-         if (playerStats != null)
+        if (player is not null)
         {
             PlayerHUD();
         }
@@ -65,18 +52,19 @@ public class Hud : MonoBehaviour
 
 
     void PlayerHUD()
-{
-    //Score
-    scoreText.text =scoreStats.Score.ToString();;
-    fps.text = fpsStats.FpsText();
-    //Life
-    lifeBar.value = playerStats.health;
+    {
+        //Score
+        scoreText.text = scoreStats.Score.ToString();
 
-    //Xp
-    expBar.maxValue = playerStats.level * 100;
-    expBar.value = playerStats.xp;
+        fps.text = fpsStats.FpsText();
+        //Life
+        lifeBar.value = player.Data.Health;
 
-    //Level
-    levelText.text = playerStats.level.ToString();
-}
+        //Xp
+        expBar.maxValue = player.Data.Level * 100;
+        expBar.value = player.Data.Xp;
+
+        //Level
+        levelText.text = player.Data.Level.ToString();
+    }
 }

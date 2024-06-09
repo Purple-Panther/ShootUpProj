@@ -1,44 +1,44 @@
 using UnityEngine;
 
 
-public class EnemyMelee : MonoBehaviour
+public class EnemyMelee : Entity
 {
-    float speed;
-    public float zigzagTime = 2.0f;
-    private float zigzagTimer;
-    private int direction = 1;
-    float meleeHitDamage;
+    [SerializeField]
+    private float zigzagTime = 2.0f;
 
-    EntityStats enemyStats;
+    private float _speed;
+    private float _meleeHitDamage;
+    private float _zigzagTimer;
 
-    void Start()
+    private int _direction = 1;
+
+
+    private void Start()
     {
-        enemyStats = GetComponent<EntityStats>();
-        meleeHitDamage = enemyStats.attackDamage;
-        speed = enemyStats.baseSpeed;
+        _meleeHitDamage = Data.AttackDamage;
+        _speed = Data.BaseSpeed;
     }
 
 
-    void Update()
+    private void Update()
     {
         // Move the enemy down the screen
-        transform.position += new Vector3(direction * speed * Time.deltaTime, -speed * Time.deltaTime, 0);
+        transform.position += new Vector3(_direction * _speed * Time.deltaTime, -_speed * Time.deltaTime, 0);
 
         // Change direction every zigzagTime seconds
-        zigzagTimer += Time.deltaTime;
-        if (zigzagTimer > zigzagTime)
-        {
-            direction *= -1;
-            zigzagTimer = 0;
-        }
+        _zigzagTimer += Time.deltaTime;
+
+        if (_zigzagTimer <= zigzagTime) return;
+
+        _direction *= -1;
+        _zigzagTimer = 0;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
-        {
-            other.GetComponent<EntityStats>().TakeDamage(meleeHitDamage);
-            Destroy(gameObject);
-        }
+        if (!other.CompareTag(Constraints.PlayerTag)) return;
+
+        TakeDamage(_meleeHitDamage);
+        Destroy(gameObject);
     }
 }

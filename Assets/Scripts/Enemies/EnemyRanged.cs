@@ -1,51 +1,53 @@
+using Interfaces;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class EnemyRanged : MonoBehaviour
+public class EnemyRanged : Entity
 {
-    public GameObject projectilePrefab; // prefab do projétil
-    public float projectileSpeed = 5.0f; // velocidade do projétil
-    private EntityStats enemyStats;
-    private float shootInterval;
-    private Rigidbody2D rb;
+    [FormerlySerializedAs("ProjectilePrefab")] [SerializeField]
+    private GameObject projectilePrefab;  // prefab do projétil
+    [FormerlySerializedAs("ProjectileSpeed")] [SerializeField]
+    private float projectileSpeed = 5.0f; //velocidade do projétil
 
-    void Start()
+    private float _shootInterval;
+    private Rigidbody2D _rb;
+
+    private void Start()
     {
-        enemyStats = GetComponent<EntityStats>();
-        shootInterval = enemyStats.attackSpeed;
-        rb = GetComponent<Rigidbody2D>();
+        _shootInterval = Data.AttackSpeed;
+        _rb = GetComponent<Rigidbody2D>();
+
         Shoot();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        rb.velocity = new Vector2(rb.velocity.x, -enemyStats.baseSpeed);
+        _rb.velocity = new Vector2(_rb.velocity.x, -Data.BaseSpeed);
 
-        if (shootInterval <= 0)
+        if (_shootInterval <= 0)
         {
             Shoot();
-            shootInterval = enemyStats.attackSpeed;
+            _shootInterval = Data.AttackSpeed;
         }
         else
         {
-            shootInterval -= Time.deltaTime;
+            _shootInterval -= Time.deltaTime;
         }
     }
 
-    void Shoot()
+    private void Shoot()
     {
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
         Rigidbody2D rbProjectile = projectile.GetComponent<Rigidbody2D>();
-        if (rbProjectile != null)
-        {
-            rbProjectile.velocity = transform.up * -1 * projectileSpeed;
-        }
+        if (rbProjectile is not null)
+            rbProjectile.velocity = transform.up * (-1 * projectileSpeed);
 
         Projectile projectileScript = projectile.GetComponent<Projectile>();
-        if (projectileScript != null)
-        {
-            projectileScript.Initialize(enemyStats.attackDamage);
-            projectileScript.projectileLifeSpan = enemyStats.attackLife;
-        }
+
+        if (projectileScript is null) return;
+
+        projectileScript.Initialize(Data.AttackDamage);
+        projectileScript.projectileLifeSpan = Data.AttackLife;
     }
 }

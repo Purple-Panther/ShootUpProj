@@ -1,31 +1,26 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerMovement : EntityBase
+public class PlayerMovement : Entity
 {
-    private Rigidbody2D rb;
-    private EntityStats playerStats;
+    private Rigidbody2D _rb;
 
     protected override void Awake()
     {
         base.Awake();
-        rb = GetComponent<Rigidbody2D>();
-        playerStats = GetComponent<EntityStats>(); // Obtendo a referência para PlayerStats
+        _rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    protected void Update()
     {
-        if (CanMove)
-        {
-            float moveSpeed = playerStats.baseSpeed; // Ajuste da velocidade de movimento do jogador
+        if (!CanMove) return;
 
-            float moveInputHorizontal = Input.GetAxisRaw("Horizontal");
-            float moveInputVertical = Input.GetAxisRaw("Vertical");
+        float moveSpeed = Data.BaseSpeed; // Ajuste da velocidade de movimento do jogador
 
-            Vector2 moveVelocity = new Vector2(moveInputHorizontal * moveSpeed, moveInputVertical * moveSpeed); 
+        float moveInputHorizontal = Input.GetAxisRaw("Horizontal");
+        float moveInputVertical = Input.GetAxisRaw("Vertical");
 
-            rb.velocity = moveVelocity; // Aplicar a velocidade ao Rigidbody
-        }
+        Vector2 moveVelocity = new Vector2(moveInputHorizontal * moveSpeed, moveInputVertical * moveSpeed);
+
+        _rb.velocity = moveVelocity; // Aplicar a velocidade ao Rigidbody
     }
-  
 }

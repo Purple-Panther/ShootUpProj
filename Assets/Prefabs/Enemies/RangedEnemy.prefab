@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7337432876490813007}
   - component: {fileID: 7687995904111751628}
-  - component: {fileID: 3657915357401342566}
   - component: {fileID: 2219957328309658809}
   - component: {fileID: 915454245769466475}
   - component: {fileID: 8102645986198388064}
@@ -88,31 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3657915357401342566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3654602329506743974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edbf0ab6534d1c044b0cfa7be03ed879, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 20
-  health: 20
-  baseSpeed: 2
-  attackDamage: 10
-  attackSpeed: 1
-  attackLife: 10
-  score: 100
-  deltaTime: 0
-  fps: 
-  level: 0
-  xp: 20
-  powerUpPrefab: {fileID: 5301296805910147056, guid: c74dac4a321708441923f3e4f5255ce1, type: 3}
-  powerUpDropChance: 0.1
 --- !u!114 &2219957328309658809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,8 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b443c303223ee48944773979fa2231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soData: {fileID: 11400000, guid: e7788f183b2f9b545b9434c217a08e33, type: 2}
   projectilePrefab: {fileID: 538717932606853446, guid: d2f363551a11e8145a45ff3ba8667078, type: 3}
-  projectileSpeed: 10
+  projectileSpeed: 5
 --- !u!50 &915454245769466475
 Rigidbody2D:
   serializedVersion: 4

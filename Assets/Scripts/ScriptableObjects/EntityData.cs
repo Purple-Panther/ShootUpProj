@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "newEntityData", menuName = "EntityData")]
 public class EntityData : ScriptableObject
 {
     public int maxHealth;

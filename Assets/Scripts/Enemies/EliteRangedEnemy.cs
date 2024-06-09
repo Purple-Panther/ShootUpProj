@@ -1,57 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
+using Interfaces;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class EliteRangedEnemy : MonoBehaviour
+public class EliteRangedEnemy : Entity
 {
-    public GameObject projectilePrefab;
-    public float projectileSpeed = 5.0f;
-    public float moveSpeed = 2.0f;
+    [FormerlySerializedAs("ProjectilePrefab")] [SerializeField]
+    private GameObject projectilePrefab;
+    [FormerlySerializedAs("ProjectileSpeed")] [SerializeField]
+    private float projectileSpeed = 5.0f;
+
     public float stopYPositionLowerBound = 0f; // Limite inferior da posição Y onde o inimigo deve parar
     public float stopYPositionUpperBound = 5f; // Limite superior da posição Y onde o inimigo deve parar
-    private EntityStats enemyStats;
-    private float shootInterval;
-    private Rigidbody2D rb;
-    private bool isMoving = true;
 
-    void Start()
+    private float _shootInterval;
+    private bool _isMoving = true;
+
+    private Rigidbody2D _rb;
+
+    protected void Start()
     {
-        enemyStats = GetComponent<EntityStats>();
-        shootInterval = enemyStats.attackSpeed;
-        rb = GetComponent<Rigidbody2D>();
+        _shootInterval = Data.AttackSpeed;
+        _rb = GetComponent<Rigidbody2D>();
     }
 
-    void FixedUpdate()
+    protected void FixedUpdate()
     {
-        if (isMoving)
+        if (_isMoving)
         {
-            rb.velocity = new Vector2(0, -moveSpeed);
+            _rb.velocity = new Vector2(0, -Data.BaseSpeed);
             if (transform.position.y <= stopYPositionUpperBound && transform.position.y >= stopYPositionLowerBound)
             {
-                rb.velocity = Vector2.zero;
-                isMoving = false;
+                _rb.velocity = Vector2.zero;
+                _isMoving = false;
             }
         }
 
-        if (shootInterval <= 0)
+        if (_shootInterval <= 0)
         {
             Shoot();
-            shootInterval = enemyStats.attackSpeed;
+            _shootInterval = Data.AttackSpeed;
         }
         else
         {
-            shootInterval -= Time.deltaTime;
+            _shootInterval -= Time.deltaTime;
         }
     }
 
-    void Update()
+    protected void Update()
     {
         transform.Rotate(0, 0, 22.5f * Time.deltaTime);
     }
 
-    void Shoot()
-    {  
-        float[] angles = new float[] { 0, 60, 120, 180, 240, 300 };
+    private void Shoot()
+    {
+        float[] angles = { 0, 60, 120, 180, 240, 300 };
 
         for (int i = 0; i < 6; i++)
         {
@@ -60,17 +64,15 @@ public class EliteRangedEnemy : MonoBehaviour
             projectile.transform.Rotate(0, 0, angle);
 
             Rigidbody2D rbProjectile = projectile.GetComponent<Rigidbody2D>();
-            if (rbProjectile != null)
-            {
+            if (rbProjectile is not null)
                 rbProjectile.velocity = projectile.transform.up * projectileSpeed;
-            }
 
             Projectile projectileScript = projectile.GetComponent<Projectile>();
-            if (projectileScript != null)
-            {
-                projectileScript.Initialize(enemyStats.attackDamage);
-                projectileScript.projectileLifeSpan = enemyStats.attackLife;
-            }
+
+            if (projectileScript is null) return;
+
+            projectileScript.Initialize(Data.AttackDamage);
+            projectileScript.projectileLifeSpan = Data.AttackLife;
         }
     }
 }

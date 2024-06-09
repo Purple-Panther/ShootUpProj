@@ -4,43 +4,43 @@ using UnityEngine;
 
 public class LevelUp : MonoBehaviour
 {
-    public GameObject levelUpPanel; 
-    public GameObject player; 
+    public GameObject levelUpPanel;
+    public GameObject player;
 
     public GameObject Background;
 
-       public List<PowerUpScr> AvailablePowerUps;
-        public GameObject PowerUpCardPrefab;
+    public IList<PowerUpScr> AvailablePowerUps;
+    public GameObject PowerUpCardPrefab;
 
-    private EntityStats playerStats; 
-    private int currentLevel; 
+    private Entity playerStats;
+    private int currentLevel;
 
 
     void Start()
     {
         RandomCards();
-        levelUpPanel.SetActive(false); 
-        playerStats = player.GetComponent<EntityStats>();
-        currentLevel = playerStats.level; 
+        levelUpPanel.SetActive(false);
+        playerStats = player.GetComponent<Entity>();
+        currentLevel = playerStats.Data.Level;
     }
 
     // Update is called once per frame
     void Update()
     {
         // Check if the player has leveled up
-        if (playerStats.level > currentLevel)
+        if (playerStats.Data.Level > currentLevel)
         {
             OpenLevelUpPanel();
-            currentLevel = playerStats.level;
+            currentLevel = playerStats.Data.Level;
         }
     }
 
     void OpenLevelUpPanel()
     {
-        levelUpPanel.SetActive(true); 
+        levelUpPanel.SetActive(true);
     }
 
-     public void CloseLevelUpPanel()
+    public void CloseLevelUpPanel()
     {
         levelUpPanel.SetActive(false);
     }

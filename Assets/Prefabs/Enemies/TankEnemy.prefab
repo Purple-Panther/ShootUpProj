@@ -178,7 +178,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8420759143010762342}
   - component: {fileID: 6501634969179503523}
-  - component: {fileID: 4440900826470077017}
   - component: {fileID: 6763109607113306849}
   - component: {fileID: 6480230796689053933}
   - component: {fileID: 7912218051508665607}
@@ -260,29 +259,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4440900826470077017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8335999442525658310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edbf0ab6534d1c044b0cfa7be03ed879, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 80
-  health: 40
-  baseSpeed: 1.2
-  attackDamage: 35
-  attackSpeed: 0
-  attackLife: 35
-  score: 200
-  deltaTime: 0
-  fps: 0
-  powerUpPrefab: {fileID: 0}
-  powerUpDropChance: 0.1
 --- !u!114 &6763109607113306849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,6 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b51f330d69e784cbc72dc8aab47b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soData: {fileID: 11400000, guid: 2bb5718e54665114f94f6cff2e987689, type: 2}
 --- !u!70 &6480230796689053933
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

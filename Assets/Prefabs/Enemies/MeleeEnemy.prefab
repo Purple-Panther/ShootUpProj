@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2655155815072280060}
   - component: {fileID: 7733358243192423373}
   - component: {fileID: 3636139964327406711}
-  - component: {fileID: 2668882539511196552}
   - component: {fileID: 8200784260842360785}
   - component: {fileID: -8084169734561456169}
   m_Layer: 0
@@ -100,32 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad8b12d40533e347989721ef44d6866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soData: {fileID: 11400000, guid: 0770ea71d44c1944491beb2bfc5a514e, type: 2}
   zigzagTime: 1
---- !u!114 &2668882539511196552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6745072399473900397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edbf0ab6534d1c044b0cfa7be03ed879, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 20
-  health: 20
-  baseSpeed: 2
-  attackDamage: 10
-  attackSpeed: 0
-  attackLife: 0
-  score: 100
-  deltaTime: 0
-  fps: 
-  level: 0
-  xp: 20
-  powerUpPrefab: {fileID: 5301296805910147056, guid: c74dac4a321708441923f3e4f5255ce1, type: 3}
-  powerUpDropChance: 0.1
 --- !u!61 &8200784260842360785
 BoxCollider2D:
   m_ObjectHideFlags: 0

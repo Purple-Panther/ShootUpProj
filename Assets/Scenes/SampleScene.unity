@@ -458,6 +458,85 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &200311665
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 200311666}
+  - component: {fileID: 200311668}
+  - component: {fileID: 200311667}
+  m_Layer: 5
+  m_Name: Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &200311666
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200311665}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.4597, y: 1.4597, z: 1.4597}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1333011347}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -808.6, y: 359.3}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &200311667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200311665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &200311668
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200311665}
+  m_CullTransparentMesh: 1
 --- !u!1 &394781151
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,7 +1039,6 @@ GameObject:
   - component: {fileID: 600362095}
   - component: {fileID: 600362091}
   - component: {fileID: 600362097}
-  - component: {fileID: 600362099}
   - component: {fileID: 600362093}
   - component: {fileID: 600362098}
   m_Layer: 0
@@ -982,6 +1060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4f9cb974e290db4d9209fabadf98dec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soData: {fileID: 11400000, guid: 3cfa2df20f8a8b14e9e9e680de50a008, type: 2}
 --- !u!50 &600362093
 Rigidbody2D:
   serializedVersion: 4
@@ -1090,7 +1169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8821932781188560112, guid: 12bf6977e9e20c545ac91c31278fb9c6, type: 3}
   projectileSpeed: 10
-  entityStats: {fileID: 0}
+  entityStats: {fileID: 600362091}
   shootMethod: 0
   attackSpeed_: 0
 --- !u!61 &600362098
@@ -1138,31 +1217,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &600362099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 600362090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edbf0ab6534d1c044b0cfa7be03ed879, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 200
-  health: 0
-  baseSpeed: 10
-  attackDamage: 20
-  attackSpeed: 0.8
-  attackLife: 10
-  score: 0
-  deltaTime: 0
-  fps: 
-  level: 0
-  xp: 0
-  powerUpPrefab: {fileID: 0}
-  powerUpDropChance: 0
 --- !u!1 &606076357
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,6 +2324,7 @@ RectTransform:
   - {fileID: 1080963602}
   - {fileID: 1611541440}
   - {fileID: 1380656704}
+  - {fileID: 200311666}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3419,7 +3474,10 @@ MonoBehaviour:
   fps: {fileID: 1611541441}
   lifeBar: {fileID: 1066699797}
   expBar: {fileID: 1080963603}
-  levelText: {fileID: 0}
+  player: {fileID: 600362091}
+  scoreStats: {fileID: 11400000, guid: 26355a4c9fdcc194f9cbd18ebf0e513d, type: 2}
+  fpsStats: {fileID: 11400000, guid: 44268b2285008814797d23b0090015d6, type: 2}
+  levelText: {fileID: 200311667}
 --- !u!4 &1771311456
 Transform:
   m_ObjectHideFlags: 0
