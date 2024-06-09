@@ -1409,11 +1409,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelUpPanel: {fileID: 624511167}
   player: {fileID: 600362090}
-  Background: {fileID: 2098947243}
-  AvailablePowerUps:
-  - {fileID: 11400000, guid: 1de5aad54ff4ad34f8c593c6a885614a, type: 2}
+  background: {fileID: 2098947243}
+  availablePowerUps:
   - {fileID: 11400000, guid: d8a7863534337714ea31003389a5b3bb, type: 2}
-  PowerUpCardPrefab: {fileID: 5521690785758511811, guid: d8c4ca771192ac84aaf7fc2c97e9c40a, type: 3}
+  - {fileID: 11400000, guid: 1de5aad54ff4ad34f8c593c6a885614a, type: 2}
+  powerUpCardPrefab: {fileID: 5521690785758511811, guid: d8c4ca771192ac84aaf7fc2c97e9c40a, type: 3}
 --- !u!4 &552938358
 Transform:
   m_ObjectHideFlags: 0
@@ -1528,6 +1528,7 @@ GameObject:
   - component: {fileID: 600362097}
   - component: {fileID: 600362093}
   - component: {fileID: 600362098}
+  - component: {fileID: 600362099}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1657,8 +1658,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8821932781188560112, guid: 12bf6977e9e20c545ac91c31278fb9c6, type: 3}
   projectileSpeed: 10
   entityStats: {fileID: 600362091}
-  shootMethod: 0
-  attackSpeed_: 0
+  projectileCount: 1
+  attackSpeed: 0
 --- !u!60 &600362098
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1716,6 +1717,20 @@ PolygonCollider2D:
       - {x: 0.34375, y: -0.21875}
       - {x: 0.234375, y: -0.046875}
   m_UseDelaunayMesh: 0
+--- !u!114 &600362099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600362090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e89edf39225f542965beb492762660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpType: 0
+  speed: 2
 --- !u!1 &606076357
 GameObject:
   m_ObjectHideFlags: 0

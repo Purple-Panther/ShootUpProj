@@ -1,52 +1,39 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public enum ShootMethod
-    {
-        SingleShot,
-        MultiShot
-    }
-
     public GameObject projectilePrefab;
     public float projectileSpeed = 10f;
-    public Entity entityStats; // Referência para Entity
-    public ShootMethod shootMethod = ShootMethod.SingleShot;
+    public Entity entityStats;
+    public int projectileCount = 1; // Quantidade inicial de projéteis
 
-    public float attackSpeed_;
-    private float nextFireTime;
+    public float attackSpeed;
+    private float _nextFireTime;
 
-    void Start()
+    private void Start()
     {
         entityStats = GetComponent<Entity>();
-        attackSpeed_ = entityStats.Data.AttackSpeed;
+        attackSpeed = entityStats.Data.AttackSpeed;
     }
 
     void Update()
     {
         entityStats = GetComponent<PlayerMovement>();
 
-        if (Mathf.Approximately(Input.GetAxis("Fire1"), 1) && Time.time > nextFireTime)
+        if (Mathf.Approximately(Input.GetAxis("Fire1"), 1) && Time.time > _nextFireTime)
         {
             Shoot();
-            nextFireTime = Time.time + attackSpeed_;
+            _nextFireTime = Time.time + attackSpeed;
         }
     }
 
     void Shoot()
     {
-        switch (shootMethod)
+        for (int i = 0; i < projectileCount; i++)
         {
-            case ShootMethod.SingleShot:
-                FireProjectile(transform.position, Vector2.up * projectileSpeed, Quaternion.identity);
-                break;
-            case ShootMethod.MultiShot:
-                FireProjectile(transform.position, Quaternion.Euler(0, 0, -30) * Vector2.up * projectileSpeed,
-                    Quaternion.Euler(0, 0, -30)); // Diagonal esquerda
-                FireProjectile(transform.position, Vector2.up * projectileSpeed, Quaternion.identity); // Direto
-                FireProjectile(transform.position, Quaternion.Euler(0, 0, 30) * Vector2.up * projectileSpeed,
-                    Quaternion.Euler(0, 0, 30)); // Diagonal direita
-                break;
+            Vector2 direction = Quaternion.Euler(0, 0, Random.Range(-10f, 10f)) * Vector2.up; // Aleatoriza ligeiramente a direção
+            FireProjectile(transform.position, direction * projectileSpeed, Quaternion.identity);
         }
     }
 

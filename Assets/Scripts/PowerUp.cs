@@ -1,83 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public enum PowerUpType { MultiShot, MachineGun }
-    public PowerUpType powerUpType;
-    public float powerUpDuration = 2f; // Duração do power-up em segundos
-    public float speed = 2f; // Velocidade com que o power-up se move em direção ao jogador
+    public PowerUpEnums.PowerUpType powerUpType;
+    public float speed = 2f;
 
-    private Dictionary<PowerUpType, float> powerUpEndTimes = new Dictionary<PowerUpType, float>();
-    private Dictionary<PowerUpType, bool> isPowerUpActive = new Dictionary<PowerUpType, bool>();
-    private GameObject player;
-    private PlayerShooting playerShooting;
+    private GameObject _player;
+    private PlayerShooting _playerShooting;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerShooting = player.GetComponent<PlayerShooting>();
-        powerUpType = (PowerUpType)Random.Range(0, System.Enum.GetValues(typeof(PowerUpType)).Length); // Escolhe um tipo de power-up aleatório
-        foreach (PowerUpType type in System.Enum.GetValues(typeof(PowerUpType)))
+        _player = GameObject.FindGameObjectWithTag("Player");
+        if (_player != null)
         {
-            isPowerUpActive[type] = false;
+            _playerShooting = _player.GetComponent<PlayerShooting>();
         }
+        else
+        {
+            Debug.LogError("Player not found.");
+        }
+
+        powerUpType = (PowerUpEnums.PowerUpType)Random.Range(0, System.Enum.GetValues(typeof(PowerUpEnums.PowerUpType)).Length);
     }
 
     void Update()
     {
-        // Move o power-up em direção ao jogador
-        if(player is null) return;
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-        
-        // Verifica se o power-up está ativo e se o tempo atual é maior que o tempo de término do power-up
-        if (isPowerUpActive[powerUpType] && Time.time > powerUpEndTimes[powerUpType])
-        {
-            DeactivatePowerUp(powerUpType);
-        }
+        if (_player is null) return;
+        transform.position = Vector2.MoveTowards(transform.position, _player.transform.position, speed * Time.deltaTime);
     }
 
-    public void ActivatePowerUp()
+    public void ActivatePowerUp(PowerUpEnums.PowerUpType powerUpType)
     {
-        if (!isPowerUpActive[powerUpType])
+        switch (powerUpType)
         {
-            isPowerUpActive[powerUpType] = true;
-            powerUpEndTimes[powerUpType] = Time.time + powerUpDuration;
-       
-            switch (powerUpType)
-            {
-                case PowerUpType.MultiShot:
-                    playerShooting.shootMethod = PlayerShooting.ShootMethod.MultiShot;
-                    break;
-                case PowerUpType.MachineGun:
-                    playerShooting.attackSpeed_ /= 3;
-                    break;
-            }
-        }
-    }
-
-    public void DeactivatePowerUp(PowerUpType type)
-    {
-        isPowerUpActive[type] = false;
-        
-
-        switch (type)
-        {
-            case PowerUpType.MultiShot:
-            case PowerUpType.MachineGun:
-                playerShooting.shootMethod = PlayerShooting.ShootMethod.SingleShot;
-                playerShooting.attackSpeed_ *= 2; // Reset attack speed
+            case PowerUpEnums.PowerUpType.MultiShot:
+                _playerShooting.projectileCount += 2; // Adiciona mais 2 projétei
                 break;
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject == player)
-        {
-            ActivatePowerUp();
-            Destroy(this.gameObject);
+            case PowerUpEnums.PowerUpType.MachineGun:
+                _playerShooting.attackSpeed -= 0.2f; // Diminui o tempo entre os tiros
+                break;
         }
     }
 }

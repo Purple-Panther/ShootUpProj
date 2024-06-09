@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpName: Machine Gun
   powerUpDescription: Increases fire rate.
-  powerUpSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  powerUpSprite: {fileID: 21300000, guid: 5e85c1e63de29814aad193ee3182eb43, type: 3}
