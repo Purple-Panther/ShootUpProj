@@ -52,9 +52,9 @@ public class EliteRangedEnemy : Entity
     {
         base.Death();
         var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
-        var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>();
+        var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>().scoreStats;
 
-        score.scoreStats.AddScore(Data.PointsDroppedWhenDying);
+        score.AddScore(Data.PointsDroppedWhenDying);
         player.AddExp(Data.ExpDroppedWhenDying);
     }
 
