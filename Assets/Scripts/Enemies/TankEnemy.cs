@@ -4,14 +4,22 @@ public class TankEnemy : Entity
 {
     private GameObject _player;
 
-    private const string PlayerTag = "Player";
-
     protected override void Awake()
     {
         base.Awake();
-        _player = GameObject.FindGameObjectWithTag(PlayerTag);
+        _player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag);
         if (_player is null)
             Debug.LogError("Nem um player foi encontrado");
+    }
+
+    protected override void Death()
+    {
+        base.Death();
+        var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
+        var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>();
+
+        score.scoreStats.AddScore(Data.PointsDroppedWhenDying);
+        player.AddExp(Data.ExpDroppedWhenDying);
     }
 
     private void Update()
@@ -28,7 +36,7 @@ public class TankEnemy : Entity
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag(PlayerTag)) return;
+        if (!other.CompareTag(Constraints.PlayerTag)) return;
 
         other.GetComponent<Entity>().TakeDamage(Data.AttackDamage);
         Destroy(gameObject);

@@ -5,63 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd215a71-e4cd-41ca-a4d5-29d5f6d36dfc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Elite.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Elite/RangedData.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Elite/RangedData.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Elite/TankData.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Elite/TankData.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Melee.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Melee/MeleeData.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Melee/MeleeData.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Ranged.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Ranged/RangedData.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Enemy/Ranged/RangedData.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Hud.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Hud/FpsStatus.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Hud/FpsStatus.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Hud/ScoreStatus.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Hud/ScoreStatus.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Player.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Player/PlayerData.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Player/PlayerData.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Entity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interfaces.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interfaces/IEntity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interfaces/IEntity.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/FpsStats.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Util.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Util/Constraints.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Util/Constraints.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ShootUpProj/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ShootUpProj/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/EnemySpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/EliteRangedEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/EliteRangedEnemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/MeleeEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/MeleeEnemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/RangedEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/RangedEnemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/TankEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/TankEnemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/EntityBase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/EntityBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Entity.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Entity.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/EntityDataInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/EntityDataInstance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DeadLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DeadLine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EliteRangedEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EliteRangedEnemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMelee.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyRanged.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyRanged.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityStats.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityStats.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/TankEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/TankEnemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hud.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Misc/FpsStats.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Misc/FpsStats.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/FpsStats.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Misc/Projectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Misc/Projectile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Misc/ScoreStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/ScoreStats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Misc/ScoreStats.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/ScoreStats.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerShooting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerShooting.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpScr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpScr.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/EntityData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/EntityData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TankEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/TankEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TankEnemy.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/TankEnemy.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/ScoreStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/ScoreStats.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,11 +39,19 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/PowerUpS/PowerUpScr.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.13/Tests/Editor/LongTextAreaTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0652bf0e14024522b5c92574ad0ef550175c00/74/7892e7e5/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0652bf0e14024522b5c92574ad0ef550175c00/97/d7310140/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0652bf0e14024522b5c92574ad0ef550175c00/a8/0589cce5/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0652bf0e14024522b5c92574ad0ef550175c00/f4/51643cbf/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/467a840a914a47078e4ae9b0b1e8779e46ac00/bf/991a2f12/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="ProjectColorInfo">{
@@ -102,26 +65,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "develop",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\guilherme.nono\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\guilherme.nono\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\guilherme.nono\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\guilherme.nono\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\guilherme.nono\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\guilherme.nono\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.30f1\Editor\Unity.exe" />
@@ -149,10 +112,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="10832">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="10832" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -170,6 +133,7 @@
       <updated>1717814814247</updated>
       <workItem from="1717814816581" duration="11991000" />
       <workItem from="1717868059657" duration="9603000" />
+      <workItem from="1717960942408" duration="6381000" />
     </task>
     <task id="LOCAL-00001" summary="Fix | Corrigindo Conflitos">
       <option name="closed" value="true" />
@@ -207,5 +171,24 @@
     <MESSAGE value="Fix | Corrigindo Conflitos" />
     <MESSAGE value="Fix: Corrigindo conflitos" />
     <option name="LAST_COMMIT_MESSAGE" value="Fix: Corrigindo conflitos" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMelee.cs</url>
+          <line>49</line>
+          <properties documentPath="C:\Builds\PurplePanther\ShootUpProj\Assets\Scripts\Enemies\EnemyMelee.cs" containingFunctionPresentation="Method 'OnTriggerEnter2D'">
+            <startOffsets>
+              <option value="1295" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1321" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

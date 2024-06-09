@@ -17,20 +17,20 @@ public class Entity : MonoBehaviour, IEntity
 
     protected virtual void Death()
     {
-        if (Data.Health > 0) return;
-
         Destroy(gameObject);
-
-        // if (!gameObject.CompareTag(Constraints.PlayerTag))
-        //     GameObject.FindGameObjectWithTag(Constraints.HudTag)
-        //         .GetComponent<Hud>()
-        //         .scoreStats
-        //         .AddScore(Data.PointsWhenDying);
     }
 
     public void TakeDamage(float hpToRemove)
     {
         Data.Health -= hpToRemove;
-        Death();
+        if (Data.Health <= 0)
+            Death();
+    }
+
+    public void AddExp(float xp)
+    {
+        Data.Exp += xp;
+        if (Data.CanLevelUp)
+            Data.LevelUp();
     }
 }

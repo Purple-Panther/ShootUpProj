@@ -9,7 +9,7 @@ public class LevelUp : MonoBehaviour
 
     public GameObject Background;
 
-    public IList<PowerUpScr> AvailablePowerUps;
+    public List<PowerUpScr> AvailablePowerUps;
     public GameObject PowerUpCardPrefab;
 
     private Entity playerStats;

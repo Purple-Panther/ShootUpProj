@@ -35,6 +35,16 @@ public class EnemyRanged : Entity
         }
     }
 
+    protected override void Death()
+    {
+        base.Death();
+        var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
+        var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>();
+
+        score.scoreStats.AddScore(Data.PointsDroppedWhenDying);
+        player.AddExp(Data.ExpDroppedWhenDying);
+    }
+
     private void Shoot()
     {
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
@@ -49,5 +59,13 @@ public class EnemyRanged : Entity
 
         projectileScript.Initialize(Data.AttackDamage);
         projectileScript.projectileLifeSpan = Data.AttackLife;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag(Constraints.PlayerTag)) return;
+
+        other.GetComponent<Entity>().TakeDamage(Data.AttackDamage);
+        Destroy(gameObject);
     }
 }

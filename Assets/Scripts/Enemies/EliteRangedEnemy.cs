@@ -48,6 +48,16 @@ public class EliteRangedEnemy : Entity
         }
     }
 
+    protected override void Death()
+    {
+        base.Death();
+        var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
+        var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>();
+
+        score.scoreStats.AddScore(Data.PointsDroppedWhenDying);
+        player.AddExp(Data.ExpDroppedWhenDying);
+    }
+
     protected void Update()
     {
         transform.Rotate(0, 0, 22.5f * Time.deltaTime);

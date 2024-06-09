@@ -9,5 +9,9 @@ public class EntityData : ScriptableObject
     public float attackDamage;
     public float attackSpeed;
     public float attackLife;
-    public int pointsToDeath;
+    public int pointsDroppedWhenDying;
+    public float expDroppedWhenDying;
+    public float exp;
+    public float expToNextLevel;
+    public int level = 1;
 }

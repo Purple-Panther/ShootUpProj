@@ -8,22 +8,36 @@ public class EntityDataInstance
     public float AttackDamage { get; set; }
     public float AttackSpeed { get; set; }
     public float AttackLife { get; set; }
-    public int PointsWhenDying { get; set; }
+    public float ExpDroppedWhenDying { get; set; }
+    public int PointsDroppedWhenDying { get; set; }
     public int Level { get; set; }
-    public float Xp { get; set; }
+    public float Exp { get; set; }
+    public float ExpToNextLevel { get; set; }
 
-    public bool CanLevelUp { get; set; } = true;
+    public bool CanEarnExp { get; set; } = true;
+    public bool CanLevelUp => Exp >= ExpToNextLevel;
     public bool CanEntityAttack => Time.time > AttackSpeed;
 
     public EntityDataInstance(EntityData entityData)
     {
         MaxHealth = entityData.maxHealth;
         AttackDamage = entityData.attackDamage;
-        Health = entityData.maxHealth;
+        Health = entityData.health;
         AttackSpeed = entityData.attackSpeed;
         BaseSpeed = entityData.baseSpeed;
         AttackDamage = entityData.attackDamage;
         AttackLife = entityData.attackLife;
-        PointsWhenDying = entityData.pointsToDeath;
+        PointsDroppedWhenDying = entityData.pointsDroppedWhenDying;
+        ExpDroppedWhenDying = entityData.expDroppedWhenDying;
+        ExpToNextLevel = entityData.expToNextLevel;
+        Exp = entityData.exp;
+        Level = entityData.level;
+    }
+
+    public void LevelUp()
+    {
+        Level += 1;
+        Exp = 0;
+        ExpToNextLevel *= 1.6f;
     }
 }

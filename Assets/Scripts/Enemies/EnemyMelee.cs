@@ -19,6 +19,15 @@ public class EnemyMelee : Entity
         _speed = Data.BaseSpeed;
     }
 
+    protected override void Death()
+    {
+        base.Death();
+        var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
+        var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>();
+
+        score.scoreStats.AddScore(Data.PointsDroppedWhenDying);
+        player.AddExp(Data.ExpDroppedWhenDying);
+    }
 
     private void Update()
     {
@@ -38,7 +47,7 @@ public class EnemyMelee : Entity
     {
         if (!other.CompareTag(Constraints.PlayerTag)) return;
 
-        TakeDamage(_meleeHitDamage);
+        other.gameObject.GetComponent<Entity>().TakeDamage(_meleeHitDamage);
         Destroy(gameObject);
     }
 }

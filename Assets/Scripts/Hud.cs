@@ -20,7 +20,7 @@ public class Hud : MonoBehaviour
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
-        if (Instance != null && Instance != this)
+        if (Instance is not null && Instance != this)
             Destroy(this);
         else
             Instance = this;
@@ -32,6 +32,7 @@ public class Hud : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>();
 
         lifeBar.maxValue = player.Data.MaxHealth;
+        expBar.value = player.Data.Exp;
         lifeBar.value = player.Data.MaxHealth;
         levelText.text = player.Data.Level.ToString();
 
@@ -54,17 +55,18 @@ public class Hud : MonoBehaviour
     void PlayerHUD()
     {
         //Score
-        scoreText.text = scoreStats.Score.ToString();
+        scoreText.text = scoreStats.score.ToString();
 
         fps.text = fpsStats.FpsText();
         //Life
         lifeBar.value = player.Data.Health;
 
         //Xp
-        expBar.maxValue = player.Data.Level * 100;
-        expBar.value = player.Data.Xp;
+        expBar.maxValue = player.Data.ExpToNextLevel;
+        expBar.value = player.Data.Exp;
 
         //Level
         levelText.text = player.Data.Level.ToString();
+        Debug.Log(scoreStats.score);
     }
 }
