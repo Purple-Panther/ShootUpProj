@@ -9,7 +9,7 @@ public class PUManager : MonoBehaviour
     private PlayerShooting _playerShooting;
 
     // Define o valor mínimo para attackSpeed
-    private const float MinAttackSpeed = 0.1f;
+    private const float MinAttackSpeed = 0.3f;
 
     void Start()
     {
