@@ -20,10 +20,9 @@ public class LifeManager : MonoBehaviour
         {
             playerLife = (int)player.Data.Health;
             lastPlayerHealth = playerLife;
-            AddHearts(playerLife / 20);
+            AddHearts((int)(playerLife / 20f)); // Use 20f to perform float division
         }
     }
-
     void Update()
     {
         if (player != null)
