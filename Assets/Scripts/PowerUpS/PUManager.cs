@@ -1,10 +1,9 @@
 using DefaultNamespace.PowerUpS;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour
+public class PUManager : MonoBehaviour
 {
     public PowerUpType powerUpType;
-    public float speed = 2f;
 
     private GameObject _player;
     private PlayerShooting _playerShooting;
@@ -27,7 +26,6 @@ public class PowerUp : MonoBehaviour
     void Update()
     {
         if (_player is null) return;
-        transform.position = Vector2.MoveTowards(transform.position, _player.transform.position, speed * Time.deltaTime);
     }
 
     public void ActivatePowerUp(PowerUpType powerUpType)

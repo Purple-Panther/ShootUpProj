@@ -30,13 +30,24 @@ public class PlayerShooting : MonoBehaviour
 
     void Shoot()
     {
+        float spreadAngle = 45f; // Total spread angle
+        float startAngle = -spreadAngle / 2; // Initial angle
+
         for (int i = 0; i < projectileCount; i++)
         {
-            Vector2 direction = Quaternion.Euler(0, 0, Random.Range(-10f, 10f)) * Vector2.up; // Aleatoriza ligeiramente a direção
+            float angle;
+            if (projectileCount > 1)
+            {
+                angle = startAngle + (spreadAngle / (projectileCount - 1)) * i; // Calculate the angle for this projectile
+            }
+            else
+            {
+                angle = 0; // If there's only one projectile, no need to spread
+            }
+            Vector2 direction = Quaternion.Euler(0, 0, angle) * Vector2.up; // Rotate the direction by the angle
             FireProjectile(transform.position, direction * projectileSpeed, Quaternion.identity);
         }
     }
-
     void FireProjectile(Vector2 position, Vector2 velocity, Quaternion rotation)
     {
         GameObject projectile = Instantiate(projectilePrefab, position, rotation);

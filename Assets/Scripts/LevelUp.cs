@@ -70,10 +70,10 @@ public class LevelUp : MonoBehaviour
 
         if (powerUpTypeMap.TryGetValue(powerUp.powerUpName.Replace(" ", ""), out parsedPowerUpType)) 
         {
-            PowerUp powerUpComponent = player.GetComponent<PowerUp>();
-            if (powerUpComponent != null)
+            PUManager puManagerComponent = player.GetComponent<PUManager>();
+            if (puManagerComponent != null)
             {
-                powerUpComponent.ActivatePowerUp(parsedPowerUpType);
+                puManagerComponent.ActivatePowerUp(parsedPowerUpType);
             }
             else
             {
