@@ -1,10 +1,6 @@
-using UnityEngine;
 
-public class PowerUpEnums
+ public enum PowerUpType
 {
-    public enum PowerUpType
-    {
-        MultiShot,
-        MachineGun
-    }
+    MultiShot,
+    MachineGun
 }

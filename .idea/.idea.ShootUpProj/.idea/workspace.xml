@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd215a71-e4cd-41ca-a4d5-29d5f6d36dfc" name="Changes" comment="FIX | Consertando gitignore" />
+    <list default="true" id="dd215a71-e4cd-41ca-a4d5-29d5f6d36dfc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpType.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ShootUpProj/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ShootUpProj/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpEnums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpEnums.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +40,14 @@
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/BackgroundScroller.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/BackgroundScroller.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/BackgroundScroller.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/Enemies/TankEnemy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/LevelUp.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/LevelUp.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/LevelUp.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpEnums.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scripts/PowerUpS/PowerUpScr.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.13/Tests/Editor/LongTextAreaTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0652bf0e14024522b5c92574ad0ef550175c00/74/7892e7e5/Component.cs" root0="SKIP_HIGHLIGHTING" />
@@ -123,6 +137,7 @@
       <workItem from="1717814816581" duration="11991000" />
       <workItem from="1717868059657" duration="9603000" />
       <workItem from="1717960942408" duration="10046000" />
+      <workItem from="1718018640263" duration="205000" />
     </task>
     <task id="LOCAL-00001" summary="Fix | Corrigindo Conflitos">
       <option name="closed" value="true" />
@@ -172,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717976502348</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="FIX | Consertando conflitos">
+      <option name="closed" value="true" />
+      <created>1717976698925</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1717976698925</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,7 +218,8 @@
     <MESSAGE value="FIX | Consertando score" />
     <MESSAGE value="Fix | Consertando gitignore" />
     <MESSAGE value="FIX | Consertando gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="FIX | Consertando gitignore" />
+    <MESSAGE value="FIX | Consertando conflitos" />
+    <option name="LAST_COMMIT_MESSAGE" value="FIX | Consertando conflitos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

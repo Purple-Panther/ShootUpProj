@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DefaultNamespace.PowerUpS;
 using UnityEngine;
 
 public class LevelUp : MonoBehaviour
@@ -14,10 +15,10 @@ public class LevelUp : MonoBehaviour
     private int currentLevel;
 
     // Dicionário para mapear nomes de power-ups para valores do enum
-    private readonly Dictionary<string, PowerUpEnums.PowerUpType> powerUpTypeMap = new Dictionary<string, PowerUpEnums.PowerUpType>
+    private readonly Dictionary<string, PowerUpType> powerUpTypeMap = new Dictionary<string, PowerUpType>
     {
-        { "MultiShot", PowerUpEnums.PowerUpType.MultiShot },
-        { "MachineGun", PowerUpEnums.PowerUpType.MachineGun }
+        { "MultiShot", PowerUpType.MultiShot },
+        { "MachineGun", PowerUpType.MachineGun }
     };
 
     void Start()
@@ -65,7 +66,7 @@ public class LevelUp : MonoBehaviour
 
     public void ChoosePowerUp(PowerUpScr powerUp)
     {
-        PowerUpEnums.PowerUpType parsedPowerUpType; 
+        PowerUpType parsedPowerUpType;
 
         if (powerUpTypeMap.TryGetValue(powerUp.powerUpName.Replace(" ", ""), out parsedPowerUpType)) 
         {
