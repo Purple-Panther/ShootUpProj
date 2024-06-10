@@ -13,12 +13,11 @@ public class LevelUp : MonoBehaviour
 
     private Entity playerStats;
     private int currentLevel;
-
-    // Dicionário para mapear nomes de power-ups para valores do enum
+    
     private readonly Dictionary<string, PowerUpType> powerUpTypeMap = new Dictionary<string, PowerUpType>
     {
-        { "MultiShot", PowerUpType.MultiShot },
-        { "MachineGun", PowerUpType.MachineGun }
+        { "ExtraProjectile", PowerUpType.ExtraProjectile },
+        { "FireRate", PowerUpType.FireRate }
     };
 
     void Start()
@@ -67,8 +66,10 @@ public class LevelUp : MonoBehaviour
     public void ChoosePowerUp(PowerUpScr powerUp)
     {
         PowerUpType parsedPowerUpType;
+        
+        string powerUpNameWithoutSpaces = powerUp.powerUpName.Replace(" ", "");
 
-        if (powerUpTypeMap.TryGetValue(powerUp.powerUpName.Replace(" ", ""), out parsedPowerUpType)) 
+        if (powerUpTypeMap.TryGetValue(powerUpNameWithoutSpaces, out parsedPowerUpType)) 
         {
             PUManager puManagerComponent = player.GetComponent<PUManager>();
             if (puManagerComponent != null)

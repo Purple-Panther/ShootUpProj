@@ -4,7 +4,7 @@ namespace DefaultNamespace.PowerUpS
 {
     public enum PowerUpType
     {
-        MultiShot,
-        MachineGun
+        ExtraProjectile,
+        FireRate
     }
 }

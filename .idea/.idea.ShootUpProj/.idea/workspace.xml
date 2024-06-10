@@ -5,13 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd215a71-e4cd-41ca-a4d5-29d5f6d36dfc" name="Changes" comment="fiX: corrigindo sistema de vida">
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/ExtraProjectile.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/ExtraProjectile.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/FireRate.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/FireRate.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ShootUpProj/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ShootUpProj/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObects/Player/PlayerData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObects/Player/PlayerData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/MachineGun.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/MachineGun.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/Multishot.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/Multishot.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Entity.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerShooting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerShooting.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PUManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUp.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PUManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PUManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PUManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpEnums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpEnums.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpType.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +46,7 @@
     <setting file="mock://D:/GameDev/ShootUpProj/Assets/Scripts/LevelUp.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/GameDev/ShootUpProj/Assets/Scripts/Player/LifeManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/GameDev/ShootUpProj/Assets/Scripts/Player/LifeManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/GameDev/ShootUpProj/Assets/Scripts/Player/PlayerShooting.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/GameDev/ShootUpProj/Assets/Scripts/Player/PlayerShooting.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/GameDev/ShootUpProj/Assets/Scripts/Player/PlayerShooting.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/GameDev/ShootUpProj/Assets/Scripts/PowerUpS/PowerUpCard.cs.meta" root0="SKIP_HIGHLIGHTING" />

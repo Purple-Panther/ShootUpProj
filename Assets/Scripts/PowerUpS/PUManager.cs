@@ -8,6 +8,9 @@ public class PUManager : MonoBehaviour
     private GameObject _player;
     private PlayerShooting _playerShooting;
 
+    // Define o valor mínimo para attackSpeed
+    private const float MinAttackSpeed = 0.1f;
+
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -32,11 +35,12 @@ public class PUManager : MonoBehaviour
     {
         switch (powerUpType)
         {
-            case PowerUpType.MultiShot:
-                _playerShooting.projectileCount += 2; // Adiciona mais 2 projétei
+            case PowerUpType.ExtraProjectile:
+                _playerShooting.projectileCount += 2; // Adiciona mais 2 projéteis
                 break;
-            case PowerUpType.MachineGun:
-                _playerShooting.attackSpeed -= 0.2f; // Diminui o tempo entre os tiros
+            case PowerUpType.FireRate:
+                // Diminui o tempo entre os tiros, mas não permite que seja menor que MinAttackSpeed
+                _playerShooting.attackSpeed = Mathf.Max(_playerShooting.attackSpeed - 0.1f, MinAttackSpeed);
                 break;
         }
     }
