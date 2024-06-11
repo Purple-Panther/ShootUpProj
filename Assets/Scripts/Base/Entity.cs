@@ -1,6 +1,7 @@
 using System.Collections;
 using Interfaces;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Entity : MonoBehaviour, IEntity
 {
@@ -26,6 +27,11 @@ public class Entity : MonoBehaviour, IEntity
 
     public void TakeDamage(float hpToRemove)
     {
+        GameObject new_popup = Instantiate(Hud.Instance.damage_popup, this.gameObject.transform.position, Quaternion.identity );
+        new_popup.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f, 1f), 5), ForceMode2D.Impulse);
+        new_popup.GetComponentInChildren<Text>().text = hpToRemove.ToString();
+        Destroy(new_popup, 1f);
+        
         Data.Health -= hpToRemove;
         if (Data.Health <= 0)
             Death();
