@@ -4,28 +4,30 @@ using UnityEngine;
 public class LevelUp : MonoBehaviour
 {
     public GameObject levelUpPanel;
-    public GameObject player;
+    private Player _player;
+    private PowerUpManager _powerUpManager;
     public GameObject background;
 
     public List<PowerUpBase> availablePowerUps;
     public GameObject powerUpCardPrefab;
 
-    private Entity playerStats;
-    private int currentLevel;
+    private int _currentLevel;
 
     void Start()
     {
-        playerStats = player.GetComponent<Entity>();
-        currentLevel = playerStats.Data.Level;
+        var playerObject = GameObject.FindGameObjectWithTag(Constraints.PlayerTag);
+        _powerUpManager = playerObject.GetComponent<PowerUpManager>();
+        _player = playerObject.GetComponent<Player>();
+        _currentLevel = _player.Data.Level;
         levelUpPanel.SetActive(false);
     }
 
     void Update()
     {
-        if (playerStats.Data.Level > currentLevel)
+        if (_player.Data.Level > _currentLevel)
         {
             OpenLevelUpPanel();
-            currentLevel = playerStats.Data.Level;
+            _currentLevel = _player.Data.Level;
         }
     }
 
@@ -42,7 +44,7 @@ public class LevelUp : MonoBehaviour
         Time.timeScale = 1f; 
     }
 
-    void RandomCards()
+    private void RandomCards()
     {
         foreach (Transform child in background.transform)
         {
@@ -51,7 +53,7 @@ public class LevelUp : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            int randomNumber = Random.Range(0, availablePowerUps.Count);
+            int randomNumber = Random.Range(0, availablePowerUps.Count - 1);
             GameObject newCard = Instantiate(powerUpCardPrefab, background.transform);
             newCard.GetComponent<PowerUpCard>().SetupPowerUpCard(availablePowerUps[randomNumber], this);
         }
@@ -59,15 +61,13 @@ public class LevelUp : MonoBehaviour
 
     public void ChoosePowerUp(PowerUpBase powerUp)
     {
-        PowerUpManager powerUpManager = player.GetComponent<PowerUpManager>();
-        if (powerUpManager is not null)
+        if (_powerUpManager is not null)
         {
-            powerUpManager.ActivatePowerUp(powerUp);
+            _powerUpManager.ActivatePowerUp(powerUp);
+            _player.AddPowerUp(powerUp);
         }
         else
-        {
             Debug.LogError("PowerUpManager component not found on the player object.");
-        }
 
         CloseLevelUpPanel();
     }

@@ -1,4 +1,7 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using DefaultNamespace.PowerUpS;
 using Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +10,7 @@ public class Entity : MonoBehaviour, IEntity
 {
     [SerializeField] private EntityData soData;
     private SpriteRenderer[] _spriteRenderers;
+    protected Dictionary<PowerUpType, (PowerUpBase powerUp, int quantity)> PowerUps;
 
     public EntityDataInstance Data { get; set; }
 
@@ -18,6 +22,11 @@ public class Entity : MonoBehaviour, IEntity
             Data = new EntityDataInstance(soData);
 
         _spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        PowerUps = new Dictionary<PowerUpType, (PowerUpBase powerUp, int quantity)>();
     }
 
     protected virtual void Death()
@@ -45,6 +54,29 @@ public class Entity : MonoBehaviour, IEntity
                 }
             }
         }
+    }
+
+    public void AddPowerUp(PowerUpBase powerUp)
+    {
+        var alreadyInPool = PowerUps.ContainsKey(powerUp.Type);
+
+        if (alreadyInPool)
+        {
+            var powerUpTuple = PowerUps[powerUp.Type];
+            var newQuantity = powerUpTuple.quantity + 1;
+            PowerUps[powerUp.Type] = (powerUpTuple.powerUp, newQuantity);
+            return;
+        }
+
+        PowerUps.Add(powerUp.Type, (powerUp, 1));
+    }
+
+    public void RemovePowerUp(PowerUpType powerUp)
+    {
+        var exitsInPool = PowerUps.ContainsKey(powerUp);
+
+        if (exitsInPool)
+            PowerUps.Remove(powerUp);
     }
 
     private IEnumerator HitBlink(SpriteRenderer spriteRenderer)
