@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using DefaultNamespace.PowerUpS;
 using UnityEngine;
 
 public class LevelUp : MonoBehaviour
@@ -8,18 +7,11 @@ public class LevelUp : MonoBehaviour
     public GameObject player;
     public GameObject background;
 
-    public List<PowerUpScr> availablePowerUps;
+    public List<PowerUpBase> availablePowerUps;
     public GameObject powerUpCardPrefab;
 
     private Entity playerStats;
     private int currentLevel;
-
-    // Dicionário para mapear nomes de power-ups para valores do enum
-    private readonly Dictionary<string, PowerUpType> powerUpTypeMap = new Dictionary<string, PowerUpType>
-    {
-        { "MultiShot", PowerUpType.MultiShot },
-        { "MachineGun", PowerUpType.MachineGun }
-    };
 
     void Start()
     {
@@ -58,34 +50,23 @@ public class LevelUp : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             int randomNumber = Random.Range(0, availablePowerUps.Count);
-
             GameObject newCard = Instantiate(powerUpCardPrefab, background.transform);
             newCard.GetComponent<PowerUpCard>().SetupPowerUpCard(availablePowerUps[randomNumber], this);
         }
     }
 
-    public void ChoosePowerUp(PowerUpScr powerUp)
+    public void ChoosePowerUp(PowerUpBase powerUp)
     {
-        PowerUpType parsedPowerUpType;
-
-        if (powerUpTypeMap.TryGetValue(powerUp.powerUpName.Replace(" ", ""), out parsedPowerUpType)) 
+        PowerUpManager powerUpManager = player.GetComponent<PowerUpManager>();
+        if (powerUpManager != null)
         {
-            PowerUp powerUpComponent = player.GetComponent<PowerUp>();
-            if (powerUpComponent != null)
-            {
-                powerUpComponent.ActivatePowerUp(parsedPowerUpType);
-            }
-            else
-            {
-                Debug.LogError("PowerUp component not found on the player object.");
-            }
+            powerUpManager.ActivatePowerUp(powerUp);
         }
         else
         {
-            Debug.LogError($"PowerUpType '{powerUp.powerUpName}' not found.");
+            Debug.LogError("PowerUpManager component not found on the player object.");
         }
 
         CloseLevelUpPanel();
     }
-
 }

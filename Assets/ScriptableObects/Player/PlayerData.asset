@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee2c2bf7bcb4fad82240edb63782504, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  maxHealth: 200
-  health: 200
+  maxHealth: 100
+  health: 100
   baseSpeed: 10
-  attackDamage: 20
-  attackSpeed: 0.8
+  attackDamage: 10
+  attackSpeed: 0.2
   attackLife: 10
   pointsDroppedWhenDying: 0
   expDroppedWhenDying: 0

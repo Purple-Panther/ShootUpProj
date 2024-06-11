@@ -4,9 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd215a71-e4cd-41ca-a4d5-29d5f6d36dfc" name="Changes" comment="">
+    <list default="true" id="dd215a71-e4cd-41ca-a4d5-29d5f6d36dfc" name="Changes" comment="fiX: corrigindo sistema de vida">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PU.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PU/ExtraProjectile.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PU/ExtraProjectile.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ShootUpProj/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ShootUpProj/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/ExtraProjectile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/ExtraProjectile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/ExtraProjectile.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/ExtraProjectile.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/FireRate.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/FireRate.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/PowerUp.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/PowerUp.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PUManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PUManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpScr.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpScr.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,16 +47,18 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Builds/PurplePanther/ShootUpProj/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PowerUpS/PowerUpEnums.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/GameDev/ShootUpProj/Assets/ScriptableObects/Player/PlayerData.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/GameDev/ShootUpProj/Assets/ScriptableObects/Player/PlayerData.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/GameDev/ShootUpProj/Assets/Scripts/LevelUp.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/GameDev/ShootUpProj/Assets/Scripts/Player/LifeManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/GameDev/ShootUpProj/Assets/Scripts/Player/LifeManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/GameDev/ShootUpProj/Assets/Scripts/Player/PlayerShooting.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/GameDev/ShootUpProj/Assets/Scripts/Player/PlayerShooting.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/GameDev/ShootUpProj/Assets/Scripts/Player/PlayerShooting.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/GameDev/ShootUpProj/Assets/Scripts/PowerUpS/PowerUpCard.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/GameDev/ShootUpProj/Assets/Scripts/PowerUpS/PowerUpType.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/GameDev/ShootUpProj/Assets/Scripts/PowerUpS/PowerUpType.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.13/Tests/Editor/LongTextAreaTests.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0652bf0e14024522b5c92574ad0ef550175c00/74/7892e7e5/Component.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0652bf0e14024522b5c92574ad0ef550175c00/97/d7310140/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0652bf0e14024522b5c92574ad0ef550175c00/a8/0589cce5/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0652bf0e14024522b5c92574ad0ef550175c00/f4/51643cbf/Object.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/467a840a914a47078e4ae9b0b1e8779e46ac00/bf/991a2f12/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="ProjectColorInfo">{
@@ -74,7 +94,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.30f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\2022.3.30f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Builds\PurplePanther\ShootUpProj -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Builds\PurplePanther\ShootUpProj" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -82,7 +102,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.30f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\2022.3.30f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Builds\PurplePanther\ShootUpProj -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Builds\PurplePanther\ShootUpProj" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -181,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717976698925</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fiX: corrigindo sistema de vida">
+      <option name="closed" value="true" />
+      <created>1718050760262</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1718050760262</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,7 +232,8 @@
     <MESSAGE value="Fix | Consertando gitignore" />
     <MESSAGE value="FIX | Consertando gitignore" />
     <MESSAGE value="FIX | Consertando conflitos" />
-    <option name="LAST_COMMIT_MESSAGE" value="FIX | Consertando conflitos" />
+    <MESSAGE value="fiX: corrigindo sistema de vida" />
+    <option name="LAST_COMMIT_MESSAGE" value="fiX: corrigindo sistema de vida" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -212,27 +241,13 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyMelee.cs</url>
           <line>49</line>
-          <properties documentPath="C:\Builds\PurplePanther\ShootUpProj\Assets\Scripts\Enemies\EnemyMelee.cs" containingFunctionPresentation="Method 'OnTriggerEnter2D'">
-            <startOffsets>
-              <option value="1295" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1321" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Builds\PurplePanther\ShootUpProj\Assets\Scripts\Enemies\EnemyMelee.cs" containingFunctionPresentation="Method 'OnTriggerEnter2D'" />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyRanged.cs</url>
           <line>43</line>
-          <properties documentPath="C:\Builds\PurplePanther\ShootUpProj\Assets\Scripts\Enemies\EnemyRanged.cs" containingFunctionPresentation="Method 'Death'">
-            <startOffsets>
-              <option value="1165" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1209" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Builds\PurplePanther\ShootUpProj\Assets\Scripts\Enemies\EnemyRanged.cs" containingFunctionPresentation="Method 'Death'" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>

@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d216b645772d9e45ac61e12e888ade1, type: 3}
-  m_Name: Multishot
+  m_Script: {fileID: 11500000, guid: 38c4ad44f4584fa0943eeb0322babd95, type: 3}
+  m_Name: ExtraProjectile
   m_EditorClassIdentifier: 
-  powerUpName: Multi Shot
+  powerUpName: ExtraProjectiles
   powerUpDescription: Fires additional projectiles.
-  powerUpSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  powerUpSprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  additionalProjectiles: 5
