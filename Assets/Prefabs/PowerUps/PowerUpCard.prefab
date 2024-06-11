@@ -325,7 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameHolder: {fileID: 8147062199996290361}
   descriptionHolder: {fileID: 8679192319213969495}
-  spriteHolder: {fileID: 4354427867116051142}
+  spriteHolder: {fileID: 8387709360332289632}
 --- !u!114 &3519299979350500228
 MonoBehaviour:
   m_ObjectHideFlags: 0

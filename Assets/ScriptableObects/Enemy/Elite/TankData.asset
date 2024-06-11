@@ -18,8 +18,8 @@ MonoBehaviour:
   attackDamage: 35
   attackSpeed: 0
   attackLife: 35
-  pointsDroppedWhenDying: 100
-  expDroppedWhenDying: 20
+  pointsDroppedWhenDying: 300
+  expDroppedWhenDying: 100
   exp: 0
   expToNextLevel: 0
   level: 1

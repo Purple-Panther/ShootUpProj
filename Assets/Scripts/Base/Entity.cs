@@ -5,6 +5,7 @@ using DefaultNamespace.PowerUpS;
 using Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Entity : MonoBehaviour, IEntity
 {
@@ -93,4 +94,6 @@ public class Entity : MonoBehaviour, IEntity
         if (Data.CanLevelUp)
             Data.LevelUp();
     }
+    
+    
 }
