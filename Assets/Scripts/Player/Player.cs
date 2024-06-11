@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovement : Entity
+public class Player : Entity
 {
     private Rigidbody2D _rb;
 

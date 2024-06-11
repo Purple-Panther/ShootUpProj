@@ -5,7 +5,7 @@ using UnityEngine;
 public class Entity : MonoBehaviour, IEntity
 {
     [SerializeField] private EntityData soData;
-    private SpriteRenderer[] spriteRenderers;
+    private SpriteRenderer[] _spriteRenderers;
 
     public EntityDataInstance Data { get; set; }
 
@@ -16,7 +16,7 @@ public class Entity : MonoBehaviour, IEntity
         if (soData is not null)
             Data = new EntityDataInstance(soData);
 
-        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        _spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
     }
 
     protected virtual void Death()
@@ -31,7 +31,7 @@ public class Entity : MonoBehaviour, IEntity
             Death();
         else
         {
-            foreach (var spriteRenderer in spriteRenderers)
+            foreach (var spriteRenderer in _spriteRenderers)
             {
                 if (spriteRenderer.color != Color.red)
                 {

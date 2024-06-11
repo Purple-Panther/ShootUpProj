@@ -19,7 +19,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
-        entityStats = GetComponent<PlayerMovement>();
+        entityStats = GetComponent<Player>();
 
         if (Mathf.Approximately(Input.GetAxis("Fire1"), 1) && Time.time > _nextFireTime)
         {

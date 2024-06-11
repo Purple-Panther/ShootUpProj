@@ -58,7 +58,7 @@ public class LevelUp : MonoBehaviour
     public void ChoosePowerUp(PowerUpBase powerUp)
     {
         PowerUpManager powerUpManager = player.GetComponent<PowerUpManager>();
-        if (powerUpManager != null)
+        if (powerUpManager is not null)
         {
             powerUpManager.ActivatePowerUp(powerUp);
         }

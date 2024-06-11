@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class PowerUpManager : MonoBehaviour
 {
-    private PlayerShooting playerShooting;
+    private PlayerShooting _playerShooting;
 
     void Start()
     {
-        playerShooting = GetComponent<PlayerShooting>();
-        if (playerShooting == null)
+        _playerShooting = GetComponent<PlayerShooting>();
+        if (_playerShooting is null)
         {
             Debug.LogError("PlayerShooting component not found.");
         }
@@ -15,6 +15,6 @@ public class PowerUpManager : MonoBehaviour
 
     public void ActivatePowerUp(PowerUpBase powerUp)
     {
-        powerUp.ApplyEffect(playerShooting);
+        powerUp.ApplyEffect(_playerShooting);
     }
 }
