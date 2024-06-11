@@ -323,10 +323,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e24190f18f779047bbf2ae04ea5e4ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUp: {fileID: 0}
-  powerUpNameHolder: {fileID: 8147062199996290361}
-  powerUpDescriptionHolder: {fileID: 8679192319213969495}
-  powerUpSpriteHolder: {fileID: 8387709360332289632}
+  nameHolder: {fileID: 8147062199996290361}
+  descriptionHolder: {fileID: 8679192319213969495}
+  spriteHolder: {fileID: 4354427867116051142}
 --- !u!114 &3519299979350500228
 MonoBehaviour:
   m_ObjectHideFlags: 0

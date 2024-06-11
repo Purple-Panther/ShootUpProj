@@ -3,25 +3,25 @@ using UnityEngine.UI;
 
 public class PowerUpCard : MonoBehaviour
 {
-    public Text powerUpNameHolder;
-    public Text powerUpDescriptionHolder;
-    public Image powerUpSpriteHolder;
-    private PowerUpBase powerUp;
+    public Text nameHolder;
+    public Text descriptionHolder;
+    public Image spriteHolder;
+    private PowerUpBase _powerUp;
 
-    private LevelUp levelUpPanel;
+    private LevelUp _levelUpPanel;
 
     public void SetupPowerUpCard(PowerUpBase powerUp, LevelUp levelUpPanel)
     {
-        this.powerUp = powerUp;
-        this.levelUpPanel = levelUpPanel;
+        _powerUp = powerUp;
+        _levelUpPanel = levelUpPanel;
 
-        powerUpNameHolder.text = powerUp.powerUpName;
-        powerUpDescriptionHolder.text = powerUp.powerUpDescription;
-        powerUpSpriteHolder.sprite = powerUp.powerUpSprite;
+        nameHolder.text = powerUp.puName;
+        descriptionHolder.text = powerUp.description;
+        spriteHolder.sprite = powerUp.sprite;
     }
 
     public void ChoosePowerUp()
     {
-        levelUpPanel.ChoosePowerUp(powerUp);
+        _levelUpPanel.ChoosePowerUp(_powerUp);
     }
 }

@@ -1352,7 +1352,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelUpPanel: {fileID: 624511167}
-  player: {fileID: 600362090}
   background: {fileID: 2098947243}
   availablePowerUps:
   - {fileID: 11400000, guid: 7c89fa849d9ef2e4084b7dad414398a7, type: 2}

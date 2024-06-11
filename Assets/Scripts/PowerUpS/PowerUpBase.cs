@@ -1,10 +1,14 @@
+using DefaultNamespace.PowerUpS;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class PowerUpBase : ScriptableObject
 {
-    public string powerUpName;
-    public string powerUpDescription;
-    public Sprite powerUpSprite;
+    [FormerlySerializedAs("Name")]public string puName;
+    [FormerlySerializedAs("Description")]public string description;
+    [FormerlySerializedAs("Sprite")]public Sprite sprite;
+
+    public abstract PowerUpType Type { get; }
 
     public abstract void ApplyEffect(PlayerShooting playerShooting);
 }
