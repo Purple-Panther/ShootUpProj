@@ -1355,8 +1355,8 @@ MonoBehaviour:
   player: {fileID: 600362090}
   background: {fileID: 2098947243}
   availablePowerUps:
+  - {fileID: 11400000, guid: 7c89fa849d9ef2e4084b7dad414398a7, type: 2}
   - {fileID: 11400000, guid: d8a7863534337714ea31003389a5b3bb, type: 2}
-  - {fileID: 11400000, guid: 1de5aad54ff4ad34f8c593c6a885614a, type: 2}
   powerUpCardPrefab: {fileID: 5521690785758511811, guid: d8c4ca771192ac84aaf7fc2c97e9c40a, type: 3}
 --- !u!4 &552938358
 Transform:
@@ -1672,8 +1672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47e89edf39225f542965beb492762660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpType: 0
-  speed: 2
 --- !u!1 &606076357
 GameObject:
   m_ObjectHideFlags: 0

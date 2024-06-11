@@ -9,17 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee2c2bf7bcb4fad82240edb63782504, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: 0ac789ebfd644aac8ad954b501671852, type: 3}
+  m_Name: FireRate
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  health: 100
-  baseSpeed: 10
-  attackDamage: 10
-  attackSpeed: 0.8
-  attackLife: 10
-  pointsDroppedWhenDying: 0
-  expDroppedWhenDying: 0
-  exp: 0
-  expToNextLevel: 100
-  level: 1
+  powerUpName: FireRate
+  powerUpDescription: Increases fire rate.
+  powerUpSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  fireRateReduction: 0.1
