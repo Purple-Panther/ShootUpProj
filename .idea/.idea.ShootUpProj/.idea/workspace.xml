@@ -5,10 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd215a71-e4cd-41ca-a4d5-29d5f6d36dfc" name="Changes" comment="fiX: corrigindo sistema de vida">
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/FireRate.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObects/PowerUps/FireRate.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PU/FireRate.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpS/PU/FireRate.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ShootUpProj/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ShootUpProj/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
