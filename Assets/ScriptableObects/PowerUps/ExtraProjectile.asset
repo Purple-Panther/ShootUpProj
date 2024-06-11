@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c4ad44f4584fa0943eeb0322babd95, type: 3}
   m_Name: ExtraProjectile
   m_EditorClassIdentifier: 
-  powerUpName: ExtraProjectiles
+  powerUpName: Extra Projectiles
   powerUpDescription: Fires additional projectiles.
   powerUpSprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
   additionalProjectiles: 1

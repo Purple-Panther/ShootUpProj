@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac789ebfd644aac8ad954b501671852, type: 3}
   m_Name: FireRate
   m_EditorClassIdentifier: 
-  powerUpName: FireRate
+  powerUpName: Fire Rate
   powerUpDescription: Increases fire rate.
   powerUpSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   fireRateReduction: 0.1
