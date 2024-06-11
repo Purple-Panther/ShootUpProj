@@ -1355,8 +1355,7 @@ MonoBehaviour:
   player: {fileID: 600362090}
   background: {fileID: 2098947243}
   availablePowerUps:
-  - {fileID: 11400000, guid: 7c89fa849d9ef2e4084b7dad414398a7, type: 2}
-  - {fileID: 11400000, guid: d8a7863534337714ea31003389a5b3bb, type: 2}
+  - {fileID: 0}
   powerUpCardPrefab: {fileID: 5521690785758511811, guid: d8c4ca771192ac84aaf7fc2c97e9c40a, type: 3}
 --- !u!4 &552938358
 Transform:

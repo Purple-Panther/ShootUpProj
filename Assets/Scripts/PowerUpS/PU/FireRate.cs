@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "FireRatePowerUp", menuName = "PowerUps/FireRate")]
+[CreateAssetMenu(fileName = "FireRate", menuName = "PowerUps/FireRate")]
 public class FireRatePowerUp : PowerUpBase
 {
     public float fireRateReduction;
