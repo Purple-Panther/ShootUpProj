@@ -128,6 +128,7 @@
       <workItem from="1717960942408" duration="10046000" />
       <workItem from="1718018640263" duration="205000" />
       <workItem from="1718034797870" duration="2061000" />
+      <workItem from="1718038191091" duration="7000" />
     </task>
     <task id="LOCAL-00001" summary="Fix | Corrigindo Conflitos">
       <option name="closed" value="true" />
@@ -202,7 +203,6 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
-    <option name="hasUnityReference" value="true" />
     <option name="unityProject" value="true" />
     <option name="unityProjectFolder" value="true" />
   </component>
