@@ -35,11 +35,13 @@ public class LevelUp : MonoBehaviour
     {
         levelUpPanel.SetActive(true);
         RandomCards();
+        Time.timeScale = 0f;
     }
 
     public void CloseLevelUpPanel()
     {
         levelUpPanel.SetActive(false);
+        Time.timeScale = 1f; 
     }
 
     private void RandomCards()
