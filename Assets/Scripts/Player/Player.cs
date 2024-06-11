@@ -32,10 +32,10 @@ public class Player : Entity
             _rb.AddForce(new Vector2(_rb.velocity.x * 1.1f, _rb.velocity.y), ForceMode2D.Impulse);
         else
         {
-            if (Input.GetKey(KeyCode.Space) && Input.GetAxisRaw("Horizontal") is 1 or -1)
+            if ((Input.GetKey(KeyCode.Space) || Input.GetAxisRaw("Jump") is 1 or -1) && Input.GetAxisRaw("Horizontal") is 1 or -1)
                 _rb.AddForce(new Vector2(_rb.velocity.x * 1.8f, _rb.velocity.y), ForceMode2D.Impulse);
 
-            if (Input.GetKey(KeyCode.Space) && Input.GetAxisRaw("Vertical") is 1 or -1)
+            if ((Input.GetKey(KeyCode.Space) || Input.GetAxisRaw("Jump") is 1 or -1) && Input.GetAxisRaw("Vertical") is 1 or -1)
                 _rb.AddForce(new Vector2(_rb.velocity.x * 1.8f, _rb.velocity.y), ForceMode2D.Impulse);
         }
     }
