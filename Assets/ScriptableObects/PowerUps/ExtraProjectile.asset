@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c4ad44f4584fa0943eeb0322babd95, type: 3}
   m_Name: ExtraProjectile
   m_EditorClassIdentifier: 
-  puName: Extra Projectiles
-  description: Fires additional projectiles.
+  puName: Extra projectile
+  description: Fires an additional projectile
   sprite: {fileID: 0}
   additionalProjectiles: 1

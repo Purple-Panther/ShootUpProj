@@ -14,29 +14,29 @@ public class Player : Entity
     {
         if (!CanMove) return;
 
-        float moveSpeed = Data.BaseSpeed; // Ajuste da velocidade de movimento do jogador
+        float moveSpeed = Data.BaseSpeed;
+        Vector2 moveVelocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, Input.GetAxisRaw("Vertical") * moveSpeed);
 
-        float moveInputHorizontal = Input.GetAxisRaw("Horizontal");
-        float moveInputVertical = Input.GetAxisRaw("Vertical");
+        _rb.velocity = moveVelocity;
 
-        Vector2 moveVelocity = new Vector2(moveInputHorizontal * moveSpeed, moveInputVertical * moveSpeed);
-
-        _rb.velocity = moveVelocity; // Aplicar a velocidade ao Rigidbody
-
-        Dash();
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Dash();
+        }
     }
 
     private void Dash()
     {
-        if (Input.GetKey(KeyCode.Space) && Input.GetAxisRaw("Horizontal") is 1 or -1 && Input.GetAxisRaw("Vertical") is 1 or -1)
-            _rb.AddForce(new Vector2(_rb.velocity.x * 1.1f, _rb.velocity.y), ForceMode2D.Impulse);
-        else
-        {
-            if ((Input.GetKey(KeyCode.Space) || Input.GetAxisRaw("Jump") is 1 or -1) && Input.GetAxisRaw("Horizontal") is 1 or -1)
-                _rb.AddForce(new Vector2(_rb.velocity.x * 1.8f, _rb.velocity.y), ForceMode2D.Impulse);
+        float dashMultiplier = 1.8f;
 
-            if ((Input.GetKey(KeyCode.Space) || Input.GetAxisRaw("Jump") is 1 or -1) && Input.GetAxisRaw("Vertical") is 1 or -1)
-                _rb.AddForce(new Vector2(_rb.velocity.x * 1.8f, _rb.velocity.y), ForceMode2D.Impulse);
+        if (Input.GetAxisRaw("Horizontal") != 0)
+        {
+            _rb.AddForce(new Vector2(_rb.velocity.x * dashMultiplier, _rb.velocity.y), ForceMode2D.Impulse);
+        }
+
+        if (Input.GetAxisRaw("Vertical") != 0)
+        {
+            _rb.AddForce(new Vector2(_rb.velocity.x, _rb.velocity.y * dashMultiplier), ForceMode2D.Impulse);
         }
     }
 }

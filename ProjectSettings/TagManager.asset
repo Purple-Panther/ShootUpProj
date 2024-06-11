@@ -9,6 +9,7 @@ TagManager:
   - DeadLine
   - Hud
   - Wall
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX

@@ -11,6 +11,8 @@ public class Hud : MonoBehaviour
     public TMP_Text fps;
     public Slider lifeBar;
     public Slider expBar;
+    
+    public GameObject damage_popup;
 
     [FormerlySerializedAs("playerStats")] [SerializeField] private Entity player;
     [SerializeField] public ScoreStats scoreStats;
