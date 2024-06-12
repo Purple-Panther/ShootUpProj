@@ -25,7 +25,7 @@ public class Entity : MonoBehaviour, IEntity
         _spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         PowerUps = new Dictionary<PowerUpType, (PowerUpBase powerUp, int quantity)>();
     }

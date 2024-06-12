@@ -14,6 +14,8 @@ public class EntityDataInstance
     public float Exp { get; set; }
     public float ExpToNextLevel { get; set; }
 
+    public float CurrentSpeed { get; set; }
+
     public bool CanEarnExp { get; set; } = true;
     public bool CanLevelUp => Exp >= ExpToNextLevel;
 

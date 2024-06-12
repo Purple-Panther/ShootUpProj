@@ -19,8 +19,9 @@ public class EliteRangedEnemy : Entity
 
     private Rigidbody2D _rb;
 
-    protected void Start()
+    protected override void Start()
     {
+        base.Start();
         _shootInterval = Data.AttackSpeed;
         _rb = GetComponent<Rigidbody2D>();
     }

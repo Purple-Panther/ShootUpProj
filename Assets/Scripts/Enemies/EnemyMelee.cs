@@ -13,8 +13,9 @@ public class EnemyMelee : Entity
     private int _direction = 1;
 
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         _meleeHitDamage = Data.AttackDamage;
         _speed = Data.BaseSpeed;
     }

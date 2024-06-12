@@ -12,8 +12,9 @@ public class EnemyRanged : Entity
     private float _shootInterval;
     private Rigidbody2D _rb;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         _shootInterval = Data.AttackSpeed;
         _rb = GetComponent<Rigidbody2D>();
 

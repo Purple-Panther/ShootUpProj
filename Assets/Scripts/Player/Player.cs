@@ -3,6 +3,7 @@ using UnityEngine;
 public class Player : Entity
 {
     private Rigidbody2D _rb;
+    public float _xVelocity;
 
     protected override void Awake()
     {
@@ -18,6 +19,7 @@ public class Player : Entity
         Vector2 moveVelocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, Input.GetAxisRaw("Vertical") * moveSpeed);
 
         _rb.velocity = moveVelocity;
+        Data.CurrentSpeed = moveVelocity.x;
 
         if (Input.GetKey(KeyCode.Space))
         {
