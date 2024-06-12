@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PowerUpCard : MonoBehaviour
 {
-    public Text nameHolder;
-    public Text descriptionHolder;
+    public TMP_Text nameHolder;
+    public TMP_Text descriptionHolder;
     public Image spriteHolder;
     private PowerUpBase _powerUp;
 

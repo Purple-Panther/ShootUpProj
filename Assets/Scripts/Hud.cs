@@ -12,7 +12,7 @@ public class Hud : MonoBehaviour
     public Slider lifeBar;
     public Slider expBar;
     
-    public GameObject damage_popup;
+    [FormerlySerializedAs("damage_popup")] public GameObject damagePopup;
 
     [FormerlySerializedAs("playerStats")] [SerializeField] private Entity player;
     [SerializeField] public ScoreStats scoreStats;
