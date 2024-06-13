@@ -5,14 +5,15 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabs;
-    public GameObject[] eliteEnemyPrefabs; // array de inimigos de elite
-    public float eliteSpawnChance = 0.1f; // chance de spawnar um inimigo de elite
+    public GameObject[] eliteEnemyPrefabs;
+    public float eliteSpawnChance = 0.1f;
     public List<Transform> spawnPoints;
     public float spawnInterval = 3f;
     public float minSpawnInterval = 0.3f;
     public float difficultyIncreaseRate = 0.95f;
 
     private float _nextSpawnTime;
+    private bool _bossActive;
 
     private void Start()
     {
@@ -21,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeSinceLevelLoad < _nextSpawnTime) return;
+        if (_bossActive || Time.timeSinceLevelLoad < _nextSpawnTime) return;
 
         SpawnEnemies();
         _nextSpawnTime = Time.timeSinceLevelLoad + spawnInterval;
@@ -33,9 +34,8 @@ public class EnemySpawner : MonoBehaviour
         int spawnIndex = Random.Range(0, spawnPoints.Count);
         SpawnEnemyAtPoint(spawnIndex);
 
-        if (Random.value < eliteSpawnChance) // se a chance aleatória for menor que a chance de spawn do inimigo de elite
-            SpawnEliteEnemyAtPoint(spawnIndex); // spawnar o inimigo de elite
-
+        if (Random.value < eliteSpawnChance)
+            SpawnEliteEnemyAtPoint(spawnIndex);
         else if (Random.value > 0.5f)
             SpawnAdditionalEnemies(spawnIndex);
     }
@@ -48,10 +48,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEliteEnemyAtPoint(int spawnIndex)
     {
-        GameObject eliteEnemyPrefab =
-            eliteEnemyPrefabs[Random.Range(0, eliteEnemyPrefabs.Length)]; // selecionar um inimigo de elite aleatório
-        Instantiate(eliteEnemyPrefab, spawnPoints[spawnIndex].position,
-            Quaternion.identity); // spawnar o inimigo de elite
+        GameObject eliteEnemyPrefab = eliteEnemyPrefabs[Random.Range(0, eliteEnemyPrefabs.Length)];
+        Instantiate(eliteEnemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
     }
 
     private void SpawnAdditionalEnemies(int initialSpawnIndex)
@@ -61,6 +59,19 @@ public class EnemySpawner : MonoBehaviour
             int nextIndex = initialSpawnIndex + i;
             if (nextIndex < spawnPoints.Count)
                 SpawnEnemyAtPoint(nextIndex);
+        }
+    }
+
+    public void SetBossActive(bool active)
+    {
+        _bossActive = active;
+    }
+
+    public void KillAllEnemies()
+    {
+        foreach (var enemy in GameObject.FindGameObjectsWithTag(Constraints.EnemyTag))
+        {
+            Destroy(enemy);
         }
     }
 }

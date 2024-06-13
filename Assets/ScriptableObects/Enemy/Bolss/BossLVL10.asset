@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ee2c2bf7bcb4fad82240edb63782504, type: 3}
-  m_Name: TankData
+  m_Name: BossLVL10
   m_EditorClassIdentifier: 
-  maxHealth: 80
-  health: 80
-  baseSpeed: 1
-  attackDamage: 35
+  maxHealth: 1000
+  health: 1000
+  baseSpeed: 3
+  attackDamage: 20
   attackSpeed: 1
-  attackLife: 35
-  pointsDroppedWhenDying: 300
-  expDroppedWhenDying: 100
+  attackLife: 20
+  pointsDroppedWhenDying: 2000
+  expDroppedWhenDying: 1000
   exp: 0
   expToNextLevel: 0
   level: 1

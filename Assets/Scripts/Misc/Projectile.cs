@@ -20,8 +20,16 @@ public class Projectile : MonoBehaviour
     {
         if ((collision.gameObject.CompareTag(Constraints.EnemyTag) && isPlayer) || (collision.gameObject.CompareTag(Constraints.PlayerTag) && isPlayer == false))
         {
-            collision.gameObject.GetComponent<Entity>().TakeDamage(_projectileDamage);
-            Destroy(gameObject);
+            Entity entity = collision.gameObject.GetComponent<Entity>();
+            if (entity != null)
+            {
+                entity.TakeDamage(_projectileDamage);
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.LogError("No Entity component found on the collided gameObject.");
+            }
         }
         else if (collision.gameObject.CompareTag(Constraints.BoundariesTag))
         {

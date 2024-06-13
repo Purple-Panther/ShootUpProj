@@ -31,23 +31,35 @@ public class Hud : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>();
+        // Encontrar o jogador (player) com a tag "Player"
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            player = playerObject.GetComponent<Player>(); // Alterado para GetComponent<Player>()
 
-        lifeBar.maxValue = player.Data.MaxHealth;
-        expBar.value = player.Data.Exp;
-        lifeBar.value = player.Data.MaxHealth;
-        levelText.text = player.Data.Level.ToString();
+            if (player != null)
+            {
+                lifeBar.maxValue = player.Data.MaxHealth;
+                expBar.value = player.Data.Exp;
+                lifeBar.value = player.Data.MaxHealth;
+                levelText.text = player.Data.Level.ToString();
 
-        if (player is null)
-            Debug.LogError("PlayerStats component not found on player object.");
-
-        PlayerHUD();
+                PlayerHUD();
+            }
+            else
+            {
+                Debug.LogError("Player component not found on player object.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Player object not found with tag 'Player'.");
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (player is not null)
+        if (player != null)
         {
             PlayerHUD();
         }
@@ -71,4 +83,6 @@ public class Hud : MonoBehaviour
         levelText.text = player.Data.Level.ToString();
         Debug.Log(scoreStats.score);
     }
+
+
 }

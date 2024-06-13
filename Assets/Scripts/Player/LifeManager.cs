@@ -14,7 +14,7 @@ public class LifeManager : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindObjectOfType<Entity>();
+        player = FindObjectOfType<Player>(); // Alterado para FindObjectOfType<Player>()
 
         if (player != null)
         {
@@ -22,7 +22,12 @@ public class LifeManager : MonoBehaviour
             lastPlayerHealth = playerLife;
             AddHearts((int)(playerLife / 20f)); // Use 20f to perform float division
         }
+        else
+        {
+            Debug.LogError("Player object with Player component not found in scene.");
+        }
     }
+
     void Update()
     {
         if (player != null)
@@ -35,6 +40,9 @@ public class LifeManager : MonoBehaviour
             }
         }
     }
+
+
+
 
     void AddHearts(int count)
     {

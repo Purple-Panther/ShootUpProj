@@ -3350,7 +3350,7 @@ MonoBehaviour:
   - {fileID: 1427855155}
   - {fileID: 1112951877}
   - {fileID: 129160792}
-  spawnInterval: 4
+  spawnInterval: 1.111111e+12
   minSpawnInterval: 0.3
   difficultyIncreaseRate: 0.95
 --- !u!4 &1540109136
