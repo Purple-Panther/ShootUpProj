@@ -3,7 +3,11 @@ using UnityEngine;
 public class Player : Entity
 {
     private Rigidbody2D _rb;
-    public float _xVelocity;
+    private Vector2 _movement;
+    private Vector2 _clampedMovement;
+    private float _dashMultiplier = 1.8f;
+    private bool _isVerticalDashing;
+    private bool _isHorizontalDashing;
 
     protected override void Awake()
     {
@@ -15,30 +19,38 @@ public class Player : Entity
     {
         if (!CanMove) return;
 
-        float moveSpeed = Data.BaseSpeed;
-        Vector2 moveVelocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, Input.GetAxisRaw("Vertical") * moveSpeed);
+        _movement.x = Input.GetAxisRaw("Horizontal");
+        _movement.y = Input.GetAxisRaw("Vertical");
 
-        _rb.velocity = moveVelocity;
-        Data.CurrentSpeed = moveVelocity.x;
+        _clampedMovement = Vector2.ClampMagnitude(_movement, 1);
 
         if (Input.GetKey(KeyCode.Space))
-        {
             Dash();
+    }
+
+    private void FixedUpdate()
+    {
+        _rb.MovePosition(_rb.position + (_clampedMovement * (Data.BaseSpeed * Time.fixedDeltaTime)));
+
+        if (_isHorizontalDashing)
+        {
+            _isHorizontalDashing = false;
+            _rb.AddForce(new Vector2(_rb.velocity.x * _dashMultiplier, _rb.velocity.y), ForceMode2D.Impulse);
+        }
+
+        if (_isVerticalDashing)
+        {
+            _isVerticalDashing = false;
+            _rb.AddForce(new Vector2(_rb.velocity.x, _rb.velocity.y * _dashMultiplier), ForceMode2D.Impulse);
         }
     }
 
     private void Dash()
     {
-        float dashMultiplier = 1.8f;
+        if (Input.GetAxisRaw("Horizontal") != 0 && !_isHorizontalDashing)
+            _isHorizontalDashing = true;
 
-        if (Input.GetAxisRaw("Horizontal") != 0)
-        {
-            _rb.AddForce(new Vector2(_rb.velocity.x * dashMultiplier, _rb.velocity.y), ForceMode2D.Impulse);
-        }
-
-        if (Input.GetAxisRaw("Vertical") != 0)
-        {
-            _rb.AddForce(new Vector2(_rb.velocity.x, _rb.velocity.y * dashMultiplier), ForceMode2D.Impulse);
-        }
+        if (Input.GetAxisRaw("Vertical") != 0 && !_isVerticalDashing)
+            _isVerticalDashing = true;
     }
 }
