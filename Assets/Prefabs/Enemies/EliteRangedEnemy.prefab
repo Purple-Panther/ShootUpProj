@@ -100,6 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soData: {fileID: 11400000, guid: 95eafaece1573f74a8c64cac5adafe96, type: 2}
+  dropList:
+  - itemPrefab: {fileID: 1796524339938888160, guid: 49d90c6fc51e3a54885ac5edd54139bb, type: 3}
+    dropChance: 0.1
   projectilePrefab: {fileID: 538717932606853446, guid: d2f363551a11e8145a45ff3ba8667078, type: 3}
   projectileSpeed: 5
   stopYPositionLowerBound: 0
