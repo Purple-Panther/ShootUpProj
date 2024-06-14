@@ -10,7 +10,7 @@ public class BossLVL10 : Entity
     [Header("Attack Settings")]
     [SerializeField] private int numberOfProjectiles;
     [SerializeField] private float spreadAngle;
-    [SerializeField] private float projectileSpeed; 
+    [SerializeField] private float projectileSpeed;
     [SerializeField] private float attackDuration;
 
     [Header("Spawn Settings")]
@@ -21,17 +21,78 @@ public class BossLVL10 : Entity
     private bool useBulletHell = true;
     private Transform playerTransform;
     private bool isAttacking;
+    private bool hasReachedTargetPosition;
+
+    private Vector3 targetPosition;
+    private float horizontalMovementDelay = 2.0f;
+    private float horizontalMovementTimer;
+
+    private float horizontalDirection;
 
     protected override void Start()
     {
         base.Start();
         meleeHitDamage = Data.AttackDamage;
         _shootInterval = Data.AttackSpeed;
-        
 
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        
+
+        Camera mainCamera = Camera.main;
+        if (mainCamera != null)
+        {
+            float screenTopEdge = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 1f, mainCamera.nearClipPlane)).y;
+            targetPosition = new Vector3(transform.position.x, screenTopEdge - (2 * mainCamera.orthographicSize / 6), transform.position.z);
+        }
+
         StartCoroutine(AttackRoutine());
+
+        horizontalDirection = Random.Range(-1f, 1f);
+        horizontalMovementTimer = horizontalMovementDelay;
+    }
+
+    private void FixedUpdate()
+    {
+        if (!hasReachedTargetPosition)
+        {
+            MoveToTargetPosition();
+        }
+        else
+        {
+            RandomHorizontalMovement();
+        }
+    }
+
+    private void MoveToTargetPosition()
+    {
+        float step = Data.BaseSpeed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
+
+        if (Vector3.Distance(transform.position, targetPosition) < 0.001f)
+        {
+            hasReachedTargetPosition = true;
+        }
+    }
+
+    private void RandomHorizontalMovement()
+    {
+        horizontalMovementTimer -= Time.deltaTime;
+        if (horizontalMovementTimer <= 0)
+        {
+            horizontalDirection = Random.Range(-1f, 1f);
+            horizontalMovementTimer = horizontalMovementDelay;
+        }
+
+        Vector3 movement = new Vector3(horizontalDirection * Data.BaseSpeed * Time.deltaTime, 0, 0);
+        transform.position += movement;
+
+        float screenWidth = Camera.main.orthographicSize * Screen.width / Screen.height;
+        float bossHalfWidth = GetComponent<SpriteRenderer>().bounds.extents.x;
+        
+        transform.position = new Vector3(
+            Mathf.Clamp(transform.position.x, -screenWidth + bossHalfWidth, screenWidth - bossHalfWidth),
+            transform.position.y,
+            transform.position.z
+        );
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -126,17 +187,25 @@ public class BossLVL10 : Entity
         Camera mainCamera = Camera.main;
         if (mainCamera == null) return;
 
-
         float playerX = playerTransform.position.x;
 
-    
         float screenTopEdge = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 1f, mainCamera.nearClipPlane)).y;
 
-   
         float randomXOffset = Random.Range(-spawnXOffsetRange, spawnXOffsetRange);
         float spawnX = playerX + randomXOffset;
 
-        Vector3 spawnPosition = new Vector3(spawnX, screenTopEdge + 1f, 0); 
+        Vector3 spawnPosition = new Vector3(spawnX, screenTopEdge + 1f, 0);
         Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
     }
+    
+    protected override void Death()
+    {
+        base.Death();
+        var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
+        var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>().scoreStats;
+
+        score.AddScore(Data.PointsDroppedWhenDying);
+        player.AddExp(Data.ExpDroppedWhenDying);
+    }
+
 }

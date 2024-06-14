@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class SpawerManager : MonoBehaviour
 {
     public GameObject[] enemyPrefabs;
     public GameObject[] eliteEnemyPrefabs;
@@ -22,9 +22,13 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (_bossActive || Time.timeSinceLevelLoad < _nextSpawnTime) return;
+        if (Time.timeSinceLevelLoad < _nextSpawnTime) return;
 
-        SpawnEnemies();
+        if (!_bossActive)
+        {
+            SpawnEnemies();
+        }
+
         _nextSpawnTime = Time.timeSinceLevelLoad + spawnInterval;
         spawnInterval = Mathf.Max(spawnInterval * difficultyIncreaseRate, minSpawnInterval);
     }

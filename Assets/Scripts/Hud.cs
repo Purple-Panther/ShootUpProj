@@ -81,7 +81,7 @@ public class Hud : MonoBehaviour
 
         //Level
         levelText.text = player.Data.Level.ToString();
-        Debug.Log(scoreStats.score);
+       
     }
 
 

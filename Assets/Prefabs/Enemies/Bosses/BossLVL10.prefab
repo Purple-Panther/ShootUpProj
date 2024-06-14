@@ -181,6 +181,6 @@ MonoBehaviour:
   enemyPrefab: {fileID: 8335999442525658310, guid: 168d82d55fa62ad4da0ef6af39fe3026, type: 3}
   numberOfProjectiles: 10
   spreadAngle: 180
-  projectileSpeed: 1
+  projectileSpeed: 2
   attackDuration: 10
   spawnXOffsetRange: 2
