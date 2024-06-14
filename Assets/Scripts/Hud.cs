@@ -18,7 +18,7 @@ public class Hud : MonoBehaviour
     [SerializeField] public ScoreStats scoreStats;
     [SerializeField] private FpsStats fpsStats;
 
-    public Text levelText;
+    public TMP_Text levelText;
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
