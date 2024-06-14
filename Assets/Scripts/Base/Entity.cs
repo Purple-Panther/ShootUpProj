@@ -12,7 +12,9 @@ public class Entity : MonoBehaviour, IEntity
     [SerializeField] private EntityData soData;
     private SpriteRenderer[] _spriteRenderers;
     protected Dictionary<PowerUpType, (PowerUpBase powerUp, int quantity)> PowerUps;
-
+    
+    [SerializeField]
+    private List<ItemDrop> dropList;
     public EntityDataInstance Data { get; set; }
 
     public bool CanMove { get; set; } = true;
@@ -33,6 +35,7 @@ public class Entity : MonoBehaviour, IEntity
     protected virtual void Death()
     {
         Destroy(gameObject);
+        DropItems();
     }
 
     public void TakeDamage(float hpToRemove)
@@ -93,6 +96,19 @@ public class Entity : MonoBehaviour, IEntity
         Data.Exp += xp;
         if (Data.CanLevelUp)
             Data.LevelUp();
+    }
+    
+    
+    private void DropItems()
+    {
+        foreach (var itemDrop in dropList)
+        {
+            float dropRoll = Random.Range(0f, 1f);
+            if (dropRoll <= itemDrop.dropChance)
+            {
+                Instantiate(itemDrop.itemPrefab, transform.position, Quaternion.identity);
+            }
+        }
     }
     
     

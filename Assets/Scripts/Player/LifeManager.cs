@@ -4,7 +4,8 @@ using Interfaces;
 
 public class LifeManager : MonoBehaviour
 {
-    public GameObject heartPrefab;
+    public GameObject fullHeartPrefab;
+    public GameObject halfHeartPrefab;
     public Transform heartContainer;
     public IEntity player;
 
@@ -14,13 +15,13 @@ public class LifeManager : MonoBehaviour
 
     void Start()
     {
-        player = FindObjectOfType<Player>(); // Alterado para FindObjectOfType<Player>()
+        player = FindObjectOfType<Player>();
 
         if (player != null)
         {
             playerLife = (int)player.Data.Health;
             lastPlayerHealth = playerLife;
-            AddHearts((int)(playerLife / 20f)); // Use 20f to perform float division
+            AddHearts(playerLife);
         }
         else
         {
@@ -33,33 +34,40 @@ public class LifeManager : MonoBehaviour
         if (player != null)
         {
             int currentHealth = (int)player.Data.Health;
-            if (currentHealth < lastPlayerHealth && (lastPlayerHealth - currentHealth) >= 20)
+            if (currentHealth != lastPlayerHealth)
             {
-                RemoveHeart();
+                UpdateHearts(currentHealth);
                 lastPlayerHealth = currentHealth;
             }
         }
     }
 
-
-
-
-    void AddHearts(int count)
+    void AddHearts(int health)
     {
-        for (int i = 0; i < count; i++)
+        int fullHeartCount = health / 20;
+        int halfHeartCount = (health % 20) / 10;
+
+        for (int i = 0; i < fullHeartCount; i++)
         {
-            GameObject heart = Instantiate(heartPrefab, heartContainer);
+            GameObject heart = Instantiate(fullHeartPrefab, heartContainer);
             hearts.Add(heart);
+        }
+
+        if (halfHeartCount > 0)
+        {
+            GameObject halfHeart = Instantiate(halfHeartPrefab, heartContainer);
+            hearts.Add(halfHeart);
         }
     }
 
-    void RemoveHeart()
+    void UpdateHearts(int currentHealth)
     {
-        if (hearts.Count > 0)
+        foreach (var heart in hearts)
         {
-            GameObject heart = hearts[hearts.Count - 1];
-            hearts.RemoveAt(hearts.Count - 1);
             Destroy(heart);
         }
+        hearts.Clear();
+        
+        AddHearts(currentHealth);
     }
 }

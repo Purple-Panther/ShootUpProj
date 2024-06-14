@@ -8,13 +8,15 @@ public class BossLVL10 : Entity
     [SerializeField] private GameObject enemyPrefab;
 
     [Header("Attack Settings")]
-    [SerializeField] private Transform[] summonPoints;
     [SerializeField] private int numberOfProjectiles;
     [SerializeField] private float spreadAngle;
     [SerializeField] private float projectileSpeed; 
     [SerializeField] private float attackDuration;
-    
-    private float shootingInterval;
+
+    [Header("Spawn Settings")]
+    [SerializeField] private float spawnXOffsetRange = 2.0f;
+
+    private float _shootInterval;
     private float meleeHitDamage;
     private bool useBulletHell = true;
     private Transform playerTransform;
@@ -24,8 +26,11 @@ public class BossLVL10 : Entity
     {
         base.Start();
         meleeHitDamage = Data.AttackDamage;
-        shootingInterval = Data.AttackSpeed;
+        _shootInterval = Data.AttackSpeed;
+        
 
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        
         StartCoroutine(AttackRoutine());
     }
 
@@ -59,7 +64,7 @@ public class BossLVL10 : Entity
         while (Time.time < endTime)
         {
             FireBulletHell();
-            yield return new WaitForSeconds(shootingInterval);
+            yield return new WaitForSeconds(_shootInterval);
         }
 
         isAttacking = false;
@@ -80,6 +85,13 @@ public class BossLVL10 : Entity
 
             GameObject tempProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             tempProjectile.GetComponent<Rigidbody2D>().velocity = projectileDirection * projectileSpeed;
+
+            Projectile projectileScript = tempProjectile.GetComponent<Projectile>();
+            if (projectileScript != null)
+            {
+                projectileScript.Initialize(Data.AttackDamage);
+                projectileScript.projectileLifeSpan = Data.AttackLife;
+            }
         }
     }
 
@@ -111,7 +123,20 @@ public class BossLVL10 : Entity
 
     private void SummonEnemy()
     {
-        int summonIndex = Random.Range(0, summonPoints.Length);
-        Instantiate(enemyPrefab, summonPoints[summonIndex].position, Quaternion.identity);
+        Camera mainCamera = Camera.main;
+        if (mainCamera == null) return;
+
+
+        float playerX = playerTransform.position.x;
+
+    
+        float screenTopEdge = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 1f, mainCamera.nearClipPlane)).y;
+
+   
+        float randomXOffset = Random.Range(-spawnXOffsetRange, spawnXOffsetRange);
+        float spawnX = playerX + randomXOffset;
+
+        Vector3 spawnPosition = new Vector3(spawnX, screenTopEdge + 1f, 0); 
+        Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
     }
 }

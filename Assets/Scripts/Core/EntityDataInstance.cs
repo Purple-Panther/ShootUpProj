@@ -18,6 +18,8 @@ public class EntityDataInstance
 
     public bool CanEarnExp { get; set; } = true;
     public bool CanLevelUp => Exp >= ExpToNextLevel;
+    
+    
 
     public EntityDataInstance(EntityData entityData)
     {

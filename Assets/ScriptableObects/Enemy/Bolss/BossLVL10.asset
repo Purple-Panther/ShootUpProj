@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee2c2bf7bcb4fad82240edb63782504, type: 3}
   m_Name: BossLVL10
   m_EditorClassIdentifier: 
-  maxHealth: 1000
-  health: 1000
+  maxHealth: 500
+  health: 500
   baseSpeed: 3
   attackDamage: 20
-  attackSpeed: 1
-  attackLife: 20
+  attackSpeed: 2
+  attackLife: 10
   pointsDroppedWhenDying: 2000
   expDroppedWhenDying: 1000
   exp: 0

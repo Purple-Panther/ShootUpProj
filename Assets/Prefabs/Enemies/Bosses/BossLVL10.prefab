@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5071765539328946003}
   - component: {fileID: 1205517569778514699}
   m_Layer: 0
-  m_Name: Boss
+  m_Name: BossLVL10
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,23 +176,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soData: {fileID: 11400000, guid: 4173b9b01a617284f82a2d61639b9349, type: 2}
+  dropList: []
   projectilePrefab: {fileID: 538717932606853446, guid: af3eff4cce14a3a42b521909e652f26d, type: 3}
-  enemyPrefab: {fileID: 6745072399473900397, guid: 7ccec13456ea3904fa5f8634ac2c971c, type: 3}
-  summonPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  enemyPrefab: {fileID: 8335999442525658310, guid: 168d82d55fa62ad4da0ef6af39fe3026, type: 3}
   numberOfProjectiles: 10
-  spreadAngle: 90
-  projectileSpeed: 2
+  spreadAngle: 180
+  projectileSpeed: 1
   attackDuration: 10
+  spawnXOffsetRange: 2

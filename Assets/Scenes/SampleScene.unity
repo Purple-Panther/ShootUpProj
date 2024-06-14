@@ -685,11 +685,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 614624660311765283, guid: 44d66794e942da14dbb2ef7dc93f616d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.29
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 614624660311765283, guid: 44d66794e942da14dbb2ef7dc93f616d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.35
+      value: -6.86
       objectReference: {fileID: 0}
     - target: {fileID: 614624660311765283, guid: 44d66794e942da14dbb2ef7dc93f616d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1862,7 +1862,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebed739b452c5624bb375c8d10ea2a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heartPrefab: {fileID: 8988730994258384887, guid: 5aa091e2dcfd73d4d8896cc9c1240986, type: 3}
+  fullHeartPrefab: {fileID: 8988730994258384887, guid: 5aa091e2dcfd73d4d8896cc9c1240986, type: 3}
+  halfHeartPrefab: {fileID: 8988730994258384887, guid: 24e2028480be56e4e90736562fbf0828, type: 3}
   heartContainer: {fileID: 2144183126}
 --- !u!4 &808079168
 Transform:
