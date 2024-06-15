@@ -10,7 +10,7 @@ public class SpawnerManager : MonoBehaviour
     public List<Transform> spawnPoints;
     public float spawnInterval = 3f;
     public float minSpawnInterval = 0.3f;
-    public float difficultyIncreaseRate = 0.95f;
+    public float difficultyIncreaseRate = 0.98f;
 
     private float _nextSpawnTime;
     private bool _bossActive;

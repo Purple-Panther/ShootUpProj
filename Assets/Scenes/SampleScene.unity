@@ -1686,9 +1686,10 @@ MonoBehaviour:
   levelUpPanel: {fileID: 624511167}
   background: {fileID: 2098947243}
   availablePowerUps:
-  - {fileID: 11400000, guid: 7c89fa849d9ef2e4084b7dad414398a7, type: 2}
-  - {fileID: 11400000, guid: d8a7863534337714ea31003389a5b3bb, type: 2}
+  - {fileID: 11400000, guid: 03e4b745651648b4e87fe2afd5f029c9, type: 2}
   - {fileID: 11400000, guid: d198e9a2458b79047bb7846de31ef52b, type: 2}
+  - {fileID: 11400000, guid: d8a7863534337714ea31003389a5b3bb, type: 2}
+  - {fileID: 11400000, guid: 7c89fa849d9ef2e4084b7dad414398a7, type: 2}
   powerUpCardPrefab: {fileID: 7820122808794667192, guid: 7745197860878544ea7848a619d77752, type: 3}
 --- !u!4 &552938358
 Transform:
@@ -3836,9 +3837,9 @@ MonoBehaviour:
   - {fileID: 1427855155}
   - {fileID: 1112951877}
   - {fileID: 129160792}
-  spawnInterval: 123123100
+  spawnInterval: 1
   minSpawnInterval: 0.3
-  difficultyIncreaseRate: 0.95
+  difficultyIncreaseRate: 0.98
 --- !u!4 &1540109136
 Transform:
   m_ObjectHideFlags: 0

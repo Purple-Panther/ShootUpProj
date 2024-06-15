@@ -5,6 +5,6 @@ namespace DefaultNamespace.PowerUpS
         ExtraProjectile,
         FireRate,
         AttackDamage,
-        
+        Guardian,
     }
 }

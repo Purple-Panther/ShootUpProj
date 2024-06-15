@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -10,6 +11,8 @@ public class PlayerShooting : MonoBehaviour
 
     public float attackSpeed;
     private float _nextFireTime;
+    
+    public List<GameObject> guardians = new List<GameObject>();
 
     private void Start()
     {
@@ -27,6 +30,7 @@ public class PlayerShooting : MonoBehaviour
             _nextFireTime = Time.time + attackSpeed;
         }
     }
+    
 
     void Shoot()
     {
@@ -64,4 +68,5 @@ public class PlayerShooting : MonoBehaviour
 
         Destroy(projectile, 2f);
     }
+    
 }
