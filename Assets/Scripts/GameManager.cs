@@ -13,14 +13,14 @@ namespace DefaultNamespace
         public GameObject GameOverScreen;
 
         private Player _player;
-        private SpawerManager _enemySpawner;
+        private SpawnerManager _enemySpawner;
         private bool _bossSpawned;
 
         private void Awake()
         {
             scoreManager.ResetScore();
             _player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Player>();
-            _enemySpawner = FindObjectOfType<SpawerManager>();
+            _enemySpawner = FindObjectOfType<SpawnerManager>();
         }
 
         private void Update()
