@@ -7,21 +7,21 @@ public class LifeManager : MonoBehaviour
     public GameObject fullHeartPrefab;
     public GameObject halfHeartPrefab;
     public Transform heartContainer;
-    public IEntity player;
+    public IEntity Player;
 
-    private List<GameObject> hearts = new List<GameObject>(); 
-    private int playerLife = 100;
-    private int lastPlayerHealth; 
+    private readonly IList<GameObject> _hearts = new List<GameObject>();
+    private int _playerLife = 100;
+    private int _lastPlayerHealth;
 
     void Start()
     {
-        player = FindObjectOfType<Player>();
+        Player = FindObjectOfType<Player>();
 
-        if (player != null)
+        if (Player != null)
         {
-            playerLife = (int)player.Data.Health;
-            lastPlayerHealth = playerLife;
-            AddHearts(playerLife);
+            _playerLife = (int)Player.Data.Health;
+            _lastPlayerHealth = _playerLife;
+            AddHearts(_playerLife);
         }
         else
         {
@@ -31,18 +31,18 @@ public class LifeManager : MonoBehaviour
 
     void Update()
     {
-        if (player != null)
+        if (Player != null)
         {
-            int currentHealth = (int)player.Data.Health;
-            if (currentHealth != lastPlayerHealth)
+            int currentHealth = (int)Player.Data.Health;
+            if (currentHealth != _lastPlayerHealth)
             {
                 UpdateHearts(currentHealth);
-                lastPlayerHealth = currentHealth;
+                _lastPlayerHealth = currentHealth;
             }
         }
     }
 
-    void AddHearts(int health)
+    private void AddHearts(int health)
     {
         int fullHeartCount = health / 20;
         int halfHeartCount = (health % 20) / 10;
@@ -50,23 +50,23 @@ public class LifeManager : MonoBehaviour
         for (int i = 0; i < fullHeartCount; i++)
         {
             GameObject heart = Instantiate(fullHeartPrefab, heartContainer);
-            hearts.Add(heart);
+            _hearts.Add(heart);
         }
 
         if (halfHeartCount > 0)
         {
             GameObject halfHeart = Instantiate(halfHeartPrefab, heartContainer);
-            hearts.Add(halfHeart);
+            _hearts.Add(halfHeart);
         }
     }
 
-    void UpdateHearts(int currentHealth)
+    private void UpdateHearts(int currentHealth)
     {
-        foreach (var heart in hearts)
+        foreach (var heart in _hearts)
         {
             Destroy(heart);
         }
-        hearts.Clear();
+        _hearts.Clear();
         
         AddHearts(currentHealth);
     }

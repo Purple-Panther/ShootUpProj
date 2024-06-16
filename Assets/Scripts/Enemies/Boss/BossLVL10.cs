@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class BossLVL10 : Entity
+public class BossLvl10 : Entity
 {
     [Header("Prefabs")]
     [SerializeField] private GameObject projectilePrefab;
@@ -17,42 +17,52 @@ public class BossLVL10 : Entity
     [SerializeField] private float spawnXOffsetRange = 2.0f;
 
     private float _shootInterval;
-    private float meleeHitDamage;
-    private bool useBulletHell = true;
-    private Transform playerTransform;
-    private bool isAttacking;
-    private bool hasReachedTargetPosition;
+    private float _meleeHitDamage;
+    private bool _useBulletHell = true;
+    private Transform _playerTransform;
+    private bool _isAttacking;
+    private bool _hasReachedTargetPosition;
 
-    private Vector3 targetPosition;
-    private float horizontalMovementDelay = 2.0f;
-    private float horizontalMovementTimer;
+    private Vector3 _targetPosition;
+    private float _horizontalMovementDelay = 2.0f;
+    private float _horizontalMovementTimer;
 
-    private float horizontalDirection;
+    private float BossHalfWidth => GetComponent<SpriteRenderer>().bounds.extents.x;
+    private float _horizontalDirection;
+
+    private Camera _mainCamera;
+    private GameObject _tempProjectile;
+    private Rigidbody2D _tempProjectileRb;
+
+    private Projectile _projectile;
 
     protected override void Start()
     {
         base.Start();
-        meleeHitDamage = Data.AttackDamage;
+        _tempProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        _tempProjectileRb = _tempProjectile.GetComponent<Rigidbody2D>();
+        _projectile = _tempProjectile.GetComponent<Projectile>();
+        _mainCamera = Camera.main;
+        _meleeHitDamage = Data.AttackDamage;
         _shootInterval = Data.AttackSpeed;
 
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
-        Camera mainCamera = Camera.main;
-        if (mainCamera != null)
+        if (_mainCamera != null)
         {
-            float screenTopEdge = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 1f, mainCamera.nearClipPlane)).y;
-            targetPosition = new Vector3(transform.position.x, screenTopEdge - (2 * mainCamera.orthographicSize / 6), transform.position.z);
+            float screenTopEdge = _mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 1f, _mainCamera.nearClipPlane)).y;
+            _targetPosition = new Vector3(transform.position.x, screenTopEdge - (2 * _mainCamera.orthographicSize / 6), transform.position.z);
         }
 
         StartCoroutine(AttackRoutine());
 
-        horizontalDirection = Random.Range(-1f, 1f);
-        horizontalMovementTimer = horizontalMovementDelay;
+        _horizontalDirection = Random.Range(-1f, 1f);
+        _horizontalMovementTimer = _horizontalMovementDelay;
     }
 
     private void FixedUpdate()
     {
-        if (!hasReachedTargetPosition)
+        if (!_hasReachedTargetPosition)
         {
             MoveToTargetPosition();
         }
@@ -65,31 +75,29 @@ public class BossLVL10 : Entity
     private void MoveToTargetPosition()
     {
         float step = Data.BaseSpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
+        transform.position = Vector3.MoveTowards(transform.position, _targetPosition, step);
 
-        if (Vector3.Distance(transform.position, targetPosition) < 0.001f)
+        if (Vector3.Distance(transform.position, _targetPosition) < 0.001f)
         {
-            hasReachedTargetPosition = true;
+            _hasReachedTargetPosition = true;
         }
     }
 
     private void RandomHorizontalMovement()
     {
-        horizontalMovementTimer -= Time.deltaTime;
-        if (horizontalMovementTimer <= 0)
+        _horizontalMovementTimer -= Time.deltaTime;
+        if (_horizontalMovementTimer <= 0)
         {
-            horizontalDirection = Random.Range(-1f, 1f);
-            horizontalMovementTimer = horizontalMovementDelay;
+            _horizontalDirection = Random.Range(-1f, 1f);
+            _horizontalMovementTimer = _horizontalMovementDelay;
         }
 
-        Vector3 movement = new Vector3(horizontalDirection * Data.BaseSpeed * Time.deltaTime, 0, 0);
+        Vector3 movement = new Vector3(_horizontalDirection * Data.BaseSpeed * Time.deltaTime, 0, 0);
         transform.position += movement;
 
-        float screenWidth = Camera.main.orthographicSize * Screen.width / Screen.height;
-        float bossHalfWidth = GetComponent<SpriteRenderer>().bounds.extents.x;
-        
+        float screenWidth = _mainCamera.orthographicSize * Screen.width / Screen.height;
         transform.position = new Vector3(
-            Mathf.Clamp(transform.position.x, -screenWidth + bossHalfWidth, screenWidth - bossHalfWidth),
+            Mathf.Clamp(transform.position.x, -screenWidth + BossHalfWidth, screenWidth - BossHalfWidth),
             transform.position.y,
             transform.position.z
         );
@@ -99,7 +107,7 @@ public class BossLVL10 : Entity
     {
         if (collision.CompareTag(Constraints.PlayerTag))
         {
-            collision.GetComponent<Entity>().TakeDamage(meleeHitDamage);
+            collision.GetComponent<Entity>().TakeDamage(_meleeHitDamage);
         }
     }
 
@@ -107,19 +115,19 @@ public class BossLVL10 : Entity
     {
         while (true)
         {
-            if (useBulletHell)
+            if (_useBulletHell)
                 yield return StartCoroutine(BulletHellAttack());
             else
                 yield return StartCoroutine(SummonAttack());
 
-            useBulletHell = !useBulletHell;
+            _useBulletHell = !_useBulletHell;
             yield return new WaitForSeconds(attackDuration);
         }
     }
 
     private IEnumerator BulletHellAttack()
     {
-        isAttacking = true;
+        _isAttacking = true;
         float endTime = Time.time + attackDuration;
 
         while (Time.time < endTime)
@@ -128,14 +136,14 @@ public class BossLVL10 : Entity
             yield return new WaitForSeconds(_shootInterval);
         }
 
-        isAttacking = false;
+        _isAttacking = false;
     }
 
     private void FireBulletHell()
     {
-        if (playerTransform == null) return;
+        if (_playerTransform is null) return;
 
-        Vector2 directionToPlayer = (playerTransform.position - transform.position).normalized;
+        Vector2 directionToPlayer = (_playerTransform.position - transform.position).normalized;
         float angleStep = spreadAngle / (numberOfProjectiles - 1);
         float startAngle = -spreadAngle / 2;
 
@@ -144,14 +152,13 @@ public class BossLVL10 : Entity
             float currentAngle = startAngle + (i * angleStep);
             Vector2 projectileDirection = RotateVector(directionToPlayer, currentAngle);
 
-            GameObject tempProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            tempProjectile.GetComponent<Rigidbody2D>().velocity = projectileDirection * projectileSpeed;
+            _tempProjectileRb.velocity = projectileDirection * projectileSpeed;
 
-            Projectile projectileScript = tempProjectile.GetComponent<Projectile>();
-            if (projectileScript != null)
+
+            if (_projectile is not null)
             {
-                projectileScript.Initialize(Data.AttackDamage);
-                projectileScript.projectileLifeSpan = Data.AttackLife;
+                _projectile.Initialize(Data.AttackDamage);
+                _projectile.projectileLifeSpan = Data.AttackLife;
             }
         }
     }
@@ -170,7 +177,7 @@ public class BossLVL10 : Entity
 
     private IEnumerator SummonAttack()
     {
-        isAttacking = true;
+        _isAttacking = true;
         float endTime = Time.time + attackDuration;
 
         while (Time.time < endTime)
@@ -179,17 +186,16 @@ public class BossLVL10 : Entity
             yield return new WaitForSeconds(3.0f);
         }
 
-        isAttacking = false;
+        _isAttacking = false;
     }
 
     private void SummonEnemy()
     {
-        Camera mainCamera = Camera.main;
-        if (mainCamera == null) return;
+        if (_mainCamera is null) return;
 
-        float playerX = playerTransform.position.x;
+        float playerX = _playerTransform.position.x;
 
-        float screenTopEdge = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 1f, mainCamera.nearClipPlane)).y;
+        float screenTopEdge = _mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 1f, _mainCamera.nearClipPlane)).y;
 
         float randomXOffset = Random.Range(-spawnXOffsetRange, spawnXOffsetRange);
         float spawnX = playerX + randomXOffset;
@@ -201,7 +207,7 @@ public class BossLVL10 : Entity
     protected override void Death()
     {
         base.Death();
-        var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
+        var player = Constraints.PlayerGameObject.GetComponent<Entity>();
         var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>().scoreStats;
 
         score.AddScore(Data.PointsDroppedWhenDying);

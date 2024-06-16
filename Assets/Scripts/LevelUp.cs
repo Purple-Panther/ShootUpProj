@@ -11,10 +11,15 @@ public class LevelUp : MonoBehaviour
     public List<PowerUpBase> availablePowerUps;
     public GameObject powerUpCardPrefab;
 
+    private GameObject _newCard;
+    private PowerUpCard _powerUpCard;
+
     private int _currentLevel;
 
     void Start()
     {
+        _powerUpCard = _newCard.GetComponent<PowerUpCard>();
+        _newCard = Instantiate(powerUpCardPrefab, background.transform);
         var playerObject = GameObject.FindGameObjectWithTag(Constraints.PlayerTag);
         _powerUpManager = playerObject.GetComponent<PowerUpManager>();
         _player = playerObject.GetComponent<Player>();
@@ -54,8 +59,7 @@ public class LevelUp : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             int randomNumber = Random.Range(0, availablePowerUps.Count - 1);
-            GameObject newCard = Instantiate(powerUpCardPrefab, background.transform);
-            newCard.GetComponent<PowerUpCard>().SetupPowerUpCard(availablePowerUps[randomNumber], this);
+            _powerUpCard.SetupPowerUpCard(availablePowerUps[randomNumber], this);
         }
     }
 

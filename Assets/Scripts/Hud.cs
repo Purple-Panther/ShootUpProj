@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -11,14 +12,20 @@ public class Hud : MonoBehaviour
     public TMP_Text fps;
     public Slider lifeBar;
     public Slider expBar;
-    
+
     [FormerlySerializedAs("damage_popup")] public GameObject damagePopup;
 
-    [FormerlySerializedAs("playerStats")] [SerializeField] private Entity player;
+    [FormerlySerializedAs("playerStats")] [SerializeField]
+    private Entity player;
+
     [SerializeField] public ScoreStats scoreStats;
     [SerializeField] private FpsStats fpsStats;
 
     public TMP_Text levelText;
+
+    private float updateInterval = 1.0f; // Intervalo de atualização em segundos
+    private float nextUpdateTime = 0f;
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -32,24 +39,12 @@ public class Hud : MonoBehaviour
     void Start()
     {
         // Encontrar o jogador (player) com a tag "Player"
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        if (playerObject != null)
+        player = Constraints.PlayerGameObject.GetComponent<Player>();
+
+        if (player is not null)
         {
-            player = playerObject.GetComponent<Player>(); // Alterado para GetComponent<Player>()
-
-            if (player != null)
-            {
-                lifeBar.maxValue = player.Data.MaxHealth;
-                expBar.value = player.Data.Exp;
-                lifeBar.value = player.Data.MaxHealth;
-                levelText.text = player.Data.Level.ToString();
-
-                PlayerHUD();
-            }
-            else
-            {
-                Debug.LogError("Player component not found on player object.");
-            }
+            player.Data.OnDataChanged += PlayerHUD;
+            PlayerHUD();
         }
         else
         {
@@ -59,9 +54,10 @@ public class Hud : MonoBehaviour
 
     void Update()
     {
-        if (player != null)
+        if (Time.time >= nextUpdateTime)
         {
-            PlayerHUD();
+            fps.text = fpsStats.FpsText();
+            nextUpdateTime = Time.time + updateInterval;
         }
     }
 
@@ -81,8 +77,13 @@ public class Hud : MonoBehaviour
 
         //Level
         levelText.text = player.Data.Level.ToString();
-       
     }
 
-
+    private void OnDestroy()
+    {
+        if (player is not null)
+        {
+            player.Data.OnDataChanged -= PlayerHUD;
+        }
+    }
 }

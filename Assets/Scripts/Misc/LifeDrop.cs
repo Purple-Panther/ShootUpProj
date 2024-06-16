@@ -14,12 +14,12 @@ public class LifeDrop : MonoBehaviour
 
     void Start()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTransform = Constraints.PlayerGameObject.transform;
     }
 
     void Update()
     {
-        if (playerTransform != null)
+        if (playerTransform is not null)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
@@ -42,15 +42,15 @@ public class LifeDrop : MonoBehaviour
     private void ChasePlayer()
     {
         Vector3 direction = (playerTransform.position - transform.position).normalized;
-        transform.position += direction * speed * Time.deltaTime;
+        transform.position += direction * (speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag(Constraints.PlayerTag))
         {
             Entity playerEntity = collision.GetComponent<Entity>();
-            if (playerEntity != null)
+            if (playerEntity is not null)
             {
                 playerEntity.Data.Health = Mathf.Min(playerEntity.Data.Health + healAmount, playerEntity.Data.MaxHealth);
                 Destroy(gameObject);

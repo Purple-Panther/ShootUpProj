@@ -71,9 +71,9 @@ public class SpawnerManager : MonoBehaviour
         _bossActive = active;
     }
 
-    public void KillAllEnemies()
+    public static void KillAllEnemies()
     {
-        foreach (var enemy in GameObject.FindGameObjectsWithTag(Constraints.EnemyTag))
+        foreach (var enemy in Constraints.EnemiesGameObjects)
         {
             Destroy(enemy);
         }

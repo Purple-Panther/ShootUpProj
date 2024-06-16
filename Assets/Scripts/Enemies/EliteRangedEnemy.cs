@@ -19,9 +19,15 @@ public class EliteRangedEnemy : Entity
 
     private Rigidbody2D _rb;
 
+    private GameObject _projectileGameObject;
+    private Projectile _projectile;
+    private Rigidbody2D _projectileRb;
     protected override void Start()
     {
         base.Start();
+        _projectile = _projectile.GetComponent<Projectile>();
+        _projectileGameObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        _projectileRb = _projectileGameObject.GetComponent<Rigidbody2D>();
         _shootInterval = Data.AttackSpeed;
         _rb = GetComponent<Rigidbody2D>();
     }
@@ -70,20 +76,17 @@ public class EliteRangedEnemy : Entity
 
         for (int i = 0; i < 6; i++)
         {
-            GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             float angle = angles[i] + transform.eulerAngles.z;
-            projectile.transform.Rotate(0, 0, angle);
+            _projectileGameObject.transform.Rotate(0, 0, angle);
 
-            Rigidbody2D rbProjectile = projectile.GetComponent<Rigidbody2D>();
-            if (rbProjectile is not null)
-                rbProjectile.velocity = projectile.transform.up * projectileSpeed;
+            if (_projectileRb is not null)
+                _projectileRb.velocity = _projectileGameObject.transform.up * projectileSpeed;
 
-            Projectile projectileScript = projectile.GetComponent<Projectile>();
 
-            if (projectileScript is null) return;
+            if (_projectile is null) return;
 
-            projectileScript.Initialize(Data.AttackDamage);
-            projectileScript.projectileLifeSpan = Data.AttackLife;
+            _projectile.Initialize(Data.AttackDamage);
+            _projectile.projectileLifeSpan = Data.AttackLife;
         }
     }
 }

@@ -1,25 +1,157 @@
-using UnityEngine;
+using System;
 
 public class EntityDataInstance
 {
-    public int MaxHealth { get; set; }
-    public float Health { get; set; }
-    public float BaseSpeed { get; set; }
-    public float AttackDamage { get; set; }
-    public float AttackSpeed { get; set; }
-    public float AttackLife { get; set; }
-    public float ExpDroppedWhenDying { get; set; }
-    public int PointsDroppedWhenDying { get; set; }
-    public int Level { get; set; }
-    public float Exp { get; set; }
-    public float ExpToNextLevel { get; set; }
+    public event Action OnDataChanged;
 
-    public float CurrentSpeed { get; set; }
+    private int _maxHealth;
+
+    public int MaxHealth
+    {
+        get => _maxHealth;
+        set
+        {
+            _maxHealth = value;
+            OnDataChanged?.Invoke();
+        }
+    }
+
+    private float _healthHealth;
+
+    public float Health
+    {
+        get => _healthHealth;
+        set
+        {
+            _healthHealth = value;
+            OnDataChanged?.Invoke();
+        }
+    }
+
+    private float _baseSpeed;
+
+    public float BaseSpeed
+    {
+        get => _baseSpeed;
+        set
+        {
+            _baseSpeed = value;
+            OnDataChanged?.Invoke();
+        }
+    }
+
+    private float _attackDamage;
+
+    public float AttackDamage
+    {
+        get => _attackDamage;
+        set
+        {
+            _attackDamage = value;
+            OnDataChanged?.Invoke();
+        }
+    }
+
+    private float _attackSpeed;
+
+    public float AttackSpeed
+    {
+        get => _attackSpeed;
+        set
+        {
+            _attackSpeed = value;
+            OnDataChanged?.Invoke();
+        }
+    }
+
+    private float _attackLife;
+
+    public float AttackLife
+    {
+        get => _attackLife;
+        set
+        {
+            _attackLife = value;
+            OnDataChanged?.Invoke();
+        }
+    }
+
+    private float _expDroppedWhenDying;
+
+    public float ExpDroppedWhenDying
+    {
+        get => _expDroppedWhenDying;
+        set
+        {
+            _expDroppedWhenDying = value;
+            OnDataChanged?.Invoke();
+        }
+    }
+
+    private int _pointsDroppedWhenDying;
+
+    public int PointsDroppedWhenDying
+    {
+        get => _pointsDroppedWhenDying;
+        set
+        {
+            _pointsDroppedWhenDying = value;
+            OnDataChanged?.Invoke();
+        }
+    }
+
+    private int _level;
+
+    public int Level
+    {
+        get => _level;
+        set
+        {
+            _level = value;
+            OnDataChanged?.Invoke();
+        }
+    }
+
+    private float _exp;
+
+    public float Exp
+    {
+        get => _exp;
+        set
+        {
+            _exp = value;
+            OnDataChanged?.Invoke();
+        }
+    }
+
+    private float _expToNextLevel;
+
+    public float ExpToNextLevel
+    {
+        get => _expToNextLevel;
+        set
+        {
+            _expToNextLevel = value;
+            OnDataChanged?.Invoke();
+        }
+    }
+
+    private float _currentSpeed;
+
+    public float CurrentSpeed
+    {
+        get => _currentSpeed;
+        set
+        {
+            _currentSpeed = value;
+            OnDataChanged?.Invoke();
+        }
+    }
+
 
     public bool CanEarnExp { get; set; } = true;
     public bool CanLevelUp => Exp >= ExpToNextLevel;
-    
-    
+
 
     public EntityDataInstance(EntityData entityData)
     {

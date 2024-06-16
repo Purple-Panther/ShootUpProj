@@ -10,6 +10,6 @@ public class AttackDamage : PowerUpBase
 
     public override void ApplyEffect(PlayerShooting playerShooting)
     {
-        playerShooting.entityStats.Data.AttackDamage += playerShooting.entityStats.Data.AttackDamage * damageIncreasePercentage; // Aumenta o dano de ataque do jogador em 20%
+        playerShooting.EntityStats.AttackDamage += playerShooting.EntityStats.AttackDamage * damageIncreasePercentage; // Aumenta o dano de ataque do jogador em 20%
     }
 }

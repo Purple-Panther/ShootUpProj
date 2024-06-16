@@ -35,15 +35,16 @@ namespace DefaultNamespace
 
         private IEnumerator HandleBossSpawn()
         {
-            _enemySpawner.KillAllEnemies();
+            SpawnerManager.KillAllEnemies();
             yield return new WaitForSeconds(5f);
             SpawnBoss();
         }
 
         private void SpawnBoss()
         {
-            if (LVL10Boss == null)
+            if (LVL10Boss is null)
             {
+                //TODO: Lembrar de Remover esse LogError para evitar problemas de performance
                 Debug.LogError("LVL10Boss prefab is not assigned.");
                 return;
             }
@@ -53,13 +54,12 @@ namespace DefaultNamespace
             _enemySpawner.SetBossActive(true);
         }
 
-        public void GameOver()
+        private void GameOver()
         {
-            if (_player.Data.Health <= 0)
-            {
-                GameOverScreen.gameObject.SetActive(true);
-                Time.timeScale = 0; 
-            }
+            if (!(_player.Data.Health <= 0)) return;
+
+            GameOverScreen.gameObject.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using DefaultNamespace.PowerUpS;
 using Interfaces;
 using UnityEngine;
@@ -11,13 +12,13 @@ public class Entity : MonoBehaviour, IEntity
 {
     [SerializeField] private EntityData soData;
     private SpriteRenderer[] _spriteRenderers;
-    protected Dictionary<PowerUpType, (PowerUpBase powerUp, int quantity)> PowerUps;
-    
     [SerializeField]
     private List<ItemDrop> dropList;
-    public EntityDataInstance Data { get; set; }
 
+    public EntityDataInstance Data { get; set; }
     public bool CanMove { get; set; } = true;
+
+    protected Dictionary<PowerUpType, (PowerUpBase powerUp, int quantity)> PowerUps;
 
     protected virtual void Awake()
     {
@@ -40,10 +41,10 @@ public class Entity : MonoBehaviour, IEntity
 
     public void TakeDamage(float hpToRemove)
     {
-        GameObject new_popup = Instantiate(Hud.Instance.damagePopup, this.gameObject.transform.position, Quaternion.identity );
-        new_popup.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f, 1f), 5), ForceMode2D.Impulse);
-        new_popup.GetComponentInChildren<Text>().text = hpToRemove.ToString();
-        Destroy(new_popup, 1f);
+        GameObject newPopup = Instantiate(Hud.Instance.damagePopup, this.gameObject.transform.position, Quaternion.identity );
+        newPopup.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f, 1f), 5), ForceMode2D.Impulse);
+        newPopup.GetComponentInChildren<Text>().text = hpToRemove.ToString(CultureInfo.CurrentCulture);
+        Destroy(newPopup, 1f);
         
         Data.Health -= hpToRemove;
         if (Data.Health <= 0)
@@ -97,8 +98,7 @@ public class Entity : MonoBehaviour, IEntity
         if (Data.CanLevelUp)
             Data.LevelUp();
     }
-    
-    
+
     private void DropItems()
     {
         foreach (var itemDrop in dropList)
@@ -110,6 +110,4 @@ public class Entity : MonoBehaviour, IEntity
             }
         }
     }
-    
-    
 }

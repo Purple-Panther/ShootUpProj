@@ -12,9 +12,16 @@ public class EnemyRanged : Entity
     private float _shootInterval;
     private Rigidbody2D _rb;
 
+    private GameObject _projectileGameObject;
+    private Projectile _projectile;
+    private Rigidbody2D _projectileRb;
+
     protected override void Start()
     {
         base.Start();
+        _projectileGameObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        _projectileRb = _projectile.GetComponent<Rigidbody2D>();
+        _projectile = _projectile.GetComponent<Projectile>();
         _shootInterval = Data.AttackSpeed;
         _rb = GetComponent<Rigidbody2D>();
 
@@ -48,18 +55,15 @@ public class EnemyRanged : Entity
 
     private void Shoot()
     {
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
-        Rigidbody2D rbProjectile = projectile.GetComponent<Rigidbody2D>();
-        if (rbProjectile is not null)
-            rbProjectile.velocity = transform.up * (-1 * projectileSpeed);
+        if (_projectileRb is not null)
+            _projectileRb.velocity = transform.up * (-1 * projectileSpeed);
 
-        Projectile projectileScript = projectile.GetComponent<Projectile>();
 
-        if (projectileScript is null) return;
+        if (_projectile is null) return;
 
-        projectileScript.Initialize(Data.AttackDamage);
-        projectileScript.projectileLifeSpan = Data.AttackLife;
+        _projectile.Initialize(Data.AttackDamage);
+        _projectile.projectileLifeSpan = Data.AttackLife;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

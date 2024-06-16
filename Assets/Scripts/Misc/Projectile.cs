@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
         if ((collision.gameObject.CompareTag(Constraints.EnemyTag) && isPlayer) || (collision.gameObject.CompareTag(Constraints.PlayerTag) && isPlayer == false))
         {
             Entity entity = collision.gameObject.GetComponent<Entity>();
-            if (entity != null)
+            if (entity is not null)
             {
                 entity.TakeDamage(_projectileDamage);
                 Destroy(gameObject);

@@ -7,9 +7,9 @@ public class TankEnemy : Entity
     protected override void Awake()
     {
         base.Awake();
-        _player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag);
+        _player = Constraints.PlayerGameObject;
         if (_player is null)
-            Debug.LogError("Nem um player foi encontrado");
+            Debug.LogError("Nenhum player foi encontrado");
     }
 
     protected override void Death()
