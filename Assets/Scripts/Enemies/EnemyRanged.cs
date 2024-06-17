@@ -1,29 +1,25 @@
 using Interfaces;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 public class EnemyRanged : Entity
 {
     [FormerlySerializedAs("ProjectilePrefab")] [SerializeField]
-    private GameObject projectilePrefab;  // prefab do projétil
+    private GameObject projectilePrefab; // prefab do projétil
+
     [FormerlySerializedAs("ProjectileSpeed")] [SerializeField]
     private float projectileSpeed = 5.0f; //velocidade do projétil
 
     private float _shootInterval;
     private Rigidbody2D _rb;
 
-    private GameObject _projectileGameObject;
-    private Projectile _projectile;
-    private Rigidbody2D _projectileRb;
-
     protected override void Start()
     {
         base.Start();
-        _projectileGameObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        _projectileRb = _projectile.GetComponent<Rigidbody2D>();
-        _projectile = _projectile.GetComponent<Projectile>();
+        
         _shootInterval = Data.AttackSpeed;
-        _rb = GetComponent<Rigidbody2D>();
+        _rb = gameObject.GetComponent<Rigidbody2D>();
 
         Shoot();
     }
@@ -49,21 +45,24 @@ public class EnemyRanged : Entity
         var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
         var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>().scoreStats;
 
-        score.AddScore(Data.PointsDroppedWhenDying); 
+        score.AddScore(Data.PointsDroppedWhenDying);
         player.AddExp(Data.ExpDroppedWhenDying);
     }
 
     private void Shoot()
     {
+        GameObject projectileGameObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        
+        if (projectileGameObject is null) return;
 
-        if (_projectileRb is not null)
-            _projectileRb.velocity = transform.up * (-1 * projectileSpeed);
+        Projectile projectile = projectileGameObject.GetComponent<Projectile>();
+        Rigidbody2D projectileRb = projectileGameObject.GetComponent<Rigidbody2D>();
+        
+        if (projectileRb is not null)
+            projectileRb.velocity = transform.up * (-1 * projectileSpeed);
 
-
-        if (_projectile is null) return;
-
-        _projectile.Initialize(Data.AttackDamage);
-        _projectile.projectileLifeSpan = Data.AttackLife;
+        projectile.Initialize(Data.AttackDamage);
+        projectile.projectileLifeSpan = Data.AttackLife;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

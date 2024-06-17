@@ -23,8 +23,8 @@ public class Hud : MonoBehaviour
 
     public TMP_Text levelText;
 
-    private float updateInterval = 1.0f; // Intervalo de atualização em segundos
-    private float nextUpdateTime = 0f;
+    private const float UpdateInterval = 1.0f; // Intervalo de atualização em segundos
+    private float _nextUpdateTime = 0f;
 
     private void Awake()
     {
@@ -54,10 +54,10 @@ public class Hud : MonoBehaviour
 
     void Update()
     {
-        if (Time.time >= nextUpdateTime)
+        if (Time.time >= _nextUpdateTime)
         {
             fps.text = fpsStats.FpsText();
-            nextUpdateTime = Time.time + updateInterval;
+            _nextUpdateTime = Time.time + UpdateInterval;
         }
     }
 

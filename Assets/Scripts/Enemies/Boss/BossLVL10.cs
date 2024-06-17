@@ -31,24 +31,17 @@ public class BossLvl10 : Entity
     private float _horizontalDirection;
 
     private Camera _mainCamera;
-    private GameObject _tempProjectile;
-    private Rigidbody2D _tempProjectileRb;
-
-    private Projectile _projectile;
 
     protected override void Start()
     {
         base.Start();
-        _tempProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        _tempProjectileRb = _tempProjectile.GetComponent<Rigidbody2D>();
-        _projectile = _tempProjectile.GetComponent<Projectile>();
         _mainCamera = Camera.main;
         _meleeHitDamage = Data.AttackDamage;
         _shootInterval = Data.AttackSpeed;
 
-        _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        _playerTransform = Constraints.PlayerGameObject.transform;
 
-        if (_mainCamera != null)
+        if (_mainCamera is not null)
         {
             float screenTopEdge = _mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 1f, _mainCamera.nearClipPlane)).y;
             _targetPosition = new Vector3(transform.position.x, screenTopEdge - (2 * _mainCamera.orthographicSize / 6), transform.position.z);
@@ -152,13 +145,14 @@ public class BossLvl10 : Entity
             float currentAngle = startAngle + (i * angleStep);
             Vector2 projectileDirection = RotateVector(directionToPlayer, currentAngle);
 
-            _tempProjectileRb.velocity = projectileDirection * projectileSpeed;
+            GameObject tempProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            tempProjectile.GetComponent<Rigidbody2D>().velocity = projectileDirection * projectileSpeed;
 
-
-            if (_projectile is not null)
+            Projectile projectileScript = tempProjectile.GetComponent<Projectile>();
+            if (projectileScript != null)
             {
-                _projectile.Initialize(Data.AttackDamage);
-                _projectile.projectileLifeSpan = Data.AttackLife;
+                projectileScript.Initialize(Data.AttackDamage);
+                projectileScript.projectileLifeSpan = Data.AttackLife;
             }
         }
     }

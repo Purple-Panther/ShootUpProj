@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class GuardianBehavior : MonoBehaviour
@@ -13,7 +14,7 @@ public class GuardianBehavior : MonoBehaviour
     private float _attackDamage;
     private Rigidbody2D _rb;
     private Camera _mainCamera;
-    private Transform _playerTransform;
+    [CanBeNull] private Transform _playerTransform;
     private float _angle;
 
     public void Initialize(Transform playerTransform)
@@ -24,14 +25,14 @@ public class GuardianBehavior : MonoBehaviour
     void Start()
     {
         _mainCamera = Camera.main;
-        if (_mainCamera == null)
+        if (_mainCamera is null)
         {
             Debug.LogError("Main camera not found. Make sure there is a main camera in the scene.");
             return;
         }
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
+        if (player is not null)
         {
             Entity playerEntity = player.GetComponent<Entity>();
             _shootInterval = playerEntity.Data.AttackSpeed * 1.2f;
@@ -44,7 +45,7 @@ public class GuardianBehavior : MonoBehaviour
 
     void Update()
     {
-        if (_playerTransform != null)
+        if (_playerTransform is not null)
         {
             Orbit();
         }
@@ -52,9 +53,13 @@ public class GuardianBehavior : MonoBehaviour
 
     void Orbit()
     {
+        if (_playerTransform is null) return;
+
         _angle += orbitSpeed * Time.deltaTime;
         float radians = _angle * Mathf.Deg2Rad;
         Vector2 offset = new Vector2(Mathf.Cos(radians), Mathf.Sin(radians)) * orbitDistance;
+
+
         transform.position = (Vector2)_playerTransform.position + offset;
     }
 
@@ -68,11 +73,11 @@ public class GuardianBehavior : MonoBehaviour
             Vector2 direction = (target.transform.position - transform.position).normalized;
 
             Rigidbody2D rbProjectile = projectile.GetComponent<Rigidbody2D>();
-            if (rbProjectile != null)
+            if (rbProjectile is not null)
                 rbProjectile.velocity = direction * projectileSpeed;
 
             Projectile projectileScript = projectile.GetComponent<Projectile>();
-            if (projectileScript != null)
+            if (projectileScript is not null)
                 projectileScript.Initialize(_attackDamage);
 
             Debug.Log($"Guardian: Atirando em {target.name} com dano {_attackDamage}!");
