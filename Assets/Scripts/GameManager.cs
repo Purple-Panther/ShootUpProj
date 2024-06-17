@@ -11,10 +11,12 @@ namespace DefaultNamespace
         private GameObject LVL10Boss;
         [SerializeField]
         public GameObject GameOverScreen;
+        public GameObject MenuScreen;
 
         private Player _player;
         private SpawnerManager _enemySpawner;
         private bool _bossSpawned;
+
 
         private void Awake()
         {
@@ -31,6 +33,11 @@ namespace DefaultNamespace
                 _bossSpawned = true;
             }
             GameOver(); 
+            
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                PauseGame();
+            }
         }
 
         private IEnumerator HandleBossSpawn()
@@ -60,6 +67,23 @@ namespace DefaultNamespace
 
             GameOverScreen.gameObject.SetActive(true);
             Time.timeScale = 0;
+        }
+        
+        void PauseGame()
+        {
+           
+            Time.timeScale = 0;
+
+            
+            MenuScreen.SetActive(true);
+        }
+
+        public void ResumeGame()
+        {
+            
+            Time.timeScale = 1;
+
+            MenuScreen.SetActive(false);
         }
     }
 }
