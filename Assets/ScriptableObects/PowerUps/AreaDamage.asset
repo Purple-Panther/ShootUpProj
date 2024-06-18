@@ -15,6 +15,6 @@ MonoBehaviour:
   puName: Area Damage
   description: Teste
   sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  areaRadius: 5
-  areaDamagePercentage: 0.5
+  areaRadius: 2
+  areaDamagePercentage: 0.3
   areaIndicatorPrefab: {fileID: 424332100212582380, guid: ad6994f298b2ca14bbf78952631ce550, type: 3}
