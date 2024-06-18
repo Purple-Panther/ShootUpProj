@@ -10,7 +10,7 @@ public class PowerUpManager : MonoBehaviour
         _player = Constraints.PlayerGameObject.GetComponent<Player>();
         _playerShooting = _player.GetComponent<PlayerShooting>();
 
-        if (_playerShooting is null)
+        if (_playerShooting == null)
         {
             Debug.LogError("PlayerShooting component not found.");
         }

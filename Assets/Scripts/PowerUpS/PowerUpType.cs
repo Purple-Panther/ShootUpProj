@@ -6,5 +6,6 @@ namespace DefaultNamespace.PowerUpS
         FireRate,
         AttackDamage,
         Guardian,
+        AreaDamage,
     }
 }

@@ -6,6 +6,9 @@ public class Projectile : MonoBehaviour
     public float projectileLifeSpan;
     private float _projectileDamage;
 
+    public delegate void ProjectileHitHandler(Vector3 position, float damage);
+    public event ProjectileHitHandler OnProjectileHit;
+
     public void Initialize(float damage)
     {
         _projectileDamage = damage;
@@ -18,12 +21,14 @@ public class Projectile : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.CompareTag(Constraints.EnemyTag) && isPlayer) || (collision.gameObject.CompareTag(Constraints.PlayerTag) && isPlayer == false))
+        if ((collision.gameObject.CompareTag(Constraints.EnemyTag) && isPlayer) || 
+            (collision.gameObject.CompareTag(Constraints.PlayerTag) && !isPlayer))
         {
             Entity entity = collision.gameObject.GetComponent<Entity>();
-            if (entity is not null)
+            if (entity != null)
             {
                 entity.TakeDamage(_projectileDamage);
+                OnProjectileHit?.Invoke(transform.position, _projectileDamage);
                 Destroy(gameObject);
             }
             else
