@@ -4743,9 +4743,9 @@ MonoBehaviour:
   - {fileID: 1427855155}
   - {fileID: 1112951877}
   - {fileID: 129160792}
-  spawnInterval: 1
-  minSpawnInterval: 0.3
-  difficultyIncreaseRate: 0.98
+  spawnInterval: 5
+  minSpawnInterval: 1
+  difficultyIncreaseRate: 0.95
 --- !u!4 &1540109136
 Transform:
   m_ObjectHideFlags: 0

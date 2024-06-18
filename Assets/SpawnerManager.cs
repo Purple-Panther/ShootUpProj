@@ -8,9 +8,9 @@ public class SpawnerManager : MonoBehaviour
     public GameObject[] eliteEnemyPrefabs;
     public float eliteSpawnChance = 0.1f;
     public List<Transform> spawnPoints;
-    public float spawnInterval = 3f;
-    public float minSpawnInterval = 0.3f;
-    public float difficultyIncreaseRate = 0.98f;
+    public float spawnInterval = 5f; // Valor aumentado para reduzir a frequência inicial
+    public float minSpawnInterval = 1f; // Valor ajustado para o mínimo
+    public float difficultyIncreaseRate = 0.95f; // Taxa de aumento de dificuldade reduzida
 
     private float _nextSpawnTime;
     private bool _bossActive;
@@ -58,12 +58,10 @@ public class SpawnerManager : MonoBehaviour
 
     private void SpawnAdditionalEnemies(int initialSpawnIndex)
     {
-        for (int i = 1; i <= 2; i++)
-        {
-            int nextIndex = initialSpawnIndex + i;
-            if (nextIndex < spawnPoints.Count)
-                SpawnEnemyAtPoint(nextIndex);
-        }
+        // Limitar a quantidade de inimigos adicionais para 1 por chamada
+        int nextIndex = initialSpawnIndex + 1;
+        if (nextIndex < spawnPoints.Count)
+            SpawnEnemyAtPoint(nextIndex);
     }
 
     public void SetBossActive(bool active)

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee2c2bf7bcb4fad82240edb63782504, type: 3}
   m_Name: BossLVL10
   m_EditorClassIdentifier: 
-  maxHealth: 500
-  health: 500
+  maxHealth: 2000
+  health: 2000
   baseSpeed: 3
   attackDamage: 20
   attackSpeed: 2
