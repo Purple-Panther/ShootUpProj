@@ -25,7 +25,7 @@ public class Projectile : MonoBehaviour
             (collision.gameObject.CompareTag(Constraints.PlayerTag) && !isPlayer))
         {
             Entity entity = collision.gameObject.GetComponent<Entity>();
-            if (entity != null)
+            if (entity is not null)
             {
                 entity.TakeDamage(_projectileDamage);
                 OnProjectileHit?.Invoke(transform.position, _projectileDamage);

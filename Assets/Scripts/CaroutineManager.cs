@@ -13,7 +13,7 @@ public class CoroutineManager : MonoBehaviour
 
     public static void StartRoutine(IEnumerator routine)
     {
-        if (instance != null)
+        if (instance is not null)
         {
             instance.StartCoroutine(instance.InternalStartRoutine(routine));
         }
@@ -31,7 +31,7 @@ public class CoroutineManager : MonoBehaviour
 
     public static void StopRoutine()
     {
-        if (instance != null && instance.currentCoroutine != null)
+        if (instance is not null && instance.currentCoroutine is not null)
         {
             instance.StopCoroutine(instance.currentCoroutine);
         }

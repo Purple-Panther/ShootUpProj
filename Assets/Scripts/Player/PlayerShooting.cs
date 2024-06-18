@@ -60,7 +60,7 @@ public class PlayerShooting : MonoBehaviour
         _projectileGameObject = Instantiate(projectilePrefab, position, rotation);
         ProjectileRb.velocity = velocity;
 
-        if (Projectile != null)
+        if (Projectile is not null)
         {
             Projectile.Initialize(_player.Data.AttackDamage);
             Projectile.projectileLifeSpan = _player.Data.AttackLife;

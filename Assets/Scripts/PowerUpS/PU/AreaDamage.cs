@@ -17,7 +17,7 @@ public class AreaDamagePowerUp : PowerUpBase
     {
         playerShooting.OnProjectileHit += HandleProjectileHit;
 
-        if (areaIndicatorPrefab != null)
+        if (areaIndicatorPrefab is not null)
         {
             areaIndicatorInstance = Instantiate(areaIndicatorPrefab, Vector3.zero, Quaternion.identity);
             UpdateAreaIndicatorScale();
@@ -33,14 +33,14 @@ public class AreaDamagePowerUp : PowerUpBase
             if (hitCollider.CompareTag(Constraints.EnemyTag))
             {
                 Entity enemy = hitCollider.GetComponent<Entity>();
-                if (enemy != null)
+                if (enemy is not null)
                 {
                     enemy.TakeDamage(damage * areaDamagePercentage);
                 }
             }
         }
 
-        if (areaIndicatorInstance != null)
+        if (areaIndicatorInstance is not null)
         {
             areaIndicatorInstance.transform.position = position;
             UpdateAreaIndicatorScale();
@@ -50,7 +50,7 @@ public class AreaDamagePowerUp : PowerUpBase
 
     private IEnumerator ShowAreaIndicatorForSeconds(float duration)
     {
-        if (areaIndicatorInstance != null)
+        if (areaIndicatorInstance is not null)
         {
             areaIndicatorInstance.SetActive(true);
             yield return new WaitForSeconds(duration);
@@ -60,7 +60,7 @@ public class AreaDamagePowerUp : PowerUpBase
 
     private void UpdateAreaIndicatorScale()
     {
-        if (areaIndicatorInstance != null)
+        if (areaIndicatorInstance is not null)
         {
             float scale = areaRadius * 2f;
             areaIndicatorInstance.transform.localScale = new Vector3(scale, scale, 1f);

@@ -67,7 +67,7 @@ public class GuardianBehavior : MonoBehaviour
     {
         GameObject target = FindTarget();
 
-        if (target != null)
+        if (target is not null)
         {
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             Vector2 direction = (target.transform.position - transform.position).normalized;

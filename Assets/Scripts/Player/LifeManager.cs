@@ -17,7 +17,7 @@ public class LifeManager : MonoBehaviour
     {
         Player = FindObjectOfType<Player>();
 
-        if (Player != null)
+        if (Player is not null)
         {
             _playerLife = (int)Player.Data.Health;
             _lastPlayerHealth = _playerLife;
@@ -31,7 +31,7 @@ public class LifeManager : MonoBehaviour
 
     void Update()
     {
-        if (Player != null)
+        if (Player is not null)
         {
             int currentHealth = (int)Player.Data.Health;
             if (currentHealth != _lastPlayerHealth)
