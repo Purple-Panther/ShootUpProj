@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using System.Collections;
+using Random = UnityEngine.Random;
 
 public class BossLvl10 : Entity
 {
@@ -32,6 +34,10 @@ public class BossLvl10 : Entity
 
     private Camera _mainCamera;
 
+    private bool _isBossAlive = true;
+
+    public event Action OnBossDie; 
+    
     protected override void Start()
     {
         base.Start();
@@ -201,11 +207,14 @@ public class BossLvl10 : Entity
     protected override void Death()
     {
         base.Death();
+        _isBossAlive = false;
         var player = Constraints.PlayerGameObject.GetComponent<Entity>();
         var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>().scoreStats;
 
         score.AddScore(Data.PointsDroppedWhenDying);
         player.AddExp(Data.ExpDroppedWhenDying);
+        
+        OnBossDie?.Invoke();
     }
 
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using DefaultNamespace.PowerUpS;
+using Manager;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "AreaDamagePowerUp", menuName = "PowerUps/AreaDamage")]
