@@ -1,89 +1,86 @@
 using System.Collections;
 using UnityEngine;
 
-namespace DefaultNamespace
+public class GameManager : MonoBehaviour
 {
-    public class GameManager : MonoBehaviour
+    [SerializeField] private ScoreStats scoreManager;
+    [SerializeField] private GameObject LVL10Boss;
+    [SerializeField] public GameObject GameOverScreen;
+    [SerializeField] public GameObject MenuScreen;
+    [SerializeField] public GameObject DangerScreen; // Adicione a referência ao DangerScreen aqui
+
+    private Player _player;
+    private SpawnerManager _enemySpawner;
+    private bool _bossSpawned;
+
+    private void Awake()
     {
-        [SerializeField]
-        private ScoreStats scoreManager;
-        [SerializeField]
-        private GameObject LVL10Boss;
-        [SerializeField]
-        public GameObject GameOverScreen;
-        public GameObject MenuScreen;
+        scoreManager.ResetScore();
+        _player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Player>();
+        _enemySpawner = FindObjectOfType<SpawnerManager>();
+    }
 
-        private Player _player;
-        private SpawnerManager _enemySpawner;
-        private bool _bossSpawned;
-
-
-        private void Awake()
+    private void Update()
+    {
+        if (!_bossSpawned && _player.Data.Level >= 10)
         {
-            scoreManager.ResetScore();
-            _player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Player>();
-            _enemySpawner = FindObjectOfType<SpawnerManager>();
+            StartCoroutine(HandleBossSpawn());
+            _bossSpawned = true;
+        }
+        GameOver();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
+        }
+    }
+
+    private IEnumerator HandleBossSpawn()
+    {
+    
+        yield return new WaitForSeconds(1f);
+
+        if (DangerScreen != null)
+        {
+            DangerScreen.SetActive(true);
+            yield return new WaitForSeconds(4f); 
+            DangerScreen.SetActive(false);
         }
 
-        private void Update()
+        SpawnerManager.KillAllEnemies();
+        yield return new WaitForSeconds(5f);
+        SpawnBoss();
+    }
+
+    private void SpawnBoss()
+    {
+        if (LVL10Boss == null)
         {
-            if (!_bossSpawned && _player.Data.Level >= 10)
-            {
-                StartCoroutine(HandleBossSpawn());
-                _bossSpawned = true;
-            }
-            GameOver(); 
-            
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                PauseGame();
-            }
+            return;
         }
 
-        private IEnumerator HandleBossSpawn()
-        {
-            SpawnerManager.KillAllEnemies();
-            yield return new WaitForSeconds(5f);
-            SpawnBoss();
-        }
+        Vector3 spawnPosition = new Vector3(0.02f, 10.08f, 0);
+        Instantiate(LVL10Boss, spawnPosition, Quaternion.identity);
+        _enemySpawner.SetBossActive(true);
+    }
 
-        private void SpawnBoss()
-        {
-            if (LVL10Boss is null)
-            {
-                //TODO: Lembrar de Remover esse LogError para evitar problemas de performance
-                Debug.LogError("LVL10Boss prefab is not assigned.");
-                return;
-            }
+    private void GameOver()
+    {
+        if (!(_player.Data.Health <= 0)) return;
 
-            Vector3 spawnPosition = new Vector3(0.02f, 10.08f, 0);
-            Instantiate(LVL10Boss, spawnPosition, Quaternion.identity);
-            _enemySpawner.SetBossActive(true);
-        }
+        GameOverScreen.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
 
-        private void GameOver()
-        {
-            if (!(_player.Data.Health <= 0)) return;
+    void PauseGame()
+    {
+        Time.timeScale = 0;
+        MenuScreen.SetActive(true);
+    }
 
-            GameOverScreen.gameObject.SetActive(true);
-            Time.timeScale = 0;
-        }
-        
-        void PauseGame()
-        {
-           
-            Time.timeScale = 0;
-
-            
-            MenuScreen.SetActive(true);
-        }
-
-        public void ResumeGame()
-        {
-            
-            Time.timeScale = 1;
-
-            MenuScreen.SetActive(false);
-        }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        MenuScreen.SetActive(false);
     }
 }
