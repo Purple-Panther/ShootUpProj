@@ -4,7 +4,7 @@ using UnityEngine;
 public class FpsStats : ScriptableObject
 {
     private float _deltaTime = 0.0f;
-    private float Fps => 1.0f / _deltaTime;
+    private float Fps => 0.5f / _deltaTime;
 
     public string FpsText()
     {
