@@ -15,11 +15,11 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   baseSpeed: 10
-  attackDamage: 5555
+  attackDamage: 10
   attackSpeed: 0.8
   attackLife: 10
   pointsDroppedWhenDying: 0
   expDroppedWhenDying: 0
   exp: 0
   expToNextLevel: 100
-  level: 9
+  level: 1
