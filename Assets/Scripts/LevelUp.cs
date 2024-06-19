@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using Manager;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class LevelUp : MonoBehaviour
 {
@@ -16,6 +18,8 @@ public class LevelUp : MonoBehaviour
     private PowerUpCard _powerUpCard;
 
     private int _currentLevel;
+
+    public event Action OnGameUnpaused;
 
     void Start()
     {
@@ -45,7 +49,8 @@ public class LevelUp : MonoBehaviour
     public void CloseLevelUpPanel()
     {
         levelUpPanel.SetActive(false);
-        Time.timeScale = 1f; 
+        Time.timeScale = 1f;
+        OnGameUnpaused?.Invoke();
     }
 
     private void RandomCards()

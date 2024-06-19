@@ -34,8 +34,6 @@ namespace Manager
 
         private void Start()
         {
-            if (_bossScript is not null)
-                _bossScript.OnBossDie += _cameraManager.ZoomOutCamera;
         }
 
         private void Update()

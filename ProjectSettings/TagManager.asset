@@ -10,6 +10,7 @@ TagManager:
   - Hud
   - Wall
   - EnemyProjectile
+  - GameManager
   layers:
   - Default
   - TransparentFX

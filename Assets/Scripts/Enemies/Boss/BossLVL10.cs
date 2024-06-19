@@ -36,8 +36,6 @@ public class BossLvl10 : Entity
 
     private bool _isBossAlive = true;
 
-    public event Action OnBossDie; 
-    
     protected override void Start()
     {
         base.Start();
@@ -213,8 +211,6 @@ public class BossLvl10 : Entity
 
         score.AddScore(Data.PointsDroppedWhenDying);
         player.AddExp(Data.ExpDroppedWhenDying);
-        
-        OnBossDie?.Invoke();
     }
 
 }

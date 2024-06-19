@@ -8,17 +8,26 @@ namespace Manager
         private const float ZoomOutFieldOfView = 120f;
         public float zoomDuration = 3f;
         private float _speedZoom = 2f;
+
+        private LevelUp _levelUp;
         private Camera _camera;
+        private Player _player;
 
         private void Start()
         {
             _camera = Camera.main;
+            _levelUp = GameObject.FindGameObjectWithTag(Constraints.GameManagerTag).GetComponentInChildren<LevelUp>();
+            _player = Constraints.PlayerGameObject.GetComponent<Player>();
+            _levelUp.OnGameUnpaused += ZoomOutCamera;
         }
 
         public void ZoomOutCamera()
         {
             if (_camera is not null)
-                StartCoroutine(ZoomOutCoroutine());
+            {
+                if (_player.Data.Level >= 11)
+                    StartCoroutine(ZoomOutCoroutine());
+            }
         }
 
         private IEnumerator ZoomOutCoroutine()

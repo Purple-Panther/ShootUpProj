@@ -10,6 +10,7 @@ public static class Constraints
     public const string WallTag = "Wall";
     public const string BoundariesTag = "Boundaries";
     public const string HudTag = "Hud";
+    public const string GameManagerTag = "GameManager";
 
     #endregion
 
