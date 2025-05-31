@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class LifeDrop : MonoBehaviour
 {
-    public float chaseDistance = 5.0f; // Distance at which the entity starts chasing the player
-    public float stopChaseDistance = 10.0f; // Distance at which the entity stops chasing the player
-    public float speed = 2.0f; // Speed of the entity
-    public int healAmount = 20; // Amount of health to heal on collision
-
+    public float chaseDistance = 5.0f; 
+    public float stopChaseDistance = 10.0f; 
+    public float speed = 2.0f;
+    public int healAmount = 20; 
     private Transform playerTransform;
     private bool isChasing = false;
 

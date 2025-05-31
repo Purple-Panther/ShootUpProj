@@ -32,10 +32,9 @@ public class EnemyMelee : Entity
 
     private void Update()
     {
-        // Move the enemy down the screen
+
         transform.position += new Vector3(_direction * _speed * Time.deltaTime, -_speed * Time.deltaTime, 0);
 
-        // Change direction every zigzagTime seconds
         _zigzagTimer += Time.deltaTime;
 
         if (_zigzagTimer <= zigzagTime) return;

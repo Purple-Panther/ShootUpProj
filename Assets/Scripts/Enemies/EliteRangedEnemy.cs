@@ -11,8 +11,8 @@ public class EliteRangedEnemy : Entity
     [FormerlySerializedAs("ProjectileSpeed")] [SerializeField]
     private float projectileSpeed = 5.0f;
 
-    public float stopYPositionLowerBound = 0f; // Limite inferior da posição Y onde o inimigo deve parar
-    public float stopYPositionUpperBound = 5f; // Limite superior da posição Y onde o inimigo deve parar
+    public float stopYPositionLowerBound = 0f; 
+    public float stopYPositionUpperBound = 5f; 
 
     private float _shootInterval;
     private bool _isMoving = true;

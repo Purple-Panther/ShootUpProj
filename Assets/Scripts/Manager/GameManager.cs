@@ -9,7 +9,7 @@ namespace Manager
         [SerializeField] private GameObject LVL10Boss;
         [SerializeField] public GameObject GameOverScreen;
         [SerializeField] public GameObject MenuScreen;
-        [SerializeField] public GameObject DangerScreen; // Adicione a referência ao DangerScreen aqui
+        [SerializeField] public GameObject DangerScreen;
 
         private Player _player;
         private SpawnerManager _enemySpawner;
@@ -40,11 +40,13 @@ namespace Manager
         {
             if (_player.Data.Level >= 10)
 
+            {
                 if (!_bossSpawned && _player.Data.Level >= 10)
                 {
                     StartCoroutine(HandleBossSpawn());
                     _bossSpawned = true;
                 }
+            }
 
             GameOver();
 
@@ -80,13 +82,14 @@ namespace Manager
 
         private void GameOver()
         {
-            if (!(_player.Data.Health <= 0)) return;
-
-            GameOverScreen.gameObject.SetActive(true);
-            Time.timeScale = 0;
+            if (_player.Data.Health <= 0)
+            {
+                GameOverScreen.SetActive(true);
+                Time.timeScale = 0;
+            }
         }
 
-        void PauseGame()
+        private void PauseGame()
         {
             Time.timeScale = 0;
             MenuScreen.SetActive(true);
@@ -97,5 +100,15 @@ namespace Manager
             Time.timeScale = 1;
             MenuScreen.SetActive(false);
         }
+
+        public void ExitGame()
+        {
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                Application.Quit();
+            #endif
+        }
+
     }
 }

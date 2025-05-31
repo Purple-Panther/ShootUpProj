@@ -6,10 +6,10 @@ using UnityEngine.Serialization;
 public class EnemyRanged : Entity
 {
     [FormerlySerializedAs("ProjectilePrefab")] [SerializeField]
-    private GameObject projectilePrefab; // prefab do projétil
+    private GameObject projectilePrefab; 
 
     [FormerlySerializedAs("ProjectileSpeed")] [SerializeField]
-    private float projectileSpeed = 5.0f; //velocidade do projétil
+    private float projectileSpeed = 5.0f;
 
     private float _shootInterval;
     private Rigidbody2D _rb;

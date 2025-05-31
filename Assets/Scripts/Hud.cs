@@ -23,22 +23,20 @@ public class Hud : MonoBehaviour
 
     public TMP_Text levelText;
 
-    private const float UpdateInterval = 1.0f; // Intervalo de atualização em segundos
+    private const float UpdateInterval = 1.0f; 
     private float _nextUpdateTime = 0f;
 
     private void Awake()
     {
-        // If there is an instance, and it's not me, delete myself.
+
         if (Instance is not null && Instance != this)
             Destroy(this);
         else
             Instance = this;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        // Encontrar o jogador (player) com a tag "Player"
         player = Constraints.PlayerGameObject.GetComponent<Player>();
 
         if (player is not null)
@@ -67,7 +65,9 @@ public class Hud : MonoBehaviour
         //Score
         scoreText.text = scoreStats.score.ToString();
 
+        //fps
         fps.text = fpsStats.FpsText();
+
         //Life
         lifeBar.value = player.Data.Health;
 

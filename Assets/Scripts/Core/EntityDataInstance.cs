@@ -172,6 +172,6 @@ public class EntityDataInstance
     {
         Level++;
         Exp = 0;
-        ExpToNextLevel *= 1.5f; // Ajuste do multiplicador para balancear o progresso
+        ExpToNextLevel *= 1.5f;
     }
 }
