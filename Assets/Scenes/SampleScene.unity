@@ -769,10 +769,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b7dcde2de6492846839ede7e7b2aac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerShootClip: {fileID: 8300000, guid: 6fcc27a27a7b7a54d8da4ef7bc387305, type: 3}
-  playerDamageClip: {fileID: 8300000, guid: 6fcc27a27a7b7a54d8da4ef7bc387305, type: 3}
-  enemyDamageClip: {fileID: 8300000, guid: 6fcc27a27a7b7a54d8da4ef7bc387305, type: 3}
+  playerShootClip: {fileID: 8300000, guid: 720047dcc43268d49bc46c18d8aa5e5b, type: 3}
+  playerDamageClip: {fileID: 8300000, guid: 8d0d686593db5b241ad66d54e17dbc11, type: 3}
+  enemyDamageClip: {fileID: 0}
   playerDeathClip: {fileID: 8300000, guid: 17415e009ce2a7744b705c7eedcfd840, type: 3}
+  enemyDeathClip: {fileID: 8300000, guid: 6fcc27a27a7b7a54d8da4ef7bc387305, type: 3}
 --- !u!1 &103573581
 GameObject:
   m_ObjectHideFlags: 0

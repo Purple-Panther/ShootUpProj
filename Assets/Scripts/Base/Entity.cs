@@ -59,10 +59,14 @@ public void TakeDamage(float hpToRemove)
 
     if (Data.Health <= 0)
     {
-         if (CompareTag("Player"))
-    {
-        SFXManager.Instance?.PlayPlayerDeath();
-    }
+            if (CompareTag("Player"))
+            {
+                SFXManager.Instance?.PlayPlayerDeath();
+            }
+            else
+            {
+                 SFXManager.Instance?.PlayEnemyDeath();
+            }
         float delay = SFXManager.Instance != null ? 0.2f : 0f;
         StartCoroutine(DeathAfterDelay(delay));
     }

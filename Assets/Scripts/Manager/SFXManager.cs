@@ -9,6 +9,8 @@ public class SFXManager : MonoBehaviour
     public AudioClip playerDamageClip;
     public AudioClip enemyDamageClip;
     public AudioClip playerDeathClip;
+    public AudioClip enemyDeathClip;
+
 
     private AudioSource _audioSource;
 
@@ -49,8 +51,12 @@ public class SFXManager : MonoBehaviour
         }
     }
     public void PlayPlayerDeath()
-{
-    PlayClip(playerDeathClip);
-}
+    {
+        PlayClip(playerDeathClip);
+    }
+    public void PlayEnemyDeath()
+    {
+    PlayClip(enemyDeathClip);
+    }
 
 }

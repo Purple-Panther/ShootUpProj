@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puName: Fire Rate
   description: Increases fire rate.
-  sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  sprite: {fileID: 21300000, guid: fff1be3136ffdd84ca93faae4d0d8e23, type: 3}
   fireRateReduction: 0.1

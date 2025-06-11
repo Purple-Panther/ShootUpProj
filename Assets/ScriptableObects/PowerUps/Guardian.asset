@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puName: Guardian
   description: Guardian
-  sprite: {fileID: 21300000, guid: 714c8c6f547b1c340ba43f7ff4416af5, type: 3}
+  sprite: {fileID: 21300000, guid: 7f443ca6dfad9c44fa34859e8158810b, type: 3}
   guardianPrefab: {fileID: 1743366662830291923, guid: 222afa715b6d14f40858a9315b829681, type: 3}
