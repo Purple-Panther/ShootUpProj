@@ -12,14 +12,12 @@ public class PlayerShooting : MonoBehaviour
     private float _nextFireTime;
     private bool _isShootingInputDown = false;
 
-    #region || Projectile ||
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float projectileSpeed = 10f;
     public int projectileCount = 1;
     private GameObject _projectileGameObject;
     private Projectile Projectile => _projectileGameObject.GetComponent<Projectile>();
     private Rigidbody2D ProjectileRb => _projectileGameObject.GetComponent<Rigidbody2D>();
-    #endregion
 
     private void Start()
     {
@@ -53,6 +51,8 @@ public class PlayerShooting : MonoBehaviour
             Vector2 direction = Quaternion.Euler(0, 0, angle) * Vector2.up;
             FireProjectile(transform.position, direction * projectileSpeed, Quaternion.identity);
         }
+
+        SFXManager.Instance?.PlayPlayerShoot();
     }
 
     private void FireProjectile(Vector2 position, Vector2 velocity, Quaternion rotation)
@@ -64,7 +64,6 @@ public class PlayerShooting : MonoBehaviour
         {
             Projectile.Initialize(_player.Data.AttackDamage);
             Projectile.projectileLifeSpan = _player.Data.AttackLife;
-            
             Projectile.OnProjectileHit += (pos, damage) => OnProjectileHit?.Invoke(pos, damage);
         }
 
