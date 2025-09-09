@@ -25,7 +25,7 @@ namespace Manager
         {
             if (_camera is not null)
             {
-                if (_player.Data.Level >= 11)
+                if (_player.Data.Level >= 10)
                     StartCoroutine(ZoomOutCoroutine());
             }
         }

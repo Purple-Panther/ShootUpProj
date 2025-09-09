@@ -58,7 +58,7 @@ public class PlayerShooting : MonoBehaviour
     private void FireProjectile(Vector2 position, Vector2 velocity, Quaternion rotation)
     {
         _projectileGameObject = Instantiate(projectilePrefab, position, rotation);
-        ProjectileRb.velocity = velocity;
+        ProjectileRb.linearVelocity = velocity;
 
         if (Projectile is not null)
         {

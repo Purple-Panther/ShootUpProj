@@ -35,13 +35,13 @@ public class Player : Entity
         if (_isHorizontalDashing)
         {
             _isHorizontalDashing = false;
-            _rb.AddForce(new Vector2(_rb.velocity.x * _dashMultiplier, _rb.velocity.y), ForceMode2D.Impulse);
+            _rb.AddForce(new Vector2(_rb.linearVelocity.x * _dashMultiplier, _rb.linearVelocity.y), ForceMode2D.Impulse);
         }
 
         if (_isVerticalDashing)
         {
             _isVerticalDashing = false;
-            _rb.AddForce(new Vector2(_rb.velocity.x, _rb.velocity.y * _dashMultiplier), ForceMode2D.Impulse);
+            _rb.AddForce(new Vector2(_rb.linearVelocity.x, _rb.linearVelocity.y * _dashMultiplier), ForceMode2D.Impulse);
         }
     }
 

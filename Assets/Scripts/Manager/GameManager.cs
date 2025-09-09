@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Xml;
 using UnityEngine;
 
 namespace Manager
@@ -28,32 +29,23 @@ namespace Manager
             scoreManager.ResetScore();
             if (Camera.main is not null) _cameraManager = Camera.main.GetComponent<CameraManager>();
             _player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Player>();
-            _enemySpawner = FindObjectOfType<SpawnerManager>();
+            _enemySpawner = FindFirstObjectByType<SpawnerManager>();
             _enemySpawner.SetBossActive(false);
-        }
-
-        private void Start()
-        {
         }
 
         private void Update()
         {
-            if (_player.Data.Level >= 10)
-
+            if (!_bossSpawned && _player.Data.Level >= 10)
             {
-                if (!_bossSpawned && _player.Data.Level >= 10)
-                {
-                    StartCoroutine(HandleBossSpawn());
-                    _bossSpawned = true;
-                }
+                StartCoroutine(HandleBossSpawn());
+                _bossSpawned = true;
             }
 
-            GameOver();
+            if (_player.Data.Health <= 0)
+                GameOver();
 
             if (Input.GetKeyDown(KeyCode.Escape))
-            {
                 PauseGame();
-            }
         }
 
         private IEnumerator HandleBossSpawn()
@@ -82,11 +74,8 @@ namespace Manager
 
         private void GameOver()
         {
-            if (_player.Data.Health <= 0)
-            {
-                GameOverScreen.SetActive(true);
-                Time.timeScale = 0;
-            }
+            GameOverScreen.SetActive(true);
+            Time.timeScale = 0;
         }
 
         private void PauseGame()
@@ -101,7 +90,7 @@ namespace Manager
             MenuScreen.SetActive(false);
         }
 
-        public void ExitGame()
+        public static void ExitGame()
         {
             #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;

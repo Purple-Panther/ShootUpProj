@@ -74,7 +74,7 @@ public class GuardianBehavior : MonoBehaviour
 
             Rigidbody2D rbProjectile = projectile.GetComponent<Rigidbody2D>();
             if (rbProjectile is not null)
-                rbProjectile.velocity = direction * projectileSpeed;
+                rbProjectile.linearVelocity = direction * projectileSpeed;
 
             Projectile projectileScript = projectile.GetComponent<Projectile>();
             if (projectileScript is not null)

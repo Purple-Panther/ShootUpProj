@@ -8,28 +8,26 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindFirstObjectByType<GameManager>();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (gameManager != null)
-                gameManager.ResumeGame();
+            gameManager?.ResumeGame();
         }
     }
 
     public void OnResumeButtonClicked()
     {
-        if (gameManager != null)
-            gameManager.ResumeGame();
+        gameManager?.ResumeGame();
     }
 
     public void OnExitButtonPressed()
     {
-        if (gameManager != null)
-            gameManager.ExitGame();
+        if (gameManager is not null)
+            GameManager.ExitGame();
     }
 
 }

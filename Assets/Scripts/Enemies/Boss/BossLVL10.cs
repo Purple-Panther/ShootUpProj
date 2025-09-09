@@ -46,10 +46,7 @@ public class BossLvl10 : Entity
         _playerTransform = Constraints.PlayerGameObject.transform;
 
         if (_mainCamera is not null)
-        {
-            float screenTopEdge = _mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 1f, _mainCamera.nearClipPlane)).y;
-            _targetPosition = new Vector3(transform.position.x, screenTopEdge - (2 * _mainCamera.orthographicSize / 6), transform.position.z);
-        }
+            _targetPosition = new Vector3(transform.position.x, _mainCamera.orthographicSize - 2, transform.position.z);
 
         StartCoroutine(AttackRoutine());
 
@@ -150,7 +147,7 @@ public class BossLvl10 : Entity
             Vector2 projectileDirection = RotateVector(directionToPlayer, currentAngle);
 
             GameObject tempProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            tempProjectile.GetComponent<Rigidbody2D>().velocity = projectileDirection * projectileSpeed;
+            tempProjectile.GetComponent<Rigidbody2D>().linearVelocity = projectileDirection * projectileSpeed;
 
             Projectile projectileScript = tempProjectile.GetComponent<Projectile>();
             if (projectileScript != null)
