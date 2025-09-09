@@ -29,9 +29,9 @@ Transform:
   m_GameObject: {fileID: 8335999442525658310}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.49, y: 4.33, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.7, y: 3.9886038, z: 1.5357541}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.4716981, g: 0.12682448, b: 0.36044866, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 95d86d42749fc1446bc1eb3a2689965b, type: 3}
+  m_Color: {r: 0.5188679, g: 0.0627451, b: 0.21176471, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soData: {fileID: 11400000, guid: 2bb5718e54665114f94f6cff2e987689, type: 2}
+  damageAudioSource: {fileID: 0}
   dropList:
   - itemPrefab: {fileID: 1796524339938888160, guid: 49d90c6fc51e3a54885ac5edd54139bb, type: 3}
     dropChance: 0.3
@@ -135,8 +136,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: -0.0024170156, y: -0.0040611164}
+  m_Size: {x: 0.5418605, y: 0.5618396}
   m_Direction: 0
 --- !u!50 &7912218051508665607
 Rigidbody2D:
