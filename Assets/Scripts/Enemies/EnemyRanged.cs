@@ -26,7 +26,7 @@ public class EnemyRanged : Entity
 
     private void FixedUpdate()
     {
-        _rb.velocity = new Vector2(_rb.velocity.x, -Data.BaseSpeed);
+        _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, -Data.BaseSpeed);
 
         if (_shootInterval <= 0)
         {
@@ -59,7 +59,7 @@ public class EnemyRanged : Entity
         Rigidbody2D projectileRb = projectileGameObject.GetComponent<Rigidbody2D>();
         
         if (projectileRb is not null)
-            projectileRb.velocity = transform.up * (-1 * projectileSpeed);
+            projectileRb.linearVelocity = transform.up * (-1 * projectileSpeed);
 
         projectile.Initialize(Data.AttackDamage);
         projectile.projectileLifeSpan = Data.AttackLife;

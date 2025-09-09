@@ -29,10 +29,10 @@ public class EliteRangedEnemy : Entity
     {
         if (_isMoving)
         {
-            _rb.velocity = new Vector2(0, -Data.BaseSpeed);
+            _rb.linearVelocity = new Vector2(0, -Data.BaseSpeed);
             if (transform.position.y <= stopYPositionUpperBound && transform.position.y >= stopYPositionLowerBound)
             {
-                _rb.velocity = Vector2.zero;
+                _rb.linearVelocity = Vector2.zero;
                 _isMoving = false;
             }
         }
@@ -75,7 +75,7 @@ public class EliteRangedEnemy : Entity
 
             Rigidbody2D rbProjectile = projectile.GetComponent<Rigidbody2D>();
             if (rbProjectile is not null)
-                rbProjectile.velocity = projectile.transform.up * projectileSpeed;
+                rbProjectile.linearVelocity = projectile.transform.up * projectileSpeed;
 
             Projectile projectileScript = projectile.GetComponent<Projectile>();
 
