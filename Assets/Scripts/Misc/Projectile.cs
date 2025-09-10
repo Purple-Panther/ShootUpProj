@@ -36,9 +36,13 @@ public class Projectile : MonoBehaviour
                 Debug.LogError("No Entity component found on the collided gameObject.");
             }
         }
-        else if (collision.gameObject.CompareTag(Constraints.BoundariesTag))
+        else if (IsCollidingWithBoundaries(collision))
         {
             Destroy(gameObject);
         }
     }
+
+    private bool IsCollidingWithBoundaries(Collider2D collision) =>
+        collision.gameObject.CompareTag(Constraints.InsideBoundariesTag) ||
+        collision.gameObject.CompareTag(Constraints.OutSideBoundariesTag);
 }

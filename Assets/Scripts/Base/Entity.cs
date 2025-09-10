@@ -39,48 +39,49 @@ public class Entity : MonoBehaviour, IEntity
         DropItems();
     }
 
-public void TakeDamage(float hpToRemove)
-{
-    GameObject newPopup = Instantiate(Hud.Instance.damagePopup, transform.position, Quaternion.identity);
-    newPopup.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f, 1f), 5), ForceMode2D.Impulse);
-    newPopup.GetComponentInChildren<Text>().text = hpToRemove.ToString(CultureInfo.CurrentCulture);
-    Destroy(newPopup, 1f);
-
-    Data.Health -= hpToRemove;
-
-    if (CompareTag("Player"))
+    public void TakeDamage(float hpToRemove)
     {
-        SFXManager.Instance?.PlayPlayerDamage();
-    }
-    else
-    {
-        SFXManager.Instance?.PlayEnemyDamage();
-    }
+        GameObject newPopup = Instantiate(Hud.Instance.damagePopup, transform.position, Quaternion.identity);
+        newPopup.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f, 1f), 5), ForceMode2D.Impulse);
+        newPopup.GetComponentInChildren<Text>().text = hpToRemove.ToString(CultureInfo.CurrentCulture);
+        Destroy(newPopup, 1f);
 
-    if (Data.Health <= 0)
-    {
+        Data.Health -= hpToRemove;
+
+        if (CompareTag("Player"))
+        {
+            SFXManager.Instance?.PlayPlayerDamage();
+        }
+        else
+        {
+            SFXManager.Instance?.PlayEnemyDamage();
+        }
+
+        if (Data.Health <= 0)
+        {
             if (CompareTag("Player"))
             {
                 SFXManager.Instance?.PlayPlayerDeath();
             }
             else
             {
-                 SFXManager.Instance?.PlayEnemyDeath();
+                SFXManager.Instance?.PlayEnemyDeath();
             }
-        float delay = SFXManager.Instance != null ? 0.2f : 0f;
-        StartCoroutine(DeathAfterDelay(delay));
-    }
-    else
-    {
-        foreach (var spriteRenderer in _spriteRenderers)
+
+            float delay = SFXManager.Instance != null ? 0.2f : 0f;
+            StartCoroutine(DeathAfterDelay(delay));
+        }
+        else
         {
-            if (spriteRenderer.color != Color.red)
+            foreach (var spriteRenderer in _spriteRenderers)
             {
-                StartCoroutine(HitBlink(spriteRenderer));
+                if (spriteRenderer.color != Color.red)
+                {
+                    StartCoroutine(HitBlink(spriteRenderer));
+                }
             }
         }
     }
-}
 
     private IEnumerator DeathAfterDelay(float delay)
     {

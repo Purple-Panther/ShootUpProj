@@ -23,11 +23,8 @@ namespace Manager
 
         public void ZoomOutCamera()
         {
-            if (_camera is not null)
-            {
-                if (_player.Data.Level >= 10)
-                    StartCoroutine(ZoomOutCoroutine());
-            }
+            if (_camera is not null && _player.Data.Level >= 10)
+                StartCoroutine(ZoomOutCoroutine());
         }
 
         private IEnumerator ZoomOutCoroutine()

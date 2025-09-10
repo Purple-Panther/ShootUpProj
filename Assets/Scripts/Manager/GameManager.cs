@@ -20,9 +20,12 @@ namespace Manager
         private GameObject _boss;
         private BossLvl10 _bossScript;
 
+        private GameObject[] _insideBoundaries;
+        private GameObject _insideDeadLine;
+
         private void Awake()
         {
-            _boss = Instantiate(LVL10Boss, new Vector3(0.02f, 10.08f, 0), Quaternion.identity);
+            _boss = Instantiate(LVL10Boss, new Vector3(0.02f, 21.31f, 0), Quaternion.identity);
             _bossScript = _boss.GetComponent<BossLvl10>();
             _boss.SetActive(false);
 
@@ -31,6 +34,8 @@ namespace Manager
             _player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Player>();
             _enemySpawner = FindFirstObjectByType<SpawnerManager>();
             _enemySpawner.SetBossActive(false);
+            _insideBoundaries = GameObject.FindGameObjectsWithTag(Constraints.InsideBoundariesTag);
+            _insideDeadLine = GameObject.FindGameObjectWithTag(Constraints.InsideDeadLineTag);
         }
 
         private void Update()
@@ -39,6 +44,7 @@ namespace Manager
             {
                 StartCoroutine(HandleBossSpawn());
                 _bossSpawned = true;
+                DisableInsideBoundaries();
             }
 
             if (_player.Data.Health <= 0)
@@ -46,6 +52,15 @@ namespace Manager
 
             if (Input.GetKeyDown(KeyCode.Escape))
                 PauseGame();
+            
+        }
+        
+        private void DisableInsideBoundaries()
+        {
+            foreach (var gameObject in _insideBoundaries)
+                gameObject.SetActive(false);
+            
+            _insideDeadLine.SetActive(false);
         }
 
         private IEnumerator HandleBossSpawn()

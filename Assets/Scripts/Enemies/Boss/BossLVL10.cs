@@ -46,12 +46,17 @@ public class BossLvl10 : Entity
         _playerTransform = Constraints.PlayerGameObject.transform;
 
         if (_mainCamera is not null)
-            _targetPosition = new Vector3(transform.position.x, _mainCamera.orthographicSize - 2, transform.position.z);
+        {
+            float distanceToBoss = Mathf.Abs(_mainCamera.transform.position.z - transform.position.z);
+            _targetPosition = new Vector3(transform.position.x, _mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 1f, distanceToBoss)).y - 3, transform.position.z);
+        }
 
         StartCoroutine(AttackRoutine());
 
         _horizontalDirection = Random.Range(-1f, 1f);
         _horizontalMovementTimer = _horizontalMovementDelay;
+
+        Data.BaseSpeed = 5;
     }
 
     private void FixedUpdate()
@@ -79,6 +84,11 @@ public class BossLvl10 : Entity
 
     private void RandomHorizontalMovement()
     {
+        float distanceToBoss = Mathf.Abs(_mainCamera.transform.position.z - transform.position.z);
+
+        Vector3 leftWorld  = _mainCamera.ViewportToWorldPoint(new Vector3(0f, 0.5f, distanceToBoss));
+        Vector3 rightWorld = _mainCamera.ViewportToWorldPoint(new Vector3(1f, 0.5f, distanceToBoss));
+        
         _horizontalMovementTimer -= Time.deltaTime;
         if (_horizontalMovementTimer <= 0)
         {
@@ -89,14 +99,13 @@ public class BossLvl10 : Entity
         Vector3 movement = new Vector3(_horizontalDirection * Data.BaseSpeed * Time.deltaTime, 0, 0);
         transform.position += movement;
 
-        float screenWidth = _mainCamera.orthographicSize * Screen.width / Screen.height;
         transform.position = new Vector3(
-            Mathf.Clamp(transform.position.x, -screenWidth + BossHalfWidth, screenWidth - BossHalfWidth),
+            Mathf.Clamp(transform.position.x, leftWorld.x + BossHalfWidth, rightWorld.x - BossHalfWidth),
             transform.position.y,
             transform.position.z
         );
     }
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(Constraints.PlayerTag))
@@ -190,7 +199,7 @@ public class BossLvl10 : Entity
 
         float playerX = _playerTransform.position.x;
 
-        float screenTopEdge = _mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 1f, _mainCamera.nearClipPlane)).y;
+        float screenTopEdge = _mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 1f, Mathf.Abs(_mainCamera.transform.position.z - transform.position.z))).y;
 
         float randomXOffset = Random.Range(-spawnXOffsetRange, spawnXOffsetRange);
         float spawnX = playerX + randomXOffset;
