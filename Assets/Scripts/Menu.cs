@@ -1,11 +1,12 @@
 using Manager;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
     private GameManager _gameManager;
 
-    void Start()
+    private void Start()
     {
         _gameManager = FindFirstObjectByType<GameManager>();
     }
@@ -29,4 +30,18 @@ public class Menu : MonoBehaviour
             GameManager.ExitGame();
     }
 
+    public void Play()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }    
+    
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("InitialScene");
+    }
 }

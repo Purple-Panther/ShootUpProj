@@ -5,10 +5,11 @@ namespace Player
 {
     public class Player : Entity
     {
+        private readonly float _dashMultiplier = 1.8f;
+        
         private Rigidbody2D _rb;
         private Vector2 _movement;
         private Vector2 _clampedMovement;
-        private float _dashMultiplier = 1.8f;
         private bool _isVerticalDashing;
         private bool _isHorizontalDashing;
 
@@ -33,7 +34,6 @@ namespace Player
 
         private void FixedUpdate()
         {
-            // _rb.linearVelocity = _clampedMovement * Data.BaseSpeed;
             _rb.MovePosition(_rb.position + (_clampedMovement * (Data.BaseSpeed * Time.fixedDeltaTime)));
 
             if (_isHorizontalDashing)
