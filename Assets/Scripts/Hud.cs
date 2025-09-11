@@ -1,8 +1,11 @@
-using System;
+
+using Base;
+using ScriptableObjects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Util;
 
 public class Hud : MonoBehaviour
 {
@@ -37,7 +40,7 @@ public class Hud : MonoBehaviour
 
     void Start()
     {
-        player = Constraints.PlayerGameObject.GetComponent<Player>();
+        player = Constraints.PlayerGameObject.GetComponent<Player.Player>();
 
         if (player is not null)
         {

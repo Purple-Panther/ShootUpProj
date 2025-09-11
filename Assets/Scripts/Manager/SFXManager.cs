@@ -1,62 +1,65 @@
 using UnityEngine;
 
-public class SFXManager : MonoBehaviour
+namespace Manager
 {
-    public static SFXManager Instance { get; private set; }
-
-    [Header("SFX Clips")]
-    public AudioClip playerShootClip;
-    public AudioClip playerDamageClip;
-    public AudioClip enemyDamageClip;
-    public AudioClip playerDeathClip;
-    public AudioClip enemyDeathClip;
-
-
-    private AudioSource _audioSource;
-
-    private void Awake()
+    public class SFXManager : MonoBehaviour
     {
-        if (Instance != null && Instance != this)
+        public static SFXManager Instance { get; private set; }
+
+        [Header("SFX Clips")]
+        public AudioClip playerShootClip;
+        public AudioClip playerDamageClip;
+        public AudioClip enemyDamageClip;
+        public AudioClip playerDeathClip;
+        public AudioClip enemyDeathClip;
+
+
+        private AudioSource _audioSource;
+
+        private void Awake()
         {
-            Destroy(gameObject);
-            return;
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            _audioSource = gameObject.AddComponent<AudioSource>();
         }
 
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-
-        _audioSource = gameObject.AddComponent<AudioSource>();
-    }
-
-    public void PlayPlayerShoot()
-    {
-        PlayClip(playerShootClip);
-    }
-
-    public void PlayPlayerDamage()
-    {
-        PlayClip(playerDamageClip);
-    }
-
-    public void PlayEnemyDamage()
-    {
-        PlayClip(enemyDamageClip);
-    }
-
-    private void PlayClip(AudioClip clip)
-    {
-        if (clip != null)
+        public void PlayPlayerShoot()
         {
-            _audioSource.PlayOneShot(clip);
+            PlayClip(playerShootClip);
         }
-    }
-    public void PlayPlayerDeath()
-    {
-        PlayClip(playerDeathClip);
-    }
-    public void PlayEnemyDeath()
-    {
-    PlayClip(enemyDeathClip);
-    }
 
+        public void PlayPlayerDamage()
+        {
+            PlayClip(playerDamageClip);
+        }
+
+        public void PlayEnemyDamage()
+        {
+            PlayClip(enemyDamageClip);
+        }
+
+        private void PlayClip(AudioClip clip)
+        {
+            if (clip != null)
+            {
+                _audioSource.PlayOneShot(clip);
+            }
+        }
+        public void PlayPlayerDeath()
+        {
+            PlayClip(playerDeathClip);
+        }
+        public void PlayEnemyDeath()
+        {
+            PlayClip(enemyDeathClip);
+        }
+
+    }
 }

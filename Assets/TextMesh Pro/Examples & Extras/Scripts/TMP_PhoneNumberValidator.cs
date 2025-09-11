@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
+﻿using System;
+using TMPro;
 
-namespace TMPro
+namespace TextMesh_Pro.Examples___Extras.Scripts
 {
     /// <summary>
     /// Example of a Custom Character Input Validator to only allow phone number in the (800) 555-1212 format.
@@ -14,7 +13,7 @@ namespace TMPro
         // Custom text input validation function
         public override char Validate(ref string text, ref int pos, char ch)
         {
-            Debug.Log("Trying to validate...");
+            UnityEngine.Debug.Log("Trying to validate...");
             
             // Return unless the character is a valid digit
             if (ch < '0' && ch > '9') return (char)0;

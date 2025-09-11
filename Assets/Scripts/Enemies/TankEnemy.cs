@@ -1,44 +1,49 @@
+using Base;
 using UnityEngine;
+using Util;
 
-public class TankEnemy : Entity
+namespace Enemies
 {
-    private GameObject _player;
-
-    protected override void Awake()
+    public class TankEnemy : Entity
     {
-        base.Awake();
-        _player = Constraints.PlayerGameObject;
-        if (_player is null)
-            Debug.LogError("Nenhum player foi encontrado");
-    }
+        private GameObject _player;
 
-    protected override void Death()
-    {
-        base.Death();
-        var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
-        var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>().scoreStats;
-
-        score.AddScore(Data.PointsDroppedWhenDying);
-        player.AddExp(Data.ExpDroppedWhenDying);
-    }
-
-    private void Update()
-    {
-        if (_player is not null)
+        protected override void Awake()
         {
-            Vector3 direction = (_player.transform.position - transform.position).normalized;
-
-            transform.position += direction * (Data.BaseSpeed * Time.deltaTime);
+            base.Awake();
+            _player = Constraints.PlayerGameObject;
+            if (_player is null)
+                UnityEngine.Debug.LogError("Nenhum player foi encontrado");
         }
-        else
+
+        protected override void Death()
+        {
+            base.Death();
+            var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
+            var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>().scoreStats;
+
+            score.AddScore(Data.PointsDroppedWhenDying);
+            player.AddExp(Data.ExpDroppedWhenDying);
+        }
+
+        private void Update()
+        {
+            if (_player is not null)
+            {
+                Vector3 direction = (_player.transform.position - transform.position).normalized;
+
+                transform.position += direction * (Data.BaseSpeed * Time.deltaTime);
+            }
+            else
+                Destroy(gameObject);
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (!other.CompareTag(Constraints.PlayerTag)) return;
+
+            other.GetComponent<Entity>().TakeDamage(Data.AttackDamage);
             Destroy(gameObject);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (!other.CompareTag(Constraints.PlayerTag)) return;
-
-        other.GetComponent<Entity>().TakeDamage(Data.AttackDamage);
-        Destroy(gameObject);
+        }
     }
 }

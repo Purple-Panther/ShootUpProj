@@ -1,4 +1,4 @@
-namespace DefaultNamespace.PowerUpS
+namespace PowerUpS
 {
     public enum PowerUpType
     {

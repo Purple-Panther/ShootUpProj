@@ -1,8 +1,11 @@
 using UnityEngine;
 
-[System.Serializable]
-public class ItemDrop
+namespace Misc
 {
-    public GameObject itemPrefab;  
-    public float dropChance;        
+    [System.Serializable]
+    public class ItemDrop
+    {
+        public GameObject itemPrefab;  
+        public float dropChance;        
+    }
 }

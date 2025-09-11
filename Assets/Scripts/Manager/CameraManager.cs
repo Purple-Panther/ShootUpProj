@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Util;
 
 namespace Manager
 {
@@ -11,13 +12,13 @@ namespace Manager
 
         private LevelUp _levelUp;
         private Camera _camera;
-        private Player _player;
+        private Player.Player _player;
 
         private void Start()
         {
             _camera = Camera.main;
             _levelUp = GameObject.FindGameObjectWithTag(Constraints.GameManagerTag).GetComponentInChildren<LevelUp>();
-            _player = Constraints.PlayerGameObject.GetComponent<Player>();
+            _player = Constraints.PlayerGameObject.GetComponent<Player.Player>();
             _levelUp.OnGameUnpaused += ZoomOutCamera;
         }
 

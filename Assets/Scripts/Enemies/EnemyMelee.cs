@@ -1,53 +1,57 @@
+using Base;
 using UnityEngine;
+using Util;
 
-
-public class EnemyMelee : Entity
+namespace Enemies
 {
-    [SerializeField]
-    private float zigzagTime = 2.0f;
-
-    private float _speed;
-    private float _meleeHitDamage;
-    private float _zigzagTimer;
-
-    private int _direction = 1;
-
-
-    protected override void Start()
+    public class EnemyMelee : Entity
     {
-        base.Start();
-        _meleeHitDamage = Data.AttackDamage;
-        _speed = Data.BaseSpeed;
-    }
+        [SerializeField]
+        private float zigzagTime = 2.0f;
 
-    protected override void Death()
-    {
-        base.Death();
-        var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
-        var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>().scoreStats;
+        private float _speed;
+        private float _meleeHitDamage;
+        private float _zigzagTimer;
 
-        score.AddScore(Data.PointsDroppedWhenDying);
-        player.AddExp(Data.ExpDroppedWhenDying);
-    }
+        private int _direction = 1;
 
-    private void Update()
-    {
 
-        transform.position += new Vector3(_direction * _speed * Time.deltaTime, -_speed * Time.deltaTime, 0);
+        protected override void Start()
+        {
+            base.Start();
+            _meleeHitDamage = Data.AttackDamage;
+            _speed = Data.BaseSpeed;
+        }
 
-        _zigzagTimer += Time.deltaTime;
+        protected override void Death()
+        {
+            base.Death();
+            var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
+            var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>().scoreStats;
 
-        if (_zigzagTimer <= zigzagTime) return;
+            score.AddScore(Data.PointsDroppedWhenDying);
+            player.AddExp(Data.ExpDroppedWhenDying);
+        }
 
-        _direction *= -1;
-        _zigzagTimer = 0;
-    }
+        private void Update()
+        {
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (!other.CompareTag(Constraints.PlayerTag)) return;
+            transform.position += new Vector3(_direction * _speed * Time.deltaTime, -_speed * Time.deltaTime, 0);
 
-        other.gameObject.GetComponent<Entity>().TakeDamage(_meleeHitDamage);
-        Destroy(gameObject);
+            _zigzagTimer += Time.deltaTime;
+
+            if (_zigzagTimer <= zigzagTime) return;
+
+            _direction *= -1;
+            _zigzagTimer = 0;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (!other.CompareTag(Constraints.PlayerTag)) return;
+
+            other.gameObject.GetComponent<Entity>().TakeDamage(_meleeHitDamage);
+            Destroy(gameObject);
+        }
     }
 }

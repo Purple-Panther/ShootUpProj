@@ -1,58 +1,61 @@
-using System.Collections;
-using System.Collections.Generic;
+using Base;
 using UnityEngine;
+using Util;
 
-public class LifeDrop : MonoBehaviour
+namespace Misc
 {
-    public float chaseDistance = 5.0f; 
-    public float stopChaseDistance = 10.0f; 
-    public float speed = 2.0f;
-    public int healAmount = 20; 
-    private Transform playerTransform;
-    private bool isChasing = false;
-
-    void Start()
+    public class LifeDrop : MonoBehaviour
     {
-        playerTransform = Constraints.PlayerGameObject.transform;
-    }
+        public float chaseDistance = 5.0f; 
+        public float stopChaseDistance = 10.0f; 
+        public float speed = 2.0f;
+        public int healAmount = 20; 
+        private Transform playerTransform;
+        private bool isChasing = false;
 
-    void Update()
-    {
-        if (playerTransform is not null)
+        void Start()
         {
-            float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+            playerTransform = Constraints.PlayerGameObject.transform;
+        }
 
-            if (distanceToPlayer <= chaseDistance)
+        void Update()
+        {
+            if (playerTransform is not null)
             {
-                isChasing = true;
-            }
-            else if (distanceToPlayer > stopChaseDistance)
-            {
-                isChasing = false;
-            }
+                float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
-            if (isChasing)
-            {
-                ChasePlayer();
+                if (distanceToPlayer <= chaseDistance)
+                {
+                    isChasing = true;
+                }
+                else if (distanceToPlayer > stopChaseDistance)
+                {
+                    isChasing = false;
+                }
+
+                if (isChasing)
+                {
+                    ChasePlayer();
+                }
             }
         }
-    }
 
-    private void ChasePlayer()
-    {
-        Vector3 direction = (playerTransform.position - transform.position).normalized;
-        transform.position += direction * (speed * Time.deltaTime);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag(Constraints.PlayerTag))
+        private void ChasePlayer()
         {
-            Entity playerEntity = collision.GetComponent<Entity>();
-            if (playerEntity is not null)
+            Vector3 direction = (playerTransform.position - transform.position).normalized;
+            transform.position += direction * (speed * Time.deltaTime);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag(Constraints.PlayerTag))
             {
-                playerEntity.Data.Health = Mathf.Min(playerEntity.Data.Health + healAmount, playerEntity.Data.MaxHealth);
-                Destroy(gameObject);
+                Entity playerEntity = collision.GetComponent<Entity>();
+                if (playerEntity is not null)
+                {
+                    playerEntity.Data.Health = Mathf.Min(playerEntity.Data.Health + healAmount, playerEntity.Data.MaxHealth);
+                    Destroy(gameObject);
+                }
             }
         }
     }

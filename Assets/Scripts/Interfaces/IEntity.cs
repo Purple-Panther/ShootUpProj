@@ -1,3 +1,5 @@
+using Core;
+
 namespace Interfaces
 {
     public interface IEntity

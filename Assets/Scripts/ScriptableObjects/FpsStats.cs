@@ -1,14 +1,17 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newFpsStats", menuName = "FpsStats")]
-public class FpsStats : ScriptableObject
+namespace ScriptableObjects
 {
-    private float _deltaTime = 0.0f;
-    private float Fps => 0.5f / _deltaTime;
-
-    public string FpsText()
+    [CreateAssetMenu(fileName = "newFpsStats", menuName = "FpsStats")]
+    public class FpsStats : ScriptableObject
     {
-        _deltaTime += (Time.unscaledDeltaTime - _deltaTime) * 0.1f;
-        return $"{Fps:0.} FPS";
+        private float _deltaTime = 0.0f;
+        private float Fps => 0.5f / _deltaTime;
+
+        public string FpsText()
+        {
+            _deltaTime += (Time.unscaledDeltaTime - _deltaTime) * 0.1f;
+            return $"{Fps:0.} FPS";
+        }
     }
 }

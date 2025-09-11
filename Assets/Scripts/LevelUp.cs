@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
 using Manager;
+using PowerUpS;
 using UnityEngine;
+using Util;
 using Random = UnityEngine.Random;
 
 public class LevelUp : MonoBehaviour
 {
     public GameObject levelUpPanel;
-    private Player _player;
+    private Player.Player _player;
     private PowerUpManager _powerUpManager;
     public GameObject background;
 
@@ -25,7 +27,7 @@ public class LevelUp : MonoBehaviour
     {
         var playerObject = GameObject.FindGameObjectWithTag(Constraints.PlayerTag);
         _powerUpManager = playerObject.GetComponent<PowerUpManager>();
-        _player = playerObject.GetComponent<Player>();
+        _player = playerObject.GetComponent<Player.Player>();
         _currentLevel = _player.Data.Level;
         levelUpPanel.SetActive(false);
     }

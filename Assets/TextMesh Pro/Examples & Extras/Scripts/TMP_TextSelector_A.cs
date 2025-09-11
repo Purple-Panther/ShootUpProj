@@ -1,9 +1,8 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections;
 
-
-namespace TMPro.Examples
+namespace TextMesh_Pro.Examples___Extras.Scripts
 {
 
     public class TMP_TextSelector_A : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -142,14 +141,14 @@ namespace TMPro.Examples
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            Debug.Log("OnPointerEnter()");
+            UnityEngine.Debug.Log("OnPointerEnter()");
             m_isHoveringObject = true;
         }
 
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            Debug.Log("OnPointerExit()");
+            UnityEngine.Debug.Log("OnPointerExit()");
             m_isHoveringObject = false;
         }
 

@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Xml;
+using Enemies.Boss;
+using ScriptableObjects;
 using UnityEngine;
+using Util;
 
 namespace Manager
 {
@@ -12,7 +15,7 @@ namespace Manager
         [SerializeField] public GameObject MenuScreen;
         [SerializeField] public GameObject DangerScreen;
 
-        private Player _player;
+        private Player.Player _player;
         private SpawnerManager _enemySpawner;
         private CameraManager _cameraManager;
         private bool _bossSpawned;
@@ -31,7 +34,7 @@ namespace Manager
 
             scoreManager.ResetScore();
             if (Camera.main is not null) _cameraManager = Camera.main.GetComponent<CameraManager>();
-            _player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Player>();
+            _player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Player.Player>();
             _enemySpawner = FindFirstObjectByType<SpawnerManager>();
             _enemySpawner.SetBossActive(false);
             _insideBoundaries = GameObject.FindGameObjectsWithTag(Constraints.InsideBoundariesTag);

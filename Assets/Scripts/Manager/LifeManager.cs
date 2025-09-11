@@ -17,7 +17,7 @@ namespace Manager
 
         void Start()
         {
-            Player = FindObjectOfType<Player>();
+            Player = FindObjectOfType<Player.Player>();
 
             if (Player is not null)
             {

@@ -1,26 +1,29 @@
 using UnityEngine;
 
-public static class Constraints
+namespace Util
 {
-    #region || Tags ||
+    public static class Constraints
+    {
+        #region || Tags ||
 
-    public const string PlayerTag = "Player";
-    public const string EnemyTag = "Enemy";
-    public const string EnemyProjectileTag = "EnemyProjectile";
-    public const string WallTag = "Wall";
-    public const string InsideBoundariesTag = "InsideBoundaries";
-    public const string InsideDeadLineTag = "InsideDeadLine";
-    public const string OutSideBoundariesTag = "OutsideBoundaries";
-    public const string OutsideDeadLineTag = "OutsideDeadLine";
-    public const string HudTag = "Hud";
-    public const string GameManagerTag = "GameManager";
+        public const string PlayerTag = "Player";
+        public const string EnemyTag = "Enemy";
+        public const string EnemyProjectileTag = "EnemyProjectile";
+        public const string WallTag = "Wall";
+        public const string InsideBoundariesTag = "InsideBoundaries";
+        public const string InsideDeadLineTag = "InsideDeadLine";
+        public const string OutSideBoundariesTag = "OutsideBoundaries";
+        public const string OutsideDeadLineTag = "OutsideDeadLine";
+        public const string HudTag = "Hud";
+        public const string GameManagerTag = "GameManager";
 
-    #endregion
+        #endregion
 
-    #region || GameObject ||
+        #region || GameObject ||
 
-    public static readonly GameObject PlayerGameObject = GameObject.FindGameObjectWithTag(PlayerTag);
-    public static readonly GameObject[] EnemiesGameObjects= GameObject.FindGameObjectsWithTag(EnemyTag);
+        public static readonly GameObject PlayerGameObject = GameObject.FindGameObjectWithTag(PlayerTag);
+        public static readonly GameObject[] EnemiesGameObjects= GameObject.FindGameObjectsWithTag(EnemyTag);
 
-    #endregion
+        #endregion
+    }
 }

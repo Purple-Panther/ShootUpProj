@@ -1,75 +1,79 @@
-using Interfaces;
-using JetBrains.Annotations;
+using Base;
+using Misc;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Util;
 
-public class EnemyRanged : Entity
+namespace Enemies
 {
-    [FormerlySerializedAs("ProjectilePrefab")] [SerializeField]
-    private GameObject projectilePrefab; 
-
-    [FormerlySerializedAs("ProjectileSpeed")] [SerializeField]
-    private float projectileSpeed = 5.0f;
-
-    private float _shootInterval;
-    private Rigidbody2D _rb;
-
-    protected override void Start()
+    public class EnemyRanged : Entity
     {
-        base.Start();
-        
-        _shootInterval = Data.AttackSpeed;
-        _rb = gameObject.GetComponent<Rigidbody2D>();
+        [FormerlySerializedAs("ProjectilePrefab")] [SerializeField]
+        private GameObject projectilePrefab; 
 
-        Shoot();
-    }
+        [FormerlySerializedAs("ProjectileSpeed")] [SerializeField]
+        private float projectileSpeed = 5.0f;
 
-    private void FixedUpdate()
-    {
-        _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, -Data.BaseSpeed);
+        private float _shootInterval;
+        private Rigidbody2D _rb;
 
-        if (_shootInterval <= 0)
+        protected override void Start()
         {
-            Shoot();
+            base.Start();
+        
             _shootInterval = Data.AttackSpeed;
+            _rb = gameObject.GetComponent<Rigidbody2D>();
+
+            Shoot();
         }
-        else
+
+        private void FixedUpdate()
         {
-            _shootInterval -= Time.deltaTime;
+            _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, -Data.BaseSpeed);
+
+            if (_shootInterval <= 0)
+            {
+                Shoot();
+                _shootInterval = Data.AttackSpeed;
+            }
+            else
+            {
+                _shootInterval -= Time.deltaTime;
+            }
         }
-    }
 
-    protected override void Death()
-    {
-        base.Death();
-        var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
-        var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>().scoreStats;
+        protected override void Death()
+        {
+            base.Death();
+            var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
+            var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>().scoreStats;
 
-        score.AddScore(Data.PointsDroppedWhenDying);
-        player.AddExp(Data.ExpDroppedWhenDying);
-    }
+            score.AddScore(Data.PointsDroppedWhenDying);
+            player.AddExp(Data.ExpDroppedWhenDying);
+        }
 
-    private void Shoot()
-    {
-        GameObject projectileGameObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        private void Shoot()
+        {
+            GameObject projectileGameObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         
-        if (projectileGameObject is null) return;
+            if (projectileGameObject is null) return;
 
-        Projectile projectile = projectileGameObject.GetComponent<Projectile>();
-        Rigidbody2D projectileRb = projectileGameObject.GetComponent<Rigidbody2D>();
+            Projectile projectile = projectileGameObject.GetComponent<Projectile>();
+            Rigidbody2D projectileRb = projectileGameObject.GetComponent<Rigidbody2D>();
         
-        if (projectileRb is not null)
-            projectileRb.linearVelocity = transform.up * (-1 * projectileSpeed);
+            if (projectileRb is not null)
+                projectileRb.linearVelocity = transform.up * (-1 * projectileSpeed);
 
-        projectile.Initialize(Data.AttackDamage);
-        projectile.projectileLifeSpan = Data.AttackLife;
-    }
+            projectile.Initialize(Data.AttackDamage);
+            projectile.projectileLifeSpan = Data.AttackLife;
+        }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (!other.CompareTag(Constraints.PlayerTag)) return;
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (!other.CompareTag(Constraints.PlayerTag)) return;
 
-        other.GetComponent<Entity>().TakeDamage(Data.AttackDamage);
-        Destroy(gameObject);
+            other.GetComponent<Entity>().TakeDamage(Data.AttackDamage);
+            Destroy(gameObject);
+        }
     }
 }
