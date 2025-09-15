@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 80
   health: 80
-  baseSpeed: 1
+  baseSpeed: 1.2
   attackDamage: 35
   attackSpeed: 1
   attackLife: 35
