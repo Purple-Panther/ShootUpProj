@@ -1,5 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Enums;
 using UnityEngine;
 using Util;
 
@@ -8,17 +9,33 @@ public class SpawnerManager : MonoBehaviour
     public GameObject[] enemyPrefabs;
     public GameObject[] eliteEnemyPrefabs;
     public float eliteSpawnChance = 0.1f;
-    public List<Transform> spawnPoints;
+    private readonly List<GameObject> _spawnPoints = new();
     public float spawnInterval = 5f; // Valor aumentado para reduzir a frequência inicial
     public float minSpawnInterval = 1f; // Valor ajustado para o mínimo
     public float difficultyIncreaseRate = 0.95f; // Taxa de aumento de dificuldade reduzida
 
     private float _nextSpawnTime;
     private bool _bossActive;
+    
+    private const string InsideAlias = "InsideSpawn";
+    private const string OutsideAlias = "OutsideSpawn";
 
     private void Start()
     {
         _nextSpawnTime = Time.timeSinceLevelLoad + spawnInterval;
+        
+        _spawnPoints.AddRange(GameObject.FindGameObjectsWithTag("InsideSpawn"));
+        _spawnPoints.AddRange(GameObject.FindGameObjectsWithTag("OutsideSpawn"));
+        
+        ChangeStatusOfSpawns(SpawnPosition.Outside, false);
+    }
+
+    public void ChangeStatusOfSpawns(SpawnPosition spawnPosition, bool status)
+    {
+        var position = spawnPosition is SpawnPosition.Inside ? InsideAlias : OutsideAlias;
+        
+        foreach (var obj in _spawnPoints.Where(x => x.tag.Equals(position)))
+            obj.SetActive(status);
     }
 
     private void Update()
@@ -36,7 +53,7 @@ public class SpawnerManager : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        int spawnIndex = Random.Range(0, spawnPoints.Count);
+        int spawnIndex = Random.Range(0, _spawnPoints.Count(x => x.activeSelf));
         SpawnEnemyAtPoint(spawnIndex);
 
         if (Random.value < eliteSpawnChance)
@@ -48,20 +65,19 @@ public class SpawnerManager : MonoBehaviour
     private void SpawnEnemyAtPoint(int spawnIndex)
     {
         GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-        Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
+        Instantiate(enemyPrefab, _spawnPoints.Where(x => x.activeSelf).ToArray()[spawnIndex].transform.position, Quaternion.identity);
     }
 
     private void SpawnEliteEnemyAtPoint(int spawnIndex)
     {
         GameObject eliteEnemyPrefab = eliteEnemyPrefabs[Random.Range(0, eliteEnemyPrefabs.Length)];
-        Instantiate(eliteEnemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
+        Instantiate(eliteEnemyPrefab, _spawnPoints.Where(x => x.activeSelf).ToArray()[spawnIndex].transform.position, Quaternion.identity);
     }
 
     private void SpawnAdditionalEnemies(int initialSpawnIndex)
     {
-        // Limitar a quantidade de inimigos adicionais para 1 por chamada
         int nextIndex = initialSpawnIndex + 1;
-        if (nextIndex < spawnPoints.Count)
+        if (nextIndex < _spawnPoints.Count)
             SpawnEnemyAtPoint(nextIndex);
     }
 

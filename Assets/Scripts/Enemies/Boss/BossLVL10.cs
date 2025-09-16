@@ -26,11 +26,12 @@ namespace Enemies.Boss
         private float _meleeHitDamage;
         private bool _useBulletHell = true;
         private Transform _playerTransform;
+        private SpawnerManager _spawnerManager;
         private bool _isAttacking;
         private bool _hasReachedTargetPosition;
 
         private Vector3 _targetPosition;
-        private float _horizontalMovementDelay = 2.0f;
+        private readonly float _horizontalMovementDelay = 2.0f;
         private float _horizontalMovementTimer;
 
         private float BossHalfWidth => GetComponent<SpriteRenderer>().bounds.extents.x;
@@ -46,6 +47,8 @@ namespace Enemies.Boss
             _mainCamera = Camera.main;
             _meleeHitDamage = Data.AttackDamage;
             _shootInterval = Data.AttackSpeed;
+
+            _spawnerManager = GameObject.FindGameObjectWithTag("GameManager").GetComponentInChildren<SpawnerManager>();
 
             _playerTransform = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).transform;
 
@@ -215,6 +218,8 @@ namespace Enemies.Boss
         protected override void Death()
         {
             base.Death();
+            _spawnerManager.SetBossActive(false);
+
             _isBossAlive = false;
             var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
             var hud = Hud.GetOrFind();
@@ -225,6 +230,7 @@ namespace Enemies.Boss
             }
             var score = hud.scoreStats;
 
+            
             score.AddScore(Data.PointsDroppedWhenDying);
             player.AddExp(Data.ExpDroppedWhenDying);
         }

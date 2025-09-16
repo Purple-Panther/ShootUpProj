@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Xml;
 using Enemies.Boss;
+using Enums;
 using ScriptableObjects;
 using UnityEngine;
 using Util;
@@ -91,6 +92,9 @@ namespace Manager
 
             _boss.SetActive(true);
             _enemySpawner.SetBossActive(true);
+
+            _enemySpawner.ChangeStatusOfSpawns(SpawnPosition.Inside, false);
+            _enemySpawner.ChangeStatusOfSpawns(SpawnPosition.Outside, true);
         }
 
         private void GameOver()
