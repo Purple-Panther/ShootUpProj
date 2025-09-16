@@ -1,4 +1,3 @@
-
 using Base;
 using ScriptableObjects;
 using TMPro;
@@ -26,16 +25,23 @@ public class Hud : MonoBehaviour
 
     public TMP_Text levelText;
 
-    private const float UpdateInterval = 1.0f; 
+    private const float UpdateInterval = 1.0f;
     private float _nextUpdateTime = 0f;
 
     private void Awake()
     {
+        Instance = this;
+    }
 
-        if (Instance is not null && Instance != this)
-            Destroy(this);
-        else
-            Instance = this;
+    public static Hud GetOrFind()
+    {
+        if (Instance != null) return Instance;
+        var found = FindFirstObjectByType<Hud>();
+        if (found != null)
+        {
+            Instance = found;
+        }
+        return Instance;
     }
 
     void Start()
@@ -55,11 +61,7 @@ public class Hud : MonoBehaviour
 
     void Update()
     {
-        if (Time.time >= _nextUpdateTime)
-        {
-            fps.text = fpsStats.FpsText();
-            _nextUpdateTime = Time.time + UpdateInterval;
-        }
+        fps.text = fpsStats.FpsText();
     }
 
 
@@ -88,5 +90,6 @@ public class Hud : MonoBehaviour
         {
             player.Data.OnDataChanged -= PlayerHUD;
         }
+        if (Instance == this) Instance = null;
     }
 }

@@ -6,7 +6,7 @@ namespace ScriptableObjects
     public class FpsStats : ScriptableObject
     {
         private float _deltaTime = 0.0f;
-        private float Fps => 0.5f / _deltaTime;
+        private float Fps => _deltaTime > 0f ? 1f / _deltaTime : 0f;
 
         public string FpsText()
         {

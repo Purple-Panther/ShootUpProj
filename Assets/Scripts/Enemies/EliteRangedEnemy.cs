@@ -54,7 +54,13 @@ namespace Enemies
         {
             base.Death();
             var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
-            var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>().scoreStats;
+            var hud = Hud.GetOrFind();
+            if (hud is null)
+            {
+                Debug.LogError("HUD not found in scene to add score.");
+                return;
+            }
+            var score = hud.scoreStats;
 
             score.AddScore(Data.PointsDroppedWhenDying);
             player.AddExp(Data.ExpDroppedWhenDying);
