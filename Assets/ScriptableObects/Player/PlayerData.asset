@@ -16,7 +16,7 @@ MonoBehaviour:
   health: 100
   baseSpeed: 10
   attackDamage: 10
-  attackSpeed: 0.8
+  attackSpeed: 0.7
   attackLife: 10
   pointsDroppedWhenDying: 0
   expDroppedWhenDying: 0

@@ -15,7 +15,7 @@ namespace Misc
 
         void Start()
         {
-            playerTransform = Constraints.PlayerGameObject.transform;
+            playerTransform = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).transform;
         }
 
         void Update()

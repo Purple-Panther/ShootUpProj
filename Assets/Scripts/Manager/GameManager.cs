@@ -28,6 +28,9 @@ namespace Manager
 
         private void Awake()
         {
+            // Ensure game is not paused when (re)entering the scene
+            Time.timeScale = 1f;
+
             _boss = Instantiate(LVL10Boss, new Vector3(0.02f, 21.31f, 0), Quaternion.identity);
             _bossScript = _boss.GetComponent<BossLvl10>();
             _boss.SetActive(false);

@@ -12,7 +12,7 @@ namespace Manager
 
         private void Start()
         {
-            _player = Constraints.PlayerGameObject.GetComponent<Player.Player>();
+            _player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Player.Player>();
             _playerShooting = _player.GetComponent<PlayerShooting>();
 
             if (_playerShooting is null)

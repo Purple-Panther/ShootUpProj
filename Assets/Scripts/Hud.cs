@@ -40,7 +40,7 @@ public class Hud : MonoBehaviour
 
     void Start()
     {
-        player = Constraints.PlayerGameObject.GetComponent<Player.Player>();
+        player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Player.Player>();
 
         if (player is not null)
         {

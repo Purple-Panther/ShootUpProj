@@ -18,7 +18,7 @@ namespace Manager
         {
             _camera = Camera.main;
             _levelUp = GameObject.FindGameObjectWithTag(Constraints.GameManagerTag).GetComponentInChildren<LevelUp>();
-            _player = Constraints.PlayerGameObject.GetComponent<Player.Player>();
+            _player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Player.Player>();
             _levelUp.OnGameUnpaused += ZoomOutCamera;
         }
 

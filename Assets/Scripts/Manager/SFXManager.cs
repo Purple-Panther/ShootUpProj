@@ -25,7 +25,6 @@ namespace Manager
             }
 
             Instance = this;
-            DontDestroyOnLoad(gameObject);
 
             _audioSource = gameObject.AddComponent<AudioSource>();
         }

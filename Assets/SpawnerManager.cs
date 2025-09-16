@@ -72,7 +72,7 @@ public class SpawnerManager : MonoBehaviour
 
     public static void KillAllEnemies()
     {
-        foreach (var enemy in Constraints.EnemiesGameObjects)
+        foreach (var enemy in GameObject.FindGameObjectsWithTag(Constraints.EnemyTag))
             Destroy(enemy);
     }
 }

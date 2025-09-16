@@ -26,7 +26,7 @@ namespace Player
 
         private void Start()
         {
-            _player = Constraints.PlayerGameObject.GetComponent<Player>();
+            _player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Player>();
             EntityStats = _player.Data;
             attackSpeed = EntityStats.AttackSpeed;
         }

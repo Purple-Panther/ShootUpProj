@@ -11,7 +11,7 @@ namespace Enemies
         protected override void Awake()
         {
             base.Awake();
-            _player = Constraints.PlayerGameObject;
+            _player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag);
             if (_player is null)
                 UnityEngine.Debug.LogError("Nenhum player foi encontrado");
         }

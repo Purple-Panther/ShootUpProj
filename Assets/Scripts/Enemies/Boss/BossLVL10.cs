@@ -47,7 +47,7 @@ namespace Enemies.Boss
             _meleeHitDamage = Data.AttackDamage;
             _shootInterval = Data.AttackSpeed;
 
-            _playerTransform = Constraints.PlayerGameObject.transform;
+            _playerTransform = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).transform;
 
             if (_mainCamera is not null)
             {
@@ -216,7 +216,7 @@ namespace Enemies.Boss
         {
             base.Death();
             _isBossAlive = false;
-            var player = Constraints.PlayerGameObject.GetComponent<Entity>();
+            var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
             var score = GameObject.FindGameObjectWithTag(Constraints.HudTag).GetComponent<Hud>().scoreStats;
 
             score.AddScore(Data.PointsDroppedWhenDying);
