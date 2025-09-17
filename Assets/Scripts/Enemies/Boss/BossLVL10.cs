@@ -1,5 +1,6 @@
 using System.Collections;
 using Base;
+using Manager;
 using Misc;
 using UnityEngine;
 using Util;
@@ -27,6 +28,8 @@ namespace Enemies.Boss
         private bool _useBulletHell = true;
         private Transform _playerTransform;
         private SpawnerManager _spawnerManager;
+        private GameManager _gameManager;
+        private LevelUp _levelUp;
         private bool _isAttacking;
         private bool _hasReachedTargetPosition;
 
@@ -48,9 +51,11 @@ namespace Enemies.Boss
             _meleeHitDamage = Data.AttackDamage;
             _shootInterval = Data.AttackSpeed;
 
+            _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponentInChildren<GameManager>();
             _spawnerManager = GameObject.FindGameObjectWithTag("GameManager").GetComponentInChildren<SpawnerManager>();
 
             _playerTransform = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).transform;
+            _levelUp = GameObject.FindGameObjectWithTag(Constraints.GameManagerTag).GetComponentInChildren<LevelUp>();
 
             if (_mainCamera is not null)
             {
@@ -231,10 +236,11 @@ namespace Enemies.Boss
                 return;
             }
             var score = hud.scoreStats;
-
             
             score.AddScore(Data.PointsDroppedWhenDying);
             player.AddExp(Data.ExpDroppedWhenDying);
+
+            _levelUp.OnGameUnpaused += _gameManager.EndGame;
         }
 
     }

@@ -15,10 +15,12 @@ namespace Manager
         [SerializeField] public GameObject GameOverScreen;
         [SerializeField] public GameObject MenuScreen;
         [SerializeField] public GameObject DangerScreen;
+        [SerializeField] public GameObject _endGameMenu;
 
         private Player.Player _player;
         private SpawnerManager _enemySpawner;
         private CameraManager _cameraManager;
+        private bool _continueEndlessMode = false;
         private bool _bossSpawned;
 
         private GameObject _boss;
@@ -29,13 +31,12 @@ namespace Manager
 
         private void Awake()
         {
-            // TODO: Preciso garantir que o jogo não volte pausado
             Time.timeScale = 1f;
 
             _boss = Instantiate(LVL10Boss, new Vector3(0.02f, 21.31f, 0), Quaternion.identity);
             _bossScript = _boss.GetComponent<BossLvl10>();
             _boss.SetActive(false);
-
+            
             scoreManager.ResetScore();
             if (Camera.main is not null) _cameraManager = Camera.main.GetComponent<CameraManager>();
             _player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Player.Player>();
@@ -101,6 +102,12 @@ namespace Manager
         {
             GameOverScreen.SetActive(true);
             Time.timeScale = 0;
+        }        
+        
+        public void EndGame()
+        {
+            _endGameMenu.SetActive(true);
+            Time.timeScale = 0;
         }
 
         private void PauseGame()
@@ -113,6 +120,13 @@ namespace Manager
         {
             Time.timeScale = 1;
             MenuScreen.SetActive(false);
+        }
+        
+        public void ContinueEndlessMode()
+        {
+            Time.timeScale = 1;
+            _endGameMenu.SetActive(false);
+            _continueEndlessMode = true;
         }
 
         public static void ExitGame()
