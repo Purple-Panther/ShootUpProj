@@ -219,6 +219,8 @@ namespace Enemies.Boss
         {
             base.Death();
             _spawnerManager.SetBossActive(false);
+            _spawnerManager.minSpawnInterval = 0.4f;
+            _spawnerManager.eliteSpawnChance = 0.35f;
 
             _isBossAlive = false;
             var player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Entity>();
