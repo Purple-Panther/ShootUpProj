@@ -34,11 +34,10 @@ public class LevelUp : MonoBehaviour
 
     void Update()
     {
-        if (_player.Data.Level > _currentLevel)
-        {
-            OpenLevelUpPanel();
-            _currentLevel = _player.Data.Level;
-        }
+        if (_player.Data.Level <= _currentLevel) return;
+        
+        OpenLevelUpPanel();
+        _currentLevel = _player.Data.Level;
     }
 
     void OpenLevelUpPanel()

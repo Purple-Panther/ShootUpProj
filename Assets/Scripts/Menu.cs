@@ -23,6 +23,11 @@ public class Menu : MonoBehaviour
     {
         _gameManager?.ResumeGame();
     }
+    
+    public void ContinueEndlessMode()
+    {
+        _gameManager?.ContinueEndlessMode();
+    }
 
     public void OnExitButtonPressed()
     {
