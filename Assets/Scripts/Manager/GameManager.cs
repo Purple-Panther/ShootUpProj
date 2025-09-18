@@ -17,14 +17,13 @@ namespace Manager
         [SerializeField] public GameObject DangerScreen;
         [SerializeField] public GameObject _endGameMenu;
 
+        private bool _isGamePaused;
         private Player.Player _player;
         private SpawnerManager _enemySpawner;
-        private CameraManager _cameraManager;
-        private bool _continueEndlessMode = false;
+        private bool _continueEndlessMode ;
         private bool _bossSpawned;
 
         private GameObject _boss;
-        private BossLvl10 _bossScript;
 
         private GameObject[] _insideBoundaries;
         private GameObject _insideDeadLine;
@@ -34,11 +33,9 @@ namespace Manager
             Time.timeScale = 1f;
 
             _boss = Instantiate(LVL10Boss, new Vector3(0.02f, 21.31f, 0), Quaternion.identity);
-            _bossScript = _boss.GetComponent<BossLvl10>();
             _boss.SetActive(false);
             
             scoreManager.ResetScore();
-            if (Camera.main is not null) _cameraManager = Camera.main.GetComponent<CameraManager>();
             _player = GameObject.FindGameObjectWithTag(Constraints.PlayerTag).GetComponent<Player.Player>();
             _enemySpawner = FindFirstObjectByType<SpawnerManager>();
             _enemySpawner.SetBossActive(false);
@@ -60,7 +57,6 @@ namespace Manager
 
             if (Input.GetKeyDown(KeyCode.Escape))
                 PauseGame();
-            
         }
         
         private void DisableInsideBoundaries()
@@ -109,23 +105,28 @@ namespace Manager
             _endGameMenu.SetActive(true);
             Time.timeScale = 0;
         }
-
+        
         private void PauseGame()
         {
-            Time.timeScale = 0;
             MenuScreen.SetActive(true);
+            _isGamePaused = true;
+            Time.timeScale = 0;
         }
 
         public void ResumeGame()
         {
             Time.timeScale = 1;
+            _isGamePaused = false;
             MenuScreen.SetActive(false);
         }
         
         public void ContinueEndlessMode()
         {
-            Time.timeScale = 1;
-            _endGameMenu.SetActive(false);
+            Time.timeScale = 1f;
+            if (_endGameMenu != null)
+            {
+                _endGameMenu.SetActive(false);
+            }
             _continueEndlessMode = true;
         }
 
