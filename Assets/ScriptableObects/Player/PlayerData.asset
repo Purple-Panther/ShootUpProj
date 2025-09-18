@@ -21,5 +21,5 @@ MonoBehaviour:
   pointsDroppedWhenDying: 0
   expDroppedWhenDying: 0
   exp: 0
-  expToNextLevel: 1
-  level: 9
+  expToNextLevel: 100
+  level: 1
