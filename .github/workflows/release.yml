@@ -11,33 +11,13 @@ jobs:
       - name: Notify Discord
         uses: sarisia/actions-status-discord@v1
         with:
-          webhook: ${{ secrets.DISCORD_RELEASE_WEBHOOK }}
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          nodetail: true
+          title: "🚀 Nova versão disponível!"
+          description: |
+            🎉 A versão **${{ github.event.release.tag_name }}** do projeto foi lançada!
+            🔗 Confira as novidades e faça o download [aqui](${{ github.event.release.html_url }}).
+          color: 0x4CAF50
+          content: "👋 <@&role_id> Uma nova release chegou! Atualizem seus ambientes!"
           username: "PurplePanther - Release"
           avatar_url: "https://media.discordapp.net/attachments/1249757066768154634/1249921770404708382/PurplePanther.jpeg?ex=68d753dc&is=68d6025c&hm=e952d133b8ec8cef2e5e24dda7ae715717cb6ad4caf2a51efe6e123ec76b8dd5&=&format=webp"
-          embeds: |
-            [
-              {
-                "title": "🚀 Nova Release Publicada!",
-                "url": "${{ github.event.release.html_url }}",
-                "description": "A release **${{ github.event.release.tag_name }}** foi publicada por **${{ github.event.release.author.login }}** 🎉",
-                "color": 3447003,
-                "fields": [
-                  {
-                    "name": "📦 Nome",
-                    "value": "${{ github.event.release.name }}",
-                    "inline": true
-                  },
-                  {
-                    "name": "📝 Descrição",
-                    "value": "${{ github.event.release.body || 'Sem descrição' }}"
-                  }
-                ],
-                "thumbnail": {
-                  "url": "${{ github.event.release.author.avatar_url }}"
-                },
-                "footer": {
-                  "text": "GitHub • Release Notification"
-                },
-                "timestamp": "${{ github.event.release.published_at }}"
-              }
-            ]
