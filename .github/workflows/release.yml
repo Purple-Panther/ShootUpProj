@@ -12,7 +12,7 @@ jobs:
         uses: sarisia/actions-status-discord@v1
         with:
           webhook: ${{ secrets.DISCORD_RELEASE_WEBHOOK }}
-          username: "GitHub Release Bot 🤖"
+          username: "PurplePanther - Release"
           avatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
           embeds: |
             [
