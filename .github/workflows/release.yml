@@ -13,7 +13,7 @@ jobs:
         with:
           webhook: ${{ secrets.DISCORD_RELEASE_WEBHOOK }}
           username: "PurplePanther - Release"
-          avatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+          avatar_url: "https://media.discordapp.net/attachments/1249757066768154634/1249921770404708382/PurplePanther.jpeg?ex=68d753dc&is=68d6025c&hm=e952d133b8ec8cef2e5e24dda7ae715717cb6ad4caf2a51efe6e123ec76b8dd5&=&format=webp"
           embeds: |
             [
               {
