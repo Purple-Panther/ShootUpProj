@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8242483155128198725}
   - component: {fileID: 5071765539328946003}
   - component: {fileID: 1205517569778514699}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BossLVL10
   m_TagString: Enemy
   m_Icon: {fileID: 0}
