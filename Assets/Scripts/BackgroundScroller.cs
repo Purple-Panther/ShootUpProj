@@ -51,6 +51,7 @@ public class BackgroundScroller : MonoBehaviour
     private Canvas backgroundCanvas;
     private RawImage starsImage;
     private RenderTexture renderTexture;
+    private Material starMaterial;
 
     void Start()
     {
@@ -64,6 +65,7 @@ public class BackgroundScroller : MonoBehaviour
         initialCamSize = cam.orthographicSize;
         initialFieldOfView = cam.fieldOfView;
         SetupBackgroundCanvas();
+        InitializeStarMaterial();
         GenerateStars();
     }
     
@@ -92,6 +94,37 @@ public class BackgroundScroller : MonoBehaviour
         
         renderTexture = new RenderTexture(Screen.width, Screen.height, 0);
         starsImage.texture = renderTexture;
+    }
+    
+    void InitializeStarMaterial()
+    {
+        // Prefer shaders that support vertex color tinting and transparency
+        Shader shader = Shader.Find("Sprites/Default");
+        if (shader == null)
+        {
+            shader = Shader.Find("UI/Default");
+        }
+        if (shader == null)
+        {
+            shader = Shader.Find("Unlit/Texture");
+        }
+        if (shader == null)
+        {
+            shader = Shader.Find("Unlit/Transparent");
+        }
+        
+        if (shader != null)
+        {
+            starMaterial = new Material(shader)
+            {
+                hideFlags = HideFlags.DontSave
+            };
+            starMaterial.mainTexture = Texture2D.whiteTexture;
+        }
+        else
+        {
+            Debug.LogError("BackgroundScroller: Unable to find a suitable shader for star rendering.");
+        }
     }
 
     void GenerateStars()
@@ -171,8 +204,16 @@ public class BackgroundScroller : MonoBehaviour
         GL.PushMatrix();
         GL.LoadPixelMatrix(0, screenWidth, screenHeight, 0);
         
-        Material starMaterial = new Material(Shader.Find("Unlit/Transparent"));
-        starMaterial.mainTexture = Texture2D.whiteTexture;
+        if (starMaterial == null)
+        {
+            InitializeStarMaterial();
+            if (starMaterial == null)
+            {
+                GL.PopMatrix();
+                RenderTexture.active = previousRT;
+                return;
+            }
+        }
         starMaterial.SetPass(0);
         
         for (int i = 0; i < starCount; i++)
@@ -217,11 +258,10 @@ public class BackgroundScroller : MonoBehaviour
     
     private void DrawQuad(float x, float y, float width, float height, Color color, float alpha, Material material)
     {
-        Color prevColor = material.color;
-        material.color = color * new Color(1f, 1f, 1f, alpha);
+        Color finalColor = new Color(color.r, color.g, color.b, alpha);
         
         GL.Begin(GL.QUADS);
-        GL.Color(material.color);
+        GL.Color(finalColor);
         GL.TexCoord2(0, 0);
         GL.Vertex3(x, y, 0);
         GL.TexCoord2(1, 0);
@@ -231,8 +271,6 @@ public class BackgroundScroller : MonoBehaviour
         GL.TexCoord2(0, 1);
         GL.Vertex3(x, y + height, 0);
         GL.End();
-        
-        material.color = prevColor;
     }
     
     private void OnDestroy()
@@ -241,6 +279,12 @@ public class BackgroundScroller : MonoBehaviour
         {
             renderTexture.Release();
             Destroy(renderTexture);
+            renderTexture = null;
+        }
+        if (starMaterial != null)
+        {
+            Destroy(starMaterial);
+            starMaterial = null;
         }
     }
 }

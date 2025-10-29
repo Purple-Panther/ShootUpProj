@@ -11050,7 +11050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starCount: 200
   scrollSpeed: 100
-  starSize: 0.2
+  starSize: 0.263
   twinkleSpeed: 0.012
   enableParallax: 1
   enableTwinkle: 1
