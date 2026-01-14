@@ -16,7 +16,7 @@ ShootUpProj é um jogo rogue-like onde você comanda uma nave espacial em uma mi
 
 ## Características Principais
 
-- **Rogue-like Gameplay**: Cada jogada é única com níveis gerados proceduralmente.
+- **Rogue-like Gameplay**: Cada jogada é única.
 - **Diversos Inimigos**: Enfrente uma variedade de inimigos com diferentes padrões de ataque.
 - **Power-ups e Upgrades**: Colete power-ups e melhore sua nave para enfrentar desafios cada vez maiores.
 - **Gráficos Imersivos**: Desfrute de gráficos impressionantes feitos com ShaderLab e HLSL.
