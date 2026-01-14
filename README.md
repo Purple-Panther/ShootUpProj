@@ -1,6 +1,12 @@
 # ShootUpProj 🚀
 
-![ShootUpProj](https://m.gjcdn.net/game-header/1900/912094-crop0_45_1268_362-gejvfcph-v4.webp)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ad225050-e676-4e2a-93e5-089fd074418f" 
+       width="100%" 
+       alt="ShootUpProj Banner" 
+       style="max-width: 100%; display: block; margin: 0 auto;">
+</p>
+
 
 Bem-vindo ao ShootUpProj, um incrível jogo rogue-like de naves! 🛸
 
