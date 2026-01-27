@@ -37,7 +37,7 @@ namespace Player
             if (_dashCooldownTimer > 0f)
                 _dashCooldownTimer -= Time.unscaledDeltaTime;
 
-            if (Input.GetKeyDown(KeyCode.Space) && !_isDashing && _dashCooldownTimer <= 0f)
+            if (Input.GetKeyDown(KeyCode.LeftShift) && !_isDashing && _dashCooldownTimer <= 0f)
                 TryStartDash();
 
             if (!_isDashing) return;

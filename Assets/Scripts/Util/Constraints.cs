@@ -21,8 +21,7 @@ namespace Util
 
         #region || GameObject ||
 
-        // public static readonly GameObject PlayerGameObject = ;
-        // public static readonly GameObject[] EnemiesGameObjects= GameObject.FindGameObjectsWithTag(EnemyTag);
+
 
         #endregion
     }

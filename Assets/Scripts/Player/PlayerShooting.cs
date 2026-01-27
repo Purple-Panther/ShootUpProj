@@ -33,7 +33,7 @@ namespace Player
 
         private void Update()
         {
-            _isShootingInputDown = Mathf.Approximately(Input.GetAxisRaw("Fire1"), 1);
+            _isShootingInputDown = Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space);
         }
 
         private void FixedUpdate()

@@ -12,6 +12,7 @@ namespace Manager
     {
         [SerializeField] private ScoreStats scoreManager;
         [SerializeField] private GameObject LVL10Boss;
+        [SerializeField] private GameObject ControlsOverlayPrefab;
         [SerializeField] public GameObject GameOverScreen;
         [SerializeField] public GameObject MenuScreen;
         [SerializeField] public GameObject DangerScreen;
@@ -22,6 +23,7 @@ namespace Manager
         private SpawnerManager _enemySpawner;
         private bool _continueEndlessMode ;
         private bool _bossSpawned;
+        private float _scoreTimer;
 
         private GameObject _boss;
 
@@ -41,6 +43,31 @@ namespace Manager
             _enemySpawner.SetBossActive(false);
             _insideBoundaries = GameObject.FindGameObjectsWithTag(Constraints.InsideBoundariesTag);
             _insideDeadLine = GameObject.FindGameObjectWithTag(Constraints.InsideDeadLineTag);
+
+            if (ControlsOverlayPrefab != null)
+            {
+                Transform parentCanvas = null;
+                if (MenuScreen != null) parentCanvas = MenuScreen.transform.parent;
+                else if (GameOverScreen != null) parentCanvas = GameOverScreen.transform.parent;
+                
+                if (parentCanvas == null)
+                {
+                    Canvas canvas = FindFirstObjectByType<Canvas>();
+                    if (canvas != null) parentCanvas = canvas.transform;
+                }
+
+                GameObject overlay = Instantiate(ControlsOverlayPrefab, parentCanvas);
+                
+                overlay.transform.SetAsLastSibling();
+
+                var controller = overlay.GetComponent<ControlsOverlayController>();
+                if (controller == null)
+                {
+                    controller = overlay.AddComponent<ControlsOverlayController>();
+                }
+                
+                overlay.SetActive(true);
+            }
         }
 
         private void Update()
@@ -57,6 +84,20 @@ namespace Manager
 
             if (Input.GetKeyDown(KeyCode.Escape))
                 PauseGame();
+
+            HandleSurvivalScore();
+        }
+
+        private void HandleSurvivalScore()
+        {
+            if (_player == null || _player.Data.Health <= 0 || _isGamePaused) return;
+
+            _scoreTimer += Time.deltaTime;
+            if (_scoreTimer >= 0.1f)
+            {
+                scoreManager.AddScore(2);
+                _scoreTimer = 0f;
+            }
         }
         
         private void DisableInsideBoundaries()

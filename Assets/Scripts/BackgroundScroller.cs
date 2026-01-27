@@ -7,10 +7,10 @@ public class BackgroundScroller : MonoBehaviour
     public int starCount = 200;
     
     [Range(0f, 10000f)]
-    public float scrollSpeed = 3612f; // Reduzido em 40% do valor anterior (6020f)
+    public float scrollSpeed = 3612f; 
     
     [Range(0.2f, 1.5f)]
-    public float starSize = 0.48f; // Reduzido em 60%
+    public float starSize = 0.48f; 
     
     [Range(0f, 0.025f)]
     public float twinkleSpeed = 0.012f;
@@ -21,10 +21,8 @@ public class BackgroundScroller : MonoBehaviour
     [Range(0.8f, 1f)]
     public float starBrightness = 0.95f;
     
-    [Tooltip("Layer para renderização das estrelas")]
     public string backgroundLayer = "Background";
     
-    [Tooltip("Ordem de renderização das estrelas")]
     public int sortingOrder = -100;
 
     private struct Star
@@ -71,7 +69,6 @@ public class BackgroundScroller : MonoBehaviour
     
     void SetupBackgroundCanvas()
     {
-        // Canvas para renderização das estrelas em plano de fundo
         GameObject canvasObj = new GameObject("BackgroundCanvas");
         backgroundCanvas = canvasObj.AddComponent<Canvas>();
         backgroundCanvas.renderMode = RenderMode.ScreenSpaceCamera;
@@ -98,7 +95,6 @@ public class BackgroundScroller : MonoBehaviour
     
     void InitializeStarMaterial()
     {
-        // Prefer shaders that support vertex color tinting and transparency
         Shader shader = Shader.Find("Sprites/Default");
         if (shader == null)
         {
@@ -131,7 +127,6 @@ public class BackgroundScroller : MonoBehaviour
     {
         stars = new Star[starCount];
         
-        // Distribuição mais uniforme com menos estrelas
         for (int i = 0; i < starCount; i++)
         {
             stars[i] = new Star
@@ -153,7 +148,6 @@ public class BackgroundScroller : MonoBehaviour
     {
         scrollOffset += Time.deltaTime * scrollSpeed;
         
-        // Adaptar escala das estrelas ao zoom da câmera
         if (backgroundCanvas != null && cam != null)
         {
             if (renderTexture.width != Screen.width || renderTexture.height != Screen.height)
@@ -163,8 +157,7 @@ public class BackgroundScroller : MonoBehaviour
                 starsImage.texture = renderTexture;
             }
             
-            // Calcular o fator de escala alvo baseado no zoom da câmera
-            // Quando a câmera faz zoom out, as estrelas devem diminuir para 50% do tamanho
+            
             if (cam.fieldOfView > initialFieldOfView)
             {
                 float zoomProgress = (cam.fieldOfView - initialFieldOfView) / (120f - initialFieldOfView);
@@ -175,7 +168,6 @@ public class BackgroundScroller : MonoBehaviour
                 targetStarScale = 1.0f;
             }
             
-            // Transição suave do tamanho atual para o tamanho alvo
             currentStarScale = Mathf.Lerp(currentStarScale, targetStarScale, Time.deltaTime * ScaleTransitionSpeed);
             
             RenderStars();
@@ -197,8 +189,6 @@ public class BackgroundScroller : MonoBehaviour
         float screenWidth = Screen.width;
         float aspect = cam.aspect;
         float orthoSize = cam.orthographicSize;
-        // Ajuste de escala para melhor visualização com menos estrelas
-        // Aplicar a escala de transição suave para o tamanho das estrelas
         float pixelScale = screenWidth / (aspect * orthoSize * 3.8f) * zoomFactor * currentStarScale;
         
         GL.PushMatrix();
@@ -245,7 +235,6 @@ public class BackgroundScroller : MonoBehaviour
             0.6f + 0.4f * Mathf.Sin(Time.time * twinkleSpeed * 4f + star.twinklePhase) : 1f;
         float alpha = star.brightness * twinkle;
         
-        // Três camadas de glow para efeito visual
         DrawQuad(x - size * 1.5f, y - size * 1.5f, size * 3f, size * 3f, 
                 star.tint, alpha * 0.5f, material);
         

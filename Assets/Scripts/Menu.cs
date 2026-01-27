@@ -13,10 +13,6 @@ public class Menu : MonoBehaviour
 
     void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.Escape))
-        // {
-        //     _gameManager?.ResumeGame();
-        // }
     }
 
     public void OnResumeButtonClicked()
